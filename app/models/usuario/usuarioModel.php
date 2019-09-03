@@ -13,20 +13,107 @@ class usuarioModel extends Model
 
     /* ----------------------- CONSULTAS INSERTAR TECNICO PAG. ADMIN ----------------------- */
 
-    // insertar solicitud
+    // insertar administrativo
+    public function insert_administrativo(users $dataAdministrativo)
+    {
+
+        $query = "CALL `insertar_administrativo`(
+            '" . $dataAdministrativo->getLastName() . "', 
+            '" . $dataAdministrativo->getFirstName() . "', 
+            '" . $dataAdministrativo->getDni() . "', 
+            '" . $dataAdministrativo->getCorreo() . "', 
+            '" . $dataAdministrativo->getPassword() . "', 
+            '" . $dataAdministrativo->getOficina() . "', 
+            '" . $dataAdministrativo->getUnidad() . "', 
+            '" . $dataAdministrativo->getImagen_bd() . "', 
+            '" . $dataAdministrativo->getContact_point() . "', 
+            '" . $dataAdministrativo->getDate() . "');";
+        $this->db->query($query);
+        
+    }
+
+    // insertar tecnico
     public function insert_tecnico(users $dataTecnico)
     {
 
-        $query = "CALL `insertar_solicitud`(
-                '" . $dataTecnico->getNombresoli() . "', 
-                '" . $dataTecnico->getIncidencia() . "', 
-                '" . $dataTecnico->getCaso() . "', 
-                '" . $dataTecnico->getDetalle() . "', 
-                '" . $dataTecnico->getAcpsolicitud() . "', 
-                '" . $dataTecnico->getUsuario() . "'
-            );";
+        $query = "CALL `insertar_tecnico`(
+            '" . $dataTecnico->getLastName() . "', 
+            '" . $dataTecnico->getFirstName() . "', 
+            '" . $dataTecnico->getDni() . "', 
+            '" . $dataTecnico->getCorreo() . "', 
+            '" . $dataTecnico->getPassword() . "', 
+            '" . $dataTecnico->getOficina() . "', 
+            '" . $dataTecnico->getUnidad() . "', 
+            '" . $dataTecnico->getImagen_bd() . "', 
+            '" . $dataTecnico->getContact_point() . "', 
+            '" . $dataTecnico->getDate() . "');";
         $this->db->query($query);
+
     }
+
+
+    // editar administrativo
+    public function edit_administrativo(users $dataAdministrativo)
+    {
+
+        $query = "CALL `actualizar_administrativo`(
+            " . $dataAdministrativo->getNumadm() . ", 
+            '" . $dataAdministrativo->getFirstName() . "', 
+            '" . $dataAdministrativo->getLastName() . "', 
+            '" . $dataAdministrativo->getCorreo() . "', 
+            '" . $dataAdministrativo->getDni() . "', 
+            '" . $dataAdministrativo->getContact_point() . "', 
+            '" . $dataAdministrativo->getDate() . "', 
+            '', 
+            '', 
+            '', 
+            '" . $dataAdministrativo->getPassword() . "', 
+            '" . $dataAdministrativo->getImagen_bd() . "');";
+        $this->db->query($query);
+        
+    }
+
+
+    // mostrar data administrativo
+    public function mostrar_dataadmin(int $dataNum)
+    {
+
+        $query = "CALL `mostrar_dadministrativo`(" . $dataNum . ");";
+        $res = $this->db->query($query);
+        return $res;
+
+    }
+
+
+    // mostrar data tecnico
+    public function mostrar_datatecnico(int $dataNum)
+    {
+
+        $query = "CALL `mostrar_dtecnico`(" . $dataNum . ");";
+        $res = $this->db->query($query);
+        return $res;
+
+    }
+
+
+    // insertar tecnico
+    public function delete_admin(int $dataNum)
+    {
+
+        $query = "CALL `eliminar_administrativo`(" . $dataNum . ");";
+        $this->db->query($query);
+
+    }
+
+    // insertar tecnico
+    public function delete_tecnico(int $dataNum)
+    {
+
+        $query = "CALL `eliminar_tecnico`(" . $dataNum . ");";
+        $this->db->query($query);
+        
+    }
+
 
 
 

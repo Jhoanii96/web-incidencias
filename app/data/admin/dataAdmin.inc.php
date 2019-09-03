@@ -206,17 +206,17 @@ class dataAdmin
         return $this->user->mostrar_dataadmin($datoNum);
     }
 
-    public function mostrarEditarTecnico($datoNum)
+    public function mostrarEditarTecnico(int $datoNum)
     {
         return $this->user->mostrar_datatecnico($datoNum);
     }
 
-    public function eliminarAdministrativo($datoNum)
+    public function eliminarAdministrativo(int $datoNum)
     {
         $this->user->delete_admin($datoNum);
     }
 
-    public function eliminarTecnico($datoNum)
+    public function eliminarTecnico(int $datoNum)
     {
         $this->user->delete_tecnico($datoNum);
     }
