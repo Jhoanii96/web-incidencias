@@ -1,0 +1,89 @@
+<?php
+	
+	require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+	require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
+
+    class login extends Controller 
+    {
+        private $session;
+
+        public function __construct()
+        {
+            $this->session = new Session;
+            
+			if(!empty($this->session->get('usuarioUsi')) || $this->session->get('usuarioUsi') != "" || $this->session->get('usuarioUsi') != NULL){
+				header("Location: " . FOLDER_PATH . "/");
+            }
+        }
+
+        public function index()
+		{
+            $this->view('login/login');
+        }
+        
+        public function signin()
+		{
+			$email = $_POST['email'];
+            $pass = $_POST['pass'];
+            explode(" ",$email);
+			explode(" ",$pass);
+			
+            $param[0] = $email;
+			$param[1] = $pass;
+			
+            if(!$this->VerificarParametros($param)){
+				header("Location: " . FOLDER_PATH . "/login");
+				$this->renderErrorMessage('*El usuario y la contraseña son obligatorios');
+			} 
+			else{
+				$this->dataLogin = new dataAdmin();
+				@$parametro = $this->dataLogin->cargar_usuario($param[0]);
+				$identi = $parametro->fetch_array();
+				
+				if($param[0] != $identi['correo']){
+					header("Location: " . FOLDER_PATH . "/login");
+					$this->renderErrorMessage('*El usuario no existe');
+				}
+				else{
+					// if($param['password'] != $parametro['clave_organizador']){
+					if($param[1] != $identi['clave']){
+						header("Location: " . FOLDER_PATH . "/login");
+						$this->renderErrorMessage('*La contraseña es incorrecta');
+					}
+					else{
+						$this->session->add('usuarioUsi', $param[0]);
+						//echo $this->session->get('usuario');
+						header("Location: " . FOLDER_PATH . "/");
+					}
+				}
+			}
+        }
+
+        public function salir(){
+			$this->session->close();
+			header("Location: " . FOLDER_PATH . "/login");
+		}
+        
+        public function VerificarParametros($param)
+		{
+			if(empty($param[0]) or empty($param[1])){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+
+		private function renderErrorMessage($message)
+  		{
+			$this->view('login/login', ['error_message' => $message]);
+  		}
+/*
+        public function index()
+        {
+            $this->view('login/login');
+        }
+        */
+    }
+
+?>
