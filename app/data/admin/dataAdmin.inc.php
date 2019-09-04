@@ -43,17 +43,17 @@ class dataAdmin
 
     /* ---------------------------- PERFIL ---------------------------- */
 
-    public function actualizarPerfil(perfill $dataPerfil, $codUsu)
+    public function actualizarPerfil(perfill $dataPerfil, string $codUsu)
     {
         return $this->perfil->update_perfil($dataPerfil, $codUsu);
     }
 
-    public function actualizarPerfilWi(perfill $dataPerfil, $codUsu)
+    public function actualizarPerfilWi(perfill $dataPerfil, string $codUsu)
     {
         return $this->perfil->update_perfilWi($dataPerfil, $codUsu);
     }
 
-    public function mostrarEditarPerfil($codPerfil)
+    public function mostrarEditarPerfil(string $codPerfil)
     {
         return $this->perfil->mostrar_perfil($codPerfil);
     }

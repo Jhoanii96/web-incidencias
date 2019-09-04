@@ -113,29 +113,44 @@
 													<td>' . $datosTSolicitud['oficina'] . '</td>
                           <td><p align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap; padding: 0px 4px;">' . $estado . '</p></td>
                           <td><a href="' . FOLDER_PATH . '/mostrar/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
-                          <td style="display: flex;">
-														<a href="' . FOLDER_PATH . '/administrador/edit/' . $datosTSolicitud['nums'] . '" title="Atender incidencia" style="margin-right: 7px;">
-															<button id="btn-edit" type="button" data-value="' . $datosTSolicitud['nums'] . '" class="btn btn-block btn-success" style="padding: 2px 6px;">
-																<span class="fa fa-check"></span>
-															</button>
-                            </a>
-                            <form method="post" style="margin-right: 7px;">
-															<input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-															<button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Poner en observación" class="btn btn-block btn-info" style="padding: 2px 6px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
-																<span class="fa fa-eye"></span>
-															</button>
-														</form>
-														<form method="post">
-															<input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-															<button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
-																<span class="fa fa-times"></span>
-															</button>
-														</form>
-														<div id="spinner-dlt-' . $datosTSolicitud['nums'] . '"></div>
-													</td>
-													
-												</tr>
-											';
+                          ';
+                          if ($data['tipouser'] == 'Super Administrador' || $data['tipouser'] == 'Administrador') {
+                            echo '
+                                <td style="display: flex;padding: 8px 34%;">
+                                  <form method="post">
+                                    <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
+                                    <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+                                      <span class="fa fa-times"></span>
+                                    </button>
+                                  </form>
+                                </td>
+                              </tr>
+                            ';
+                          } elseif ($data['tipouser'] == 'Técnico') {
+                            echo '
+                                <td style="display: flex;">
+                                  <a href="' . FOLDER_PATH . '/administrador/edit/' . $datosTSolicitud['nums'] . '" title="Atender incidencia" style="margin-right: 7px;">
+                                    <button id="btn-edit" type="button" data-value="' . $datosTSolicitud['nums'] . '" class="btn btn-block btn-success" style="padding: 2px 6px;">
+                                      <span class="fa fa-check"></span>
+                                    </button>
+                                  </a>
+                                  <form method="post" style="margin-right: 7px;">
+                                    <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
+                                    <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Poner en observación" class="btn btn-block btn-info" style="padding: 2px 6px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+                                      <span class="fa fa-eye"></span>
+                                    </button>
+                                  </form>
+                                  <form method="post">
+                                    <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
+                                    <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+                                      <span class="fa fa-times"></span>
+                                    </button>
+                                  </form>
+                                  <div id="spinner-dlt-' . $datosTSolicitud['nums'] . '"></div>
+                                </td>
+                              </tr>
+                            ';
+                          }
                     }
                     ?>
 

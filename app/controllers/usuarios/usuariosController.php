@@ -104,9 +104,9 @@ class usuarios extends Controller
                     }
 
                     if (!isset($_FILES["image"]["name"])) {
-                        $file_name = '';
+                        $file_name = 'avatar.png';
                     } else {
-                        $file_name = $_FILES["image"]["name"];
+                        $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
                     }
 
                     $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
@@ -150,9 +150,9 @@ class usuarios extends Controller
                     }
 
                     if (!isset($_FILES["image"]["name"])) {
-                        $file_name = '';
+                        $file_name = 'avatar.png';
                     } else {
-                        $file_name = $_FILES["image"]["name"];
+                        $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
                     }
 
                     $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
@@ -289,7 +289,7 @@ class usuarios extends Controller
                     $this->dataUsuarios->editarAdministrativo($encapsuAdmin);
                 } else {
 
-                    $file_name = date("m-d-y") . date("h-i-sa") . "." . basename($_FILES['image']['type']);
+                    $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
 
                     $file_tmp = $_FILES['image']['tmp_name'];
                     $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
@@ -348,7 +348,7 @@ class usuarios extends Controller
                     $this->dataUsuarios->editarTecnico($encapsuTecn);
                 } else {
 
-                    $file_name = date("m-d-y") . date("h-i-sa") . "." . basename($_FILES['image']['type']);
+                    $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
 
                     $file_tmp = $_FILES['image']['tmp_name'];
                     $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';

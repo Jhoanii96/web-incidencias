@@ -20,7 +20,7 @@
                         '" . $dataPerfil->getDni() . "', 
                         '" . $dataPerfil->getCelular() . "', 
                         '" . $dataPerfil->getNacimiento() . "', 
-                        '" . $dataPerfil->getFoto_perfil() . "', 
+                        '" . $dataPerfil->getFoto() . "', 
                         '" . $dataPerfil->getContrasena() . "',
                         '" . $emPerfil . "');";
             $this->db->query($query);

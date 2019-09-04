@@ -5,7 +5,7 @@
 			<div class="user-panel">
 				<div class="pull-left image">
 					<?php
-					if ($data['foto'] != ROOT . FOLDER_PATH . "/src/assets/media/image/perfil/") {
+					if ($data['foto'] != "/src/assets/media/image/perfil/") {
 						echo "<img class=\"img-circle\" src=" . FOLDER_PATH . $data['foto'] . " alt=\"User Image\">";
 					} else {
 						echo '<img class="img-circle" src="' . FOLDER_PATH . '/src/assets/media/image/perfil/avatar-male3.png" alt="User Image">';

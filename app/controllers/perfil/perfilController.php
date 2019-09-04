@@ -42,13 +42,13 @@
                     
                 if ($textimage == NULL || $textimage == '') {
                     
-                    $encapsuPerfil = new perfill($firstName, $lastName, $dni, 
+                    $encapsuPerfil = new perfilll($firstName, $lastName, $dni, 
                         $contact_point, $nacimiento, "", $password);
                 
-                    $this->dataPerfil->actualizarPerfilWi($encapsuPerfil, $this->session->get('usuarioUsi'));
+                    $this->dataPerfil->actualizarPerfilWi($encapsuPerfil, $code);
                         
                 } else {
-                    $file_name = date("m-d-y") . date("h-i-sa") . "." . basename($_FILES['image']['type']);
+                    $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
                     $file_type = $_FILES['image']['type'];
                     $file_size = $_FILES['image']['size'];
                         
@@ -58,10 +58,10 @@
                     move_uploaded_file($file_tmp, $imagen_destino.$file_name);
                     $imagen_bd = '/src/assets/media/image/perfil/' . $file_name;
                         
-                    $encapsuPerfil = new perfil($firstName, $lastName, $dni, 
+                    $encapsuPerfil = new perfill($firstName, $lastName, $dni, 
                     $contact_point, $nacimiento, $imagen_bd, $password);
                     
-                    $this->dataPerfil->actualizarPerfil($encapsuPerfil, $this->session->get('usuarioUsi'));
+                    $this->dataPerfil->actualizarPerfil($encapsuPerfil, $code);
                 }
                     
                 sleep(1);
