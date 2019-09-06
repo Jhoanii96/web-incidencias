@@ -301,10 +301,10 @@
       var solicitud_code = idSol;
       $.ajax({
         beforeSend: function() {
-          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + admin_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
           $("#btnatnd-" + solicitud_code).attr("disabled", true);
         },
-        url: <?php FOLDER_PATH ?> "/",
+        url: "<?php FOLDER_PATH ?>/",
         type: "POST",
         data: {
           codSlctd: solicitud_code
@@ -312,6 +312,8 @@
         success: function(resp) {
           $("#spinner-aoa-" + solicitud_code).remove();
           $("#btnatnd-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#1400d2");
+          $("#data_color-" + solicitud_code).html('Atendido');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
             location.href = "<?= FOLDER_PATH ?>/";
