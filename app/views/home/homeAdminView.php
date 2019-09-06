@@ -150,14 +150,18 @@
                     <?php
                     while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
 
-                      if ($datosTSolicitud['usuario'] == 0) {
+                      if ($datosTSolicitud['estado'] == '0') {
                         $estado = 'En espera';
-                      } elseif ($datosTSolicitud['usuario'] == 1) {
+                        $color = '#007a80';
+                      } elseif ($datosTSolicitud['estado'] == '1') {
                         $estado = 'Atendido';
-                      } elseif ($datosTSolicitud['usuario'] == 2) {
+                        $color = '#1400d2';
+                      } elseif ($datosTSolicitud['estado'] == '2') {
                         $estado = 'En observación';
-                      } elseif ($datosTSolicitud['usuario'] == 3) {
+                        $color = '#650080';
+                      } elseif ($datosTSolicitud['estado'] == '3') {
                         $estado = 'Anulado';
+                        $color = '#9e0707';
                       }
 
                       echo '
@@ -168,11 +172,11 @@
 													<td>' . $datosTSolicitud['tipo'] . '</td>
 													<td>' . $datosTSolicitud['usuario'] . '</td>
 													<td>' . $datosTSolicitud['oficina'] . '</td>
-                          <td><p align=\'center\' style="background-color: #007a80;color: white;">' . $estado . '</p></td>
-                          <td><a href="' . FOLDER_PATH . '/mostrar/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
+                          <td><p id="data_color-' . $datosTSolicitud['nums'] . '" align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap; padding: 0px 4px;">' . $estado . '</p></td>
+                          <td><a href="' . FOLDER_PATH . '/detalle/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
                           ';
-                          if ($data['tipouser'] == 'Super Administrador' || $data['tipouser'] == 'Administrador') {
-                            echo '
+                      if ($data['tipouser'] == 'Super Administrador' || $data['tipouser'] == 'Administrador') {
+                        echo '
                                 <td style="display: flex;padding: 8px 34%;">
                                   <form method="post">
                                     <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
@@ -183,17 +187,17 @@
                                 </td>
                               </tr>
                             ';
-                          } elseif ($data['tipouser'] == 'Técnico') {
-                            echo '
+                      } elseif ($data['tipouser'] == 'Técnico') {
+                        echo '
                                 <td style="display: flex;">
-                                  <a href="' . FOLDER_PATH . '/administrador/edit/' . $datosTSolicitud['nums'] . '" title="Atender incidencia" style="margin-right: 7px;">
-                                    <button id="btn-edit" type="button" data-value="' . $datosTSolicitud['nums'] . '" class="btn btn-block btn-success" style="padding: 2px 6px;">
+                                  <a href="#" title="Atender incidencia" style="margin-right: 7px;">
+                                    <button id="btnatnd-' . $datosTSolicitud['nums'] . '" type="button" data-value="' . $datosTSolicitud['nums'] . '" class="btn btn-block btn-success" style="padding: 2px 6px;" onclick="AtendSolc(' . $datosTSolicitud['nums'] . ')">
                                       <span class="fa fa-check"></span>
                                     </button>
                                   </a>
                                   <form method="post" style="margin-right: 7px;">
                                     <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-                                    <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Poner en observación" class="btn btn-block btn-info" style="padding: 2px 6px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+                                    <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Poner en observación" class="btn btn-block btn-info" style="padding: 2px 6px;" onclick="AtendSolc(' . $datosTSolicitud['nums'] . ')">
                                       <span class="fa fa-eye"></span>
                                     </button>
                                   </form>
@@ -203,12 +207,11 @@
                                       <span class="fa fa-times"></span>
                                     </button>
                                   </form>
-                                  <div id="spinner-dlt-' . $datosTSolicitud['nums'] . '"></div>
+                                  <div id="spinner-aoa-' . $datosTSolicitud['nums'] . '"></div>
                                 </td>
                               </tr>
                             ';
-                          }
-                          
+                      }
                     }
                     ?>
 
@@ -290,6 +293,32 @@
         'autoWidth': false
       })
     })
+  </script>
+
+
+  <script>
+    function AtendSolc(idSol) {
+      var solicitud_code = idSol;
+      $.ajax({
+        beforeSend: function() {
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + admin_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#btnatnd-" + solicitud_code).attr("disabled", true);
+        },
+        url: <?php FOLDER_PATH ?> "/",
+        type: "POST",
+        data: {
+          codSlctd: solicitud_code
+        },
+        success: function(resp) {
+          $("#spinner-aoa-" + solicitud_code).remove();
+          $("#btnatnd-" + solicitud_code).attr("disabled", false);
+          /* $("#data_color-" + solicitud_code).style; */
+          setTimeout(function() {
+            location.href = "<?= FOLDER_PATH ?>/";
+          }, 500);
+        }
+      })
+    }
   </script>
 </body>
 

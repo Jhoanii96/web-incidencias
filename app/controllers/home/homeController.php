@@ -30,7 +30,7 @@ class home extends Controller
         ) {
             
             $this->dataAdmin = new dataAdmin();
-            $this->parametro1 = $this->dataAdmin->mostrarTablaSolicitud('');
+            $this->parametro1 = $this->dataAdmin->mostrarTablaSolicitud('0');
 
             $this->view('home/homeAdmin', [
                 'nombre' => $this->datos_usu['nombre'],
