@@ -236,6 +236,12 @@ class dataAdmin
     }
 
     
+    /* ---------------------------- ACCIONES DE SOLICITUD ---------------------------- */
+
+    public function asignarAtencion(int $datoNum, string $user, string $estado)
+    {
+        $this->admin->asignar_atencion($datoNum, $user, $estado);
+    }
 
 }
 
