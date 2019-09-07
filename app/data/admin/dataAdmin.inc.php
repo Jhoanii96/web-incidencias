@@ -243,6 +243,32 @@ class dataAdmin
         $this->admin->asignar_atencion($datoNum, $user, $estado);
     }
 
+    public function solicitudEspera(int $datoNum, string $user, string $estado)
+    {
+        $this->admin->solicitud_espera($datoNum, $user, $estado);
+    }
+
+    public function solicitudObservacion(int $datoNum, string $user, string $estado)
+    {
+        $this->admin->solicitud_observacion($datoNum, $user, $estado);
+    }
+
+    public function solicitudAnulado(int $datoNum, string $user, string $estado)
+    {
+        $this->admin->solicitud_anulado($datoNum, $user, $estado);
+    }
+
+    public function solicitudAprobada(int $datoNum, string $user, string $estado)
+    {
+        $this->admin->solicitud_aprobada($datoNum, $user, $estado);
+    }
+
+    public function solicitudCancelar(int $datoNum)
+    {
+        $this->admin->cancelar_atencion($datoNum);
+    }
+
+
 }
 
 

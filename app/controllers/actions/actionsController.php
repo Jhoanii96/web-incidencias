@@ -1,4 +1,5 @@
 <?php
+require ROOT . FOLDER_PATH . "/system/libs/Session.php";
 require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
 
 class actions extends Controller
@@ -12,8 +13,9 @@ class actions extends Controller
     public function index()
     { }
 
-    public function attend($tipo = '')
+    public function attend()
     {
+
         $this->dataAdministrador = new dataAdmin();
 
         $codSoli = $_POST["cdSlctd"];
@@ -21,6 +23,23 @@ class actions extends Controller
         $estado = '1';
 
         $this->dataAdministrador->asignarAtencion($codSoli, $user, $estado);
+
+        sleep(1);
+
+    }
+
+
+    public function cancel()
+    {
+
+        $this->dataAdministrador = new dataAdmin();
+
+        $codSoli = $_POST["cdSlctd"];
+        
+        $this->dataAdministrador->solicitudCancelar($codSoli);
+
+        sleep(1);
+
     }
 
     public function delete()

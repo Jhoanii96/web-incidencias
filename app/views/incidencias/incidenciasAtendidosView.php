@@ -72,7 +72,7 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-hover" style="font-size: 12px;">
-                <thead>
+                  <thead>
                     <tr>
                       <th>Nro</th>
                       <th>Fecha reporte</th>
@@ -118,17 +118,17 @@
                           <td style="display: flex;">
 														<form method="post" style="margin-right: 7px;">
 															<input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-															<button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Incidencia solucionada" class="btn btn-block btn-success" style="padding: 2px 6px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+															<button id="btnsln-' . $datosTSolicitud['nums'] . '" type="button" title="Incidencia solucionada" class="btn btn-block btn-success" style="padding: 2px 6px;" onclick="solucionAdm(' . $datosTSolicitud['nums'] . ')">
 																<span class="fa fa-check"></span>
 															</button>
 														</form>
 														<form method="post">
 															<input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-															<button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Cancelar atención" class="btn btn-block btn-warning" style="padding: 2px 8px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+															<button id="btncnl-' . $datosTSolicitud['nums'] . '" type="button" title="Cancelar atención" class="btn btn-block btn-warning" style="padding: 2px 8px;" onclick="CancelSolc(' . $datosTSolicitud['nums'] . ')">
 																<span class="fa fa-times"></span>
 															</button>
 														</form>
-														<div id="spinner-dlt-' . $datosTSolicitud['nums'] . '"></div>
+														<div id="spinner-atn-' . $datosTSolicitud['nums'] . '"></div>
 													</td>
 													
 												</tr>
@@ -319,6 +319,58 @@
         'autoWidth': false
       })
     })
+  </script>
+
+  <script>
+    function solucionAdm(idSol) {
+      var solicitud_code = idSol;
+      $.ajax({
+        beforeSend: function() {
+          $("#spinner-atn-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#btnsln-" + solicitud_code).attr("disabled", true);
+        },
+        url: "<?= FOLDER_PATH ?>/actions/solution/", 
+        type: "POST", 
+        data: { 
+          cdSlctd: solicitud_code 
+        }, 
+        success: function(resp) {
+          $("#spinner-aoa-" + solicitud_code).remove();
+          $("#btnatnd-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#1400d2");
+          $("#data_color-" + solicitud_code).html('Atendido');
+          /* $("#data_color-" + solicitud_code).style; */
+          setTimeout(function() {
+            location.href = "<?= FOLDER_PATH ?>/";
+          }, 500);
+        }
+      })
+    }
+
+    function CancelSolc(idSol) {
+      var solicitud_code = idSol;
+      $.ajax({
+        beforeSend: function() {
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#btnatnd-" + solicitud_code).attr("disabled", true);
+        },
+        url: "<?= FOLDER_PATH ?>/actions/attend/",
+        type: "POST",
+        data: {
+          cdSlctd: solicitud_code
+        },
+        success: function(resp) {
+          $("#spinner-aoa-" + solicitud_code).remove();
+          $("#btnatnd-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#1400d2");
+          $("#data_color-" + solicitud_code).html('Atendido');
+          /* $("#data_color-" + solicitud_code).style; */
+          setTimeout(function() {
+            location.href = "<?= FOLDER_PATH ?>/";
+          }, 500);
+        }
+      })
+    }
   </script>
 </body>
 

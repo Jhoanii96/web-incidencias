@@ -304,7 +304,7 @@
           $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
           $("#btnatnd-" + solicitud_code).attr("disabled", true);
         },
-        url: "<?php FOLDER_PATH ?>/actions/attend/",
+        url: "<?= FOLDER_PATH ?>/actions/attend/",
         type: "POST",
         data: {
           cdSlctd: solicitud_code

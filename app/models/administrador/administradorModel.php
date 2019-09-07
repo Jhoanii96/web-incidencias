@@ -127,5 +127,76 @@ class administradorModel extends Model
 
         $query = "CALL eliminar_administrador(" . $numCasos . ");";
         $this->db->query($query);
+
     }
+
+
+
+    /* ----------------------------- ESTADOS SOLICITUD ----------------------------- */
+
+
+    public function asignar_atencion(int $datoNum, string $user, string $estado)
+    {
+
+        $query = "CALL `insertar_atencion`(
+            " . $datoNum . ", 
+            '" . $user . "', 
+            '" . $estado . "');";
+        $this->db->query($query);
+
+    }
+
+    public function solicitud_espera(int $datoNum, string $user, string $estado)
+    {
+
+        $query = "CALL `insertar_atencion`(
+            " . $datoNum . ", 
+            '" . $user . "', 
+            '" . $estado . "');";
+        $this->db->query($query);
+        
+    }
+
+    public function solicitud_observacion(int $datoNum, string $user, string $estado)
+    {
+
+        $query = "CALL `insertar_atencion`(
+            " . $datoNum . ", 
+            '" . $user . "', 
+            '" . $estado . "');";
+        $this->db->query($query);
+        
+    }
+
+    public function solicitud_anulado(int $datoNum, string $user, string $estado)
+    {
+
+        $query = "CALL `insertar_atencion`(
+            " . $datoNum . ", 
+            '" . $user . "', 
+            '" . $estado . "');";
+        $this->db->query($query);
+        
+    }
+
+    public function solicitud_aprobada(int $datoNum, string $user, string $estado)
+    {
+
+        $query = "CALL `insertar_atencion`(
+            " . $datoNum . ", 
+            '" . $user . "', 
+            '" . $estado . "');";
+        $this->db->query($query);
+
+    }
+
+
+    public function cancelar_atencion(int $datoNum)
+    {
+
+        $query = "CALL `cancelar_atencion`(" . $datoNum . ");";
+        $this->db->query($query);
+
+    }
+
 }
