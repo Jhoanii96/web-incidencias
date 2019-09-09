@@ -149,6 +149,7 @@
                     while ($datoNuevoUsuario = $data['NueMiem']->fetch_assoc()) {
 
                       echo $datoNuevoUsuario['num_nuevo_usu'];
+
                     }
 
                   ?>
