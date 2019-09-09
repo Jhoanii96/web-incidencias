@@ -197,13 +197,13 @@
                                   </a>
                                   <form method="post" style="margin-right: 7px;">
                                     <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-                                    <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Poner en observación" class="btn btn-block btn-info" style="padding: 2px 6px;" onclick="AtendSolc(' . $datosTSolicitud['nums'] . ')">
+                                    <button id="btnobs-' . $datosTSolicitud['nums'] . '" type="button" title="Poner en observación" class="btn btn-block btn-info" style="padding: 2px 6px;" onclick="ObservSolc(' . $datosTSolicitud['nums'] . ')">
                                       <span class="fa fa-eye"></span>
                                     </button>
                                   </form>
                                   <form method="post">
                                     <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-                                    <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+                                    <button id="btnanl-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="AnulSolc(' . $datosTSolicitud['nums'] . ')">
                                       <span class="fa fa-times"></span>
                                     </button>
                                   </form>
@@ -314,6 +314,56 @@
           $("#btnatnd-" + solicitud_code).attr("disabled", false);
           $("#data_color-" + solicitud_code).css("background-color", "#1400d2");
           $("#data_color-" + solicitud_code).html('Atendido');
+          /* $("#data_color-" + solicitud_code).style; */
+          setTimeout(function() {
+            location.href = "<?= FOLDER_PATH ?>/";
+          }, 500);
+        }
+      })
+    }
+
+    function ObservSolc(idSol) {
+      var solicitud_code = idSol;
+      $.ajax({
+        beforeSend: function() {
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#btnobs-" + solicitud_code).attr("disabled", true);
+        },
+        url: "<?= FOLDER_PATH ?>/actions/observation/",
+        type: "POST",
+        data: {
+          cdSlctd: solicitud_code
+        },
+        success: function(resp) {
+          $("#spinner-aoa-" + solicitud_code).remove();
+          $("#btnobs-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#650080");
+          $("#data_color-" + solicitud_code).html('En observación');
+          /* $("#data_color-" + solicitud_code).style; */
+          setTimeout(function() {
+            location.href = "<?= FOLDER_PATH ?>/";
+          }, 500);
+        }
+      })
+    }
+
+    function AnulSolc(idSol) {
+      var solicitud_code = idSol;
+      $.ajax({
+        beforeSend: function() {
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#btnanl-" + solicitud_code).attr("disabled", true);
+        },
+        url: "<?= FOLDER_PATH ?>/actions/annular/",
+        type: "POST",
+        data: {
+          cdSlctd: solicitud_code
+        },
+        success: function(resp) {
+          $("#spinner-aoa-" + solicitud_code).remove();
+          $("#btnanl-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#9e0707");
+          $("#data_color-" + solicitud_code).html('Anulado');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
             location.href = "<?= FOLDER_PATH ?>/";

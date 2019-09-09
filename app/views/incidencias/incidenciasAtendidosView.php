@@ -102,6 +102,9 @@
                       } elseif ($datosTSolicitud['estado'] == '3') {
                         $estado = 'Anulado';
                         $color = '#9e0707';
+                      } elseif ($datosTSolicitud['estado'] == '4') {
+                        $estado = 'Solucionado';
+                        $color = '#00b704';
                       }
 
                       echo '
@@ -112,7 +115,7 @@
 													<td>' . $datosTSolicitud['tipo'] . '</td>
 													<td>' . $datosTSolicitud['usuario'] . '</td>
 													<td>' . $datosTSolicitud['oficina'] . '</td>
-                          <td><p align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap; padding: 0px 4px;">' . $estado . '</p></td>
+                          <td><p id="#data_color-' . $datosTSolicitud['nums'] . '" align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap; padding: 0px 4px;">' . $estado . '</p></td>
                           <td><a href="' . FOLDER_PATH . '/detalle/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
                           <td>3 min</td>
                           <td style="display: flex;">
@@ -128,7 +131,7 @@
 																<span class="fa fa-times"></span>
 															</button>
 														</form>
-														<div id="spinner-atn-' . $datosTSolicitud['nums'] . '"></div>
+														<div id="spinner-load-' . $datosTSolicitud['nums'] . '"></div>
 													</td>
 													
 												</tr>
@@ -326,7 +329,7 @@
       var solicitud_code = idSol;
       $.ajax({
         beforeSend: function() {
-          $("#spinner-atn-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#spinner-load-" + solicitud_code).append("<span id='spinner-load2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
           $("#btnsln-" + solicitud_code).attr("disabled", true);
         },
         url: "<?= FOLDER_PATH ?>/actions/solution/", 
@@ -335,13 +338,13 @@
           cdSlctd: solicitud_code 
         }, 
         success: function(resp) {
-          $("#spinner-aoa-" + solicitud_code).remove();
-          $("#btnatnd-" + solicitud_code).attr("disabled", false);
-          $("#data_color-" + solicitud_code).css("background-color", "#1400d2");
-          $("#data_color-" + solicitud_code).html('Atendido');
+          $("#spinner-load2-" + solicitud_code).remove();
+          $("#btnsln-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#00b704");
+          $("#data_color-" + solicitud_code).html('Solucionado');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/";
+            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=1";
           }, 500);
         }
       })
@@ -351,22 +354,22 @@
       var solicitud_code = idSol;
       $.ajax({
         beforeSend: function() {
-          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#spinner-load-" + solicitud_code).append("<span id='spinner-load2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
           $("#btnatnd-" + solicitud_code).attr("disabled", true);
         },
-        url: "<?= FOLDER_PATH ?>/actions/attend/",
+        url: "<?= FOLDER_PATH ?>/actions/cancel/",
         type: "POST",
         data: {
           cdSlctd: solicitud_code
         },
         success: function(resp) {
-          $("#spinner-aoa-" + solicitud_code).remove();
-          $("#btnatnd-" + solicitud_code).attr("disabled", false);
-          $("#data_color-" + solicitud_code).css("background-color", "#1400d2");
-          $("#data_color-" + solicitud_code).html('Atendido');
+          $("#spinner-load2-" + solicitud_code).remove();
+          $("#btncnl-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#007a80");
+          $("#data_color-" + solicitud_code).html('En espera');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/";
+            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=1";
           }, 500);
         }
       })

@@ -238,34 +238,29 @@ class dataAdmin
     
     /* ---------------------------- ACCIONES DE SOLICITUD ---------------------------- */
 
-    public function asignarAtencion(int $datoNum, string $user, string $estado)
+    public function solicitudAtender(int $datoNum, string $user, string $estado)
     {
-        $this->admin->asignar_atencion($datoNum, $user, $estado);
+        $this->admin->solicitud_atender($datoNum, $user, $estado);
+    }
+    
+    public function solicitudObservacion(int $datoNum, string $user)
+    {
+        $this->admin->solicitud_observacion($datoNum, $user);
     }
 
-    public function solicitudEspera(int $datoNum, string $user, string $estado)
+    public function solicitudAnulado(int $datoNum, string $user)
     {
-        $this->admin->solicitud_espera($datoNum, $user, $estado);
+        $this->admin->solicitud_anulado($datoNum, $user);
     }
 
-    public function solicitudObservacion(int $datoNum, string $user, string $estado)
+    public function solicitudSolucionada(int $datoNum, string $user)
     {
-        $this->admin->solicitud_observacion($datoNum, $user, $estado);
+        $this->admin->solicitud_solucionado($datoNum, $user);
     }
-
-    public function solicitudAnulado(int $datoNum, string $user, string $estado)
-    {
-        $this->admin->solicitud_anulado($datoNum, $user, $estado);
-    }
-
-    public function solicitudAprobada(int $datoNum, string $user, string $estado)
-    {
-        $this->admin->solicitud_aprobada($datoNum, $user, $estado);
-    }
-
+    
     public function solicitudCancelar(int $datoNum)
     {
-        $this->admin->cancelar_atencion($datoNum);
+        $this->admin->solicitud_cancelar($datoNum);
     }
 
 

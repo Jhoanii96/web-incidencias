@@ -134,11 +134,10 @@ class administradorModel extends Model
 
     /* ----------------------------- ESTADOS SOLICITUD ----------------------------- */
 
-
-    public function asignar_atencion(int $datoNum, string $user, string $estado)
+    public function solicitud_atender(int $datoNum, string $user, string $estado)
     {
 
-        $query = "CALL `insertar_atencion`(
+        $query = "CALL `solicitud_atender`( 
             " . $datoNum . ", 
             '" . $user . "', 
             '" . $estado . "');";
@@ -146,55 +145,41 @@ class administradorModel extends Model
 
     }
 
-    public function solicitud_espera(int $datoNum, string $user, string $estado)
+    public function solicitud_observacion(int $datoNum, string $user)
     {
 
-        $query = "CALL `insertar_atencion`(
+        $query = "CALL `solicitud_observacion`(
             " . $datoNum . ", 
-            '" . $user . "', 
-            '" . $estado . "');";
+            '" . $user . "');";
         $this->db->query($query);
         
     }
 
-    public function solicitud_observacion(int $datoNum, string $user, string $estado)
+    public function solicitud_anulado(int $datoNum, string $user)
     {
 
-        $query = "CALL `insertar_atencion`(
+        $query = "CALL `solicitud_anulado`(
             " . $datoNum . ", 
-            '" . $user . "', 
-            '" . $estado . "');";
+            '" . $user . "');";
         $this->db->query($query);
         
     }
 
-    public function solicitud_anulado(int $datoNum, string $user, string $estado)
+    public function solicitud_solucionado(int $datoNum, string $user)
     {
 
-        $query = "CALL `insertar_atencion`(
+        $query = "CALL `solicitud_solucionado`(
             " . $datoNum . ", 
-            '" . $user . "', 
-            '" . $estado . "');";
-        $this->db->query($query);
-        
-    }
-
-    public function solicitud_aprobada(int $datoNum, string $user, string $estado)
-    {
-
-        $query = "CALL `insertar_atencion`(
-            " . $datoNum . ", 
-            '" . $user . "', 
-            '" . $estado . "');";
+            '" . $user . "');";
         $this->db->query($query);
 
     }
 
 
-    public function cancelar_atencion(int $datoNum)
+    public function solicitud_cancelar(int $datoNum)
     {
 
-        $query = "CALL `cancelar_atencion`(" . $datoNum . ");";
+        $query = "CALL `solicitud_cancelar`(" . $datoNum . ");";
         $this->db->query($query);
 
     }
