@@ -115,24 +115,24 @@
 													<td>' . $datosTSolicitud['tipo'] . '</td>
 													<td>' . $datosTSolicitud['usuario'] . '</td>
 													<td>' . $datosTSolicitud['oficina'] . '</td>
-                          <td><p align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap;padding: 0px 4px;">' . $estado . '</p></td>
+                          <td><p id="data_color-' . $datosTSolicitud['nums'] . '" align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap;padding: 0px 4px;">' . $estado . '</p></td>
                           <td><a href="' . FOLDER_PATH . '/detalle/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
                           ';
                           if ($data['tipouser'] == 'Técnico') {
                             echo '
                               <td style="display: flex;">
-                                <a href="' . FOLDER_PATH . '/administrador/edit/' . $datosTSolicitud['nums'] . '" title="Atender incidencia" style="margin-right: 7px;">
-                                  <button id="btn-edit" type="button" data-value="' . $datosTSolicitud['nums'] . '" class="btn btn-block btn-success" style="padding: 2px 6px;">
+                                <a href="#" title="Atender incidencia" style="margin-right: 7px;">
+                                  <button id="btnatn-' . $datosTSolicitud['nums'] . '" type="button" data-value="' . $datosTSolicitud['nums'] . '" class="btn btn-block btn-success" style="padding: 2px 6px;" onclick="AtendSolc(' . $datosTSolicitud['nums'] . ')">
                                     <span class="fa fa-check"></span>
                                   </button>
                                 </a>
                                 <form method="post">
                                   <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-                                  <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')">
+                                  <button id="btnanl-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="AnulSolc(' . $datosTSolicitud['nums'] . ')">
                                     <span class="fa fa-times"></span>
                                   </button>
                                 </form>
-                                <div id="spinner-dlt-' . $datosTSolicitud['nums'] . '"></div>
+                                <div id="spinner-aa-' . $datosTSolicitud['nums'] . '"></div>
                               </td>
                             ';
                           }
@@ -180,112 +180,8 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
-      </div>
-      <strong>Copyright &copy; 2019 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-      reserved.
-    </footer>
-
     <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Create the tabs -->
-      <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-      </ul>
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <!-- Home tab content -->
-        <div class="tab-pane" id="control-sidebar-home-tab">
-          <h3 class="control-sidebar-heading">Actividad reciente</h3>
-          <ul class="control-sidebar-menu">
-            <li>
-              <a href="javascript:void(0)">
-                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                <div class="menu-info">
-                  <h4 class="control-sidebar-subheading">Cumpleaños de Langdon</h4>
-
-                  <p>Cumplirá 23 años el 24 de abril</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <i class="menu-icon fa fa-user bg-yellow"></i>
-
-                <div class="menu-info">
-                  <h4 class="control-sidebar-subheading">Frodo actualizó su perfil</h4>
-
-                  <p>Nuevo teléfono +1(800)555-1234</p>
-                </div>
-              </a>
-            </li>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <i class="menu-icon fa fa-file-o bg-green"></i>
-
-                <div class="menu-info">
-                  <h4 class="control-sidebar-subheading">Alex creó una Incidencia</h4>
-
-                  <p>Hace 3 minutos</p>
-                </div>
-              </a>
-            </li>
-          </ul>
-          <!-- /.control-sidebar-menu -->
-        </div>
-        <!-- /.tab-pane -->
-
-        <!-- Settings tab content -->
-        <div class="tab-pane" id="control-sidebar-settings-tab">
-          <form method="post">
-            <h3 class="control-sidebar-heading">Configuración general</h3>
-
-            <div class="form-group">
-              <label class="control-sidebar-subheading">
-                Mostrar cuando estás activo
-                <input type="checkbox" class="pull-right" checked>
-              </label>
-
-              <p>
-                Otros usuarios pueden ver tu estado activo o tu estado en línea.
-              </p>
-            </div>
-            <!-- /.form-group -->
-
-            <div class="form-group">
-              <label class="control-sidebar-subheading">
-                Desactivar las notificaciones
-                <input type="checkbox" class="pull-right" checked>
-              </label>
-
-              <p>
-                Apaga las notificaciones de windows y de la navegación.
-              </p>
-            </div>
-            <!-- /.form-group -->
-
-            <div class="form-group">
-              <label class="control-sidebar-subheading">
-                Eliminar el historial de incidencias
-                <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-              </label>
-
-              <p>
-                ¡Advertencia! Borra todos los informes de incidencias.
-              </p>
-            </div>
-            <!-- /.form-group -->
-
-          </form>
-        </div>
-        <!-- /.tab-pane -->
-      </div>
-    </aside>
+    <?php require(ROOT . '/' . PATH_VIEWS . 'aside_control.php'); ?>
     <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -329,6 +225,58 @@
         'autoWidth': false
       })
     })
+  </script>
+
+<script>
+    function AtendSolc(idSol) {
+      var solicitud_code = idSol;
+      $.ajax({
+        beforeSend: function() {
+          $("#spinner-aa-" + solicitud_code).append("<span id='spinner-aa2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#btnatnd-" + solicitud_code).attr("disabled", true);
+        },
+        url: "<?= FOLDER_PATH ?>/actions/attend/",
+        type: "POST",
+        data: {
+          cdSlctd: solicitud_code
+        },
+        success: function(resp) {
+          $("#spinner-aa2-" + solicitud_code).remove();
+          $("#btnatnd-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#1400d2");
+          $("#data_color-" + solicitud_code).html('Atendido');
+          /* $("#data_color-" + solicitud_code).style; */
+          setTimeout(function() {
+            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=2";
+          }, 500);
+        }
+      })
+    }
+
+    function AnulSolc(idSol) {
+      var solicitud_code = idSol;
+      $.ajax({
+        beforeSend: function() {
+          $("#spinner-aa-" + solicitud_code).append("<span id='spinner-aa2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#btnanl-" + solicitud_code).attr("disabled", true);
+        },
+        url: "<?= FOLDER_PATH ?>/actions/annular/",
+        type: "POST",
+        data: {
+          cdSlctd: solicitud_code
+        },
+        success: function(resp) {
+          $("#spinner-aa2-" + solicitud_code).remove();
+          $("#btnanl-" + solicitud_code).attr("disabled", false);
+          $("#data_color-" + solicitud_code).css("background-color", "#9e0707");
+          $("#data_color-" + solicitud_code).html('Anulado');
+          /* $("#data_color-" + solicitud_code).style; */
+          setTimeout(function() {
+            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=4";
+          }, 500);
+        }
+      })
+    }
   </script>
 </body>
 
