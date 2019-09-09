@@ -59,7 +59,7 @@ class register extends Controller
 
         $this->dataUser->registrarAdministrativos($firstName, $lastName, $correo, $clave, $ip);
 
-        $data['message'] = 'El nuevo usuario: ' . $firstName . ' ' . $lastName . ', se ha registrado';
+        $data['home'] = 'user';
         $pusher->trigger('my-channel', 'my-event', $data);
 
         sleep(1);

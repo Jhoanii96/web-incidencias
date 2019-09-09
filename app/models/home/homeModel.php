@@ -72,10 +72,19 @@ class homeModel extends Model
 
     }
 
-    public function show_nuevos_miembros()
+    public function show_nuevos_usuario()
     {
 
-        $query = "select * from `v_numero_nuevos_miembros`;";
+        $query = "select count(num_nuevo_usu) as num_nuevo_usu from `v_numero_nuevo_usuario`;";
+        $res = $this->db->query($query);
+        return $res;
+
+    }
+
+    public function show_bell_usuario()
+    {
+
+        $query = "select * from `v_bell_usuario`;";
         $res = $this->db->query($query);
         return $res;
 

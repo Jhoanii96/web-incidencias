@@ -74,7 +74,7 @@
       </div>
       <!-- /.social-auth-links -->
 
-      <a href="register" class="text-center">Registrar una nueva cuenta</a>
+      <a href="<?= FOLDER_PATH ?>/register" class="text-center">Registrar una nueva cuenta</a>
 
     </div>
     <!-- /.login-box-body -->

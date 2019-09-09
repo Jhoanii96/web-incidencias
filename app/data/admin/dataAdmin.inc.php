@@ -283,7 +283,14 @@ class dataAdmin
 
     public function NuevosMiembros()
     {
-        return $this->home->show_tprincipal();
+        return $this->home->show_nuevos_usuario();
+    }
+
+    /* ---------------------------- PRINCIPAL NOTIFICACIONES ---------------------------- */
+
+    public function BellMiembros()
+    {
+        return $this->home->show_bell_usuario();
     }
 
 }

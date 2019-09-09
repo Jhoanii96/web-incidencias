@@ -69,14 +69,13 @@
                 <span class="info-box-text">Pendientes</span>
                 <span class="info-box-number">
 
-                <?php
-                    while ($datoNumSolicitud = $data['NumSoli']->fetch_assoc()) {
+                  <?php
+                  while ($datoNumSolicitud = $data['NumSoli']->fetch_assoc()) {
 
-                      echo $datoNumSolicitud['num_solicitud'];
+                    echo $datoNumSolicitud['num_solicitud'];
+                  }
 
-                    }
-
-                ?>
+                  ?>
 
                 </span>
               </div>
@@ -93,14 +92,13 @@
                 <span class="info-box-text">En línea</span>
                 <span class="info-box-number">
 
-                <?php
-                    while ($datoNumLinea = $data['EnLinea']->fetch_assoc()) {
+                  <?php
+                  while ($datoNumLinea = $data['EnLinea']->fetch_assoc()) {
 
-                      echo $datoNumLinea['num_oline'];
+                    echo $datoNumLinea['num_oline'];
+                  }
 
-                    }
-
-                ?>
+                  ?>
 
 
                 </span>
@@ -120,16 +118,15 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Miembros</span>
-                <span class="info-box-number">
+                <span id="nusers" class="info-box-number">
 
-                <?php
-                    while ($datoNumUsuario = $data['NumUsu']->fetch_assoc()) {
+                  <?php
+                  while ($datoNumUsuario = $data['NumUsu']->fetch_assoc()) {
 
-                      echo $datoNumUsuario['num_usuario'];
+                    echo $datoNumUsuario['num_usuario'];
+                  }
 
-                    }
-
-                ?>
+                  ?>
 
                 </span>
               </div>
@@ -144,8 +141,19 @@
               <span class="info-box-icon bg-green"><i class="ion ion-ios-personadd-outline"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Nuevos Miembros</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-text" title="Nuevos Miembros(hoy)">Nuevos Miembros(hoy)</span>
+                <span class="info-box-number">
+
+                  <?php
+
+                    while ($datoNuevoUsuario = $data['NueMiem']->fetch_assoc()) {
+
+                      echo $datoNuevoUsuario['num_nuevo_usu'];
+                    }
+
+                  ?>
+
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -180,7 +188,7 @@
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="tload">
                     <?php
                     while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
 
@@ -327,8 +335,35 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-      alert(JSON.stringify(data));
-      
+      if (data.home == 'user') {
+        $.ajax({
+          url: "<?= FOLDER_PATH ?>/home/user/",
+          success: function(result) {
+            $("#notifications").html(result);
+          }
+        });
+
+        $.ajax({
+          url: "<?= FOLDER_PATH ?>/home/nuser/",
+          success: function(result) {
+            $("#nusers").html(result);
+          }
+        });
+        var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
+        audio.play();
+      }
+      if (data.home == 'list') {
+        $.ajax({
+          url: "<?= FOLDER_PATH ?>/home/user/",
+          success: function(result) {
+            $("#notifications").html(result);
+          }
+        });
+        var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
+        audio.play();
+      }
+
+
     });
   </script>
 
