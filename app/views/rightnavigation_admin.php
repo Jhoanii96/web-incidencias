@@ -30,16 +30,17 @@
 					<a href="#">
 						<i class="fa fa-files-o"></i>
 						<span>Lista de incidencias</span>
-						<span class="pull-right-container">
+						<!-- <span class="pull-right-container">
 							<span class="label label-primary pull-right">4</span>
-						</span>
+						</span> -->
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias.html?iq=1"><i class="fa fa-circle-o"></i> En espera</a></li>
-						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias.html?iq=2"><i class="fa fa-circle-o"></i> Atendidos</a></li>
-						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias.html?iq=3"><i class="fa fa-circle-o"></i> En Observación</a></li>
-						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias.html?iq=4"><i class="fa fa-circle-o"></i> Cancelados</a></li>
-						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias.html?iq=5"><i class="fa fa-circle-o"></i> Mostrar todos</a></li>
+						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias?iq=1"><i class="fa fa-circle-o"></i> En espera</a></li>
+						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias?iq=2"><i class="fa fa-circle-o"></i> Atendidos</a></li>
+						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias?iq=3"><i class="fa fa-circle-o"></i> En Observación</a></li>
+						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias?iq=4"><i class="fa fa-circle-o"></i> Anulados</a></li>
+						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias?iq=5"><i class="fa fa-circle-o"></i> Solucionados</a></li>
+						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias?iq=6"><i class="fa fa-circle-o"></i> Mostrar todos</a></li>
 					</ul>
 				</li>
 				<li>
