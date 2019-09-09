@@ -14,6 +14,7 @@ class oficina extends Controller
         $this->dataUnidad = new dataAdmin();
         $this->datos_facultad = $this->dataUnidad->mostrarFacultad();
         $this->datos_tunidad = $this->dataUnidad->mostrarFacultadOficinaUnidad();
+        $this->BellUsu = $this->dataUnidad->BellMiembros();
 
         $dataLink = [
             'add_f' => FOLDER_PATH . '/oficina/save/facultad/',
@@ -31,6 +32,7 @@ class oficina extends Controller
             'foto' => $this->datos_usu['foto'],
             'facultad' => $this->datos_facultad,
             'tunidad' => $this->datos_tunidad,
+            'BellUsu' => $this->BellUsu, 
             'dataLink' => $dataLink
         ]);
     }

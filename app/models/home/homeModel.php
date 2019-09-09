@@ -15,7 +15,7 @@ class homeModel extends Model
     }
 
     public function load_dataUserHome($idUsu){
-        $query = "CALL `dataUsuario`('" . $idUsu . "');";
+        $query = "select nombre, apellido, nombreTipo, foto from v_usuario usu where usu.email = '" . $idUsu . "';";
         $res = $this->db->query($query);
         return $res;
     }
@@ -36,7 +36,7 @@ class homeModel extends Model
     public function show_tincidencias(string $estado)
     {
 
-        $query = "CALL `mostrar_tincidencias_ap`('" . $estado . "');";
+        $query = "select * from v_tincidencias_ap where recibo = 1 and estado like concat('%', '" . $estado . "', '%');";
         $res = $this->db->query($query);
         return $res;
 
