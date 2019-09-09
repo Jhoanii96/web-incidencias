@@ -89,6 +89,21 @@
                     'foto' => $this->datos_usu['foto']
                 ]);
             } elseif($espera == '5') {
+                $this->datos_tincidencias = $this->dataTabla->mostrarTablaIncidencias("4");
+                $this->titulo = 'Todas las incidencias';
+                $this->tipo = 'todo';
+                $this->view('incidencias/incidenciasSolucionados',
+                [
+                    'titulo' => $this->titulo, 
+                    'tipo' => $this->tipo,
+                    'nombre' => $this->datos_usu['nombre'], 
+                    'apellido' => $this->datos_usu['apellido'], 
+                    'tipouser' => $this->datos_usu['nombreTipo'], 
+                    'online' => 'online', 
+                    'tsolicitud' => $this->datos_tincidencias, 
+                    'foto' => $this->datos_usu['foto']
+                ]);
+            } elseif($espera == '6') {
                 $this->datos_tincidencias = $this->dataTabla->mostrarTablaIncidencias("");
                 $this->titulo = 'Todas las incidencias';
                 $this->tipo = 'todo';
