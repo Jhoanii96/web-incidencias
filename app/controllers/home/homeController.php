@@ -31,13 +31,20 @@ class home extends Controller
             
             $this->dataAdmin = new dataAdmin();
             $this->parametro1 = $this->dataAdmin->mostrarTablaSolicitud('0');
+            $this->NumSoli = $this->dataAdmin->NumeroSolicitud();
+            $this->EnLinea = $this->dataAdmin->NumeroLinea();
+            $this->NumUsu = $this->dataAdmin->MiembroTotal();
+            /* $this->NueMiem = $this->dataAdmin->mostrarTablaSolicitud('0'); */
 
             $this->view('home/homeAdmin', [
                 'nombre' => $this->datos_usu['nombre'],
                 'apellido' => $this->datos_usu['apellido'],
                 'tipouser' => $this->datos_usu['nombreTipo'],
                 'online' => 'online',
-                'tsolicitud' => $this->parametro1,
+                'tsolicitud' => $this->parametro1, 
+                'NumSoli' => $this->NumSoli, 
+                'EnLinea' => $this->EnLinea, 
+                'NumUsu' => $this->NumUsu, 
                 'foto' => $this->datos_usu['foto']
             ]);
 

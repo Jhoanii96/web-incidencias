@@ -264,6 +264,28 @@ class dataAdmin
     }
 
 
+    /* ---------------------------- PRINCIPAL COUNT ---------------------------- */
+
+    public function NumeroSolicitud()
+    {
+        return $this->home->show_num_pendientes();
+    }
+
+    public function NumeroLinea()
+    {
+        return $this->home->show_en_linea();
+    }
+
+    public function MiembroTotal()
+    {
+        return $this->home->show_miembros_total();
+    }
+
+    public function NuevosMiembros()
+    {
+        return $this->home->show_tprincipal();
+    }
+
 }
 
 

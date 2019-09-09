@@ -39,16 +39,29 @@ class register extends Controller
             return $ip;
         }
 
-        $firstName = $_POST['firstName']; 
-        $lastName = $_POST['lastName']; 
-        $correo = $_POST['correo']; 
-        $clave = $_POST['clave']; 
+        $options = array(
+            'cluster' => 'us2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            '49adf0ba4a6c31a67467',
+            '58aa93f56b63feb25da1',
+            '858139',
+            $options
+        );
 
-        $ip = getRealIpAddr(); 
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $correo = $_POST['correo'];
+        $clave = $_POST['clave'];
+
+        $ip = getRealIpAddr();
 
         $this->dataUser->registrarAdministrativos($firstName, $lastName, $correo, $clave, $ip);
 
+        $data['message'] = 'El nuevo usuario: ' . $firstName . ' ' . $lastName . ', se ha registrado';
+        $pusher->trigger('my-channel', 'my-event', $data);
+
         sleep(1);
-        
     }
 }

@@ -253,7 +253,7 @@
           $("#data_color-" + solicitud_code).html('Atendido');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=2";
+            location.href = "<?= FOLDER_PATH ?>/incidencias?iq=2";
           }, 500);
         }
       })
@@ -278,7 +278,7 @@
           $("#data_color-" + solicitud_code).html('En observación');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=3";
+            location.href = "<?= FOLDER_PATH ?>/incidencias?iq=3";
           }, 500);
         }
       })
@@ -303,7 +303,7 @@
           $("#data_color-" + solicitud_code).html('Anulado');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=4";
+            location.href = "<?= FOLDER_PATH ?>/incidencias?iq=4";
           }, 500);
         }
       })

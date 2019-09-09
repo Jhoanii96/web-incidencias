@@ -240,7 +240,7 @@
           $("#data_color-" + solicitud_code).html('Solucionado');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=1";
+            location.href = "<?= FOLDER_PATH ?>/incidencias?iq=1";
           }, 500);
         }
       })
@@ -265,7 +265,7 @@
           $("#data_color-" + solicitud_code).html('En espera');
           /* $("#data_color-" + solicitud_code).style; */
           setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/incidencias.html?iq=1";
+            location.href = "<?= FOLDER_PATH ?>/incidencias?iq=1";
           }, 500);
         }
       })

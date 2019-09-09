@@ -67,7 +67,18 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pendientes</span>
-                <span class="info-box-number">10</span>
+                <span class="info-box-number">
+
+                <?php
+                    while ($datoNumSolicitud = $data['NumSoli']->fetch_assoc()) {
+
+                      echo $datoNumSolicitud['num_solicitud'];
+
+                    }
+
+                ?>
+
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -80,7 +91,19 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">En línea</span>
-                <span class="info-box-number">25</span>
+                <span class="info-box-number">
+
+                <?php
+                    while ($datoNumLinea = $data['EnLinea']->fetch_assoc()) {
+
+                      echo $datoNumLinea['num_oline'];
+
+                    }
+
+                ?>
+
+
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -97,7 +120,18 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Miembros</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-number">
+
+                <?php
+                    while ($datoNumUsuario = $data['NumUsu']->fetch_assoc()) {
+
+                      echo $datoNumUsuario['num_usuario'];
+
+                    }
+
+                ?>
+
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -111,7 +145,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Nuevos Miembros</span>
-                <span class="info-box-number">45</span>
+                <span class="info-box-number">0</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -280,6 +314,23 @@
   <script src="src/js/Chart.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="src/dist/js/demo.js"></script>
+
+  <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+  <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('49adf0ba4a6c31a67467', {
+      cluster: 'us2',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+      
+    });
+  </script>
 
   <script>
     $(function() {
