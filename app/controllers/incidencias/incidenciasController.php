@@ -90,7 +90,7 @@
                 ]);
             } elseif($espera == '5') {
                 $this->datos_tincidencias = $this->dataTabla->mostrarTablaIncidencias("4");
-                $this->titulo = 'Todas las incidencias';
+                $this->titulo = 'Incidencias solucionadas';
                 $this->tipo = 'todo';
                 $this->view('incidencias/incidenciasSolucionados',
                 [

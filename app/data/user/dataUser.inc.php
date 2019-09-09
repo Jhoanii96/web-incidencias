@@ -83,7 +83,13 @@ class dataUser
     */
 
 
+    /* ----------------------------- REGISTRAR USUARIOS ----------------------------- */
 
+    public function registrarAdministrativos(string $firstName, string $lastName, 
+        string $correo, string $clave, string $ip)
+    {
+        $this->usuario->registrar_administrativo($firstName, $lastName, $correo, $clave, $ip);
+    }
 
 
 

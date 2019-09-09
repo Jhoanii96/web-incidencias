@@ -78,20 +78,27 @@
 											</tr>
 										</thead>
 										<tbody>
-										<?php
-										while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
-											
-											if ($datosTSolicitud['usuario'] == 0) {
-												$estado = 'En espera';
-											} elseif ($datosTSolicitud['usuario'] == 1) {
-												$estado = 'Atendido';
-											} elseif ($datosTSolicitud['usuario'] == 2) {
-												$estado = 'En observación';
-											} elseif ($datosTSolicitud['usuario'] == 3) {
-												$estado = 'Anulado';
-											}
+											<?php
+											while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
 
-											echo '
+												if ($datosTSolicitud['estado'] == '0') {
+													$estado = 'En espera';
+													$color = '#007a80';
+												} elseif ($datosTSolicitud['estado'] == '1') {
+													$estado = 'Atendido';
+													$color = '#1400d2';
+												} elseif ($datosTSolicitud['estado'] == '2') {
+													$estado = 'En observación';
+													$color = '#650080';
+												} elseif ($datosTSolicitud['estado'] == '3') {
+													$estado = 'Anulado';
+													$color = '#9e0707';
+												} elseif ($datosTSolicitud['estado'] == '4') {
+													$estado = 'Solucionado';
+													$color = '#00b704';
+												}
+
+												echo '
 												<tr>
 													<td>' . $datosTSolicitud['nums'] . '</td>	
 													<td title="' . $datosTSolicitud['fecha'] . '">' . $datosTSolicitud['fecha'] . '</td>
@@ -99,14 +106,14 @@
 													<td>' . $datosTSolicitud['tipo'] . '</td>
 													<td>' . $datosTSolicitud['usuario'] . '</td>
 													<td>' . $datosTSolicitud['oficina'] . '</td>
-													<td><p align=\'center\' style="background-color: #007a80;color: white;">' . $estado . '</p></td>
+													<td><p align=\'center\' style="background-color: ' . $color . ';color: white;">' . $estado . '</p></td>
 													<td><a href="' . FOLDER_PATH . '/mostrar/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
 													
 												</tr>
 											';
-										}
-										?>
-											
+											}
+											?>
+
 										</tbody>
 										<tfoot>
 											<tr>

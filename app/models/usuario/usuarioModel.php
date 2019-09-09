@@ -214,4 +214,22 @@ class usuarioModel extends Model
         $query = "CALL `eliminar_solicitud`(" . $codigo . ");";
         $this->db->query($query);
     }
+
+
+    /* ----------------------- CONSULTAS REGISTRO PAG. ----------------------- */
+
+    // insertar tecnico
+    public function registrar_administrativo(string $firstName, string $lastName, 
+        string $correo, string $clave, string $ip)
+    {
+
+        $query = "CALL `registrar_usuario`(
+            '" . $firstName . "', 
+            '" . $lastName . "', 
+            '" . $correo . "', 
+            '" . $clave . "', 
+            '" . $ip . "');";
+        $this->db->query($query);
+
+    }
 }

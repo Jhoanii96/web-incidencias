@@ -7,19 +7,19 @@
   <title>Log in | USI</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="shortcut icon" href="<?= FOLDER_PATH . '/' ?>src/assets/media/image/usi-image_icon.png">
+  <link rel="shortcut icon" href="<?= FOLDER_PATH ?>/src/assets/media/image/usi-image_icon.png">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="src/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="src/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="src/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="src/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/AdminLTE.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="src/css/blue.css">
+  <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/blue.css">
   <!-- transition -->
-  <link rel="stylesheet" href="src/css/transition.css">
+  <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/transition.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +36,7 @@
   <div class="login-box" style="margin: 4% auto; margin-bottom: 0px; margin-top: 0px; padding-top: 3%;">
     <div class="login-logo">
       <!-- <a href="../../index2.html" style="color: #fff"><b>Admin</b>USI</a> -->
-      <img src="src/assets/img/usi-image.png" style="width: 125px; margin-bottom: 0px;">
+      <img src="<?= FOLDER_PATH ?>/src/assets/img/usi-image.png" style="width: 125px; margin-bottom: 0px;">
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body" style="background: rgba(0, 0, 0, 0.7294);">
@@ -82,11 +82,11 @@
   <!-- /.login-box -->
 
   <!-- jQuery 3 -->
-  <script src="src/js/jquery.min.js"></script>
+  <script src="<?= FOLDER_PATH ?>/src/js/jquery.min.js"></script>
   <!-- Bootstrap 3.3.7 -->
-  <script src="src/js/bootstrap.min.js"></script>
+  <script src="<?= FOLDER_PATH ?>/src/js/bootstrap.min.js"></script>
   <!-- iCheck -->
-  <script src="src/js/icheck.min.js"></script>
+  <script src="<?= FOLDER_PATH ?>/src/js/icheck.min.js"></script>
   <script>
     $(function() {
       $('input').iCheck({
@@ -98,9 +98,9 @@
   </script>
   <script type="text/javascript">
     var bgImageArray = [];
-    bgImageArray[0] = "src/assets/img/ADPS55.jpg";
-    bgImageArray[1] = "src/assets/img/D48DW1.jpg";
-    bgImageArray[2] = "src/assets/img/GRSD56.jpg";
+    bgImageArray[0] = "<?= FOLDER_PATH ?>/src/assets/img/ADPS55.jpg";
+    bgImageArray[1] = "<?= FOLDER_PATH ?>/src/assets/img/D48DW1.jpg";
+    bgImageArray[2] = "<?= FOLDER_PATH ?>/src/assets/img/GRSD56.jpg";
 
     var random = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
 
