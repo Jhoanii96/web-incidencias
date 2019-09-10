@@ -98,7 +98,7 @@
   </script>
   <script type="text/javascript">
     var bgImageArray = [];
-    bgImageArray[0] = "<?= FOLDER_PATH ?>/src/assets/img/ADPS55.jpg";
+    bgImageArray[0] = "<?= FOLDER_PATH ?>/src/assets/img/SPL60N.jpg";
     bgImageArray[1] = "<?= FOLDER_PATH ?>/src/assets/img/D48DW1.jpg";
     bgImageArray[2] = "<?= FOLDER_PATH ?>/src/assets/img/GRSD56.jpg";
 

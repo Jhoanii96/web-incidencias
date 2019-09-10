@@ -138,7 +138,7 @@
   </script>
   <script type="text/javascript">
     var bgImageArray = [];
-    bgImageArray[0] = "src/assets/img/ADPS55.jpg";
+    bgImageArray[0] = "src/assets/img/VFP4L9.jpg";
     bgImageArray[1] = "src/assets/img/D48DW1.jpg";
     bgImageArray[2] = "src/assets/img/GRSD56.jpg";
 
