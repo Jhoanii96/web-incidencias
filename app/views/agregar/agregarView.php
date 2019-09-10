@@ -118,13 +118,10 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label>Presentado por:</label>
-                                            <input type="text" class="form-control" placeholder="Nombre del administrativo" maxlength="150" value="Jhon Alvarado Achata" disabled>
+                                            <label>Personal administrativo</label>
+                                            <input type="text" class="form-control" placeholder="Nombre del administrativo" maxlength="150" value="<?= $data['nombre'] . ' ' . $data['apellido'] ?>" disabled>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Oficina</label>
-                                            <input type="text" class="form-control" placeholder="Nombre oficina" maxlength="150" value="Unidad de Informática y Sistemas de Información (USI)" disabled>
-                                        </div>
+                                        
 
                                     </div>
                                     <div class="box-body">

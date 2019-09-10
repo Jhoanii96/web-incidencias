@@ -164,14 +164,17 @@
 	<script src="src/js/dataTables.bootstrap.min.js"></script>
 	<script>
 		$(function() {
-			$('#example1').DataTable()
+			$('#example1').DataTable({
+				order: [0, 'desc']
+			})
 			$('#example2').DataTable({
 				'paging': true,
 				'lengthChange': false,
 				'searching': false,
 				'ordering': true,
 				'info': true,
-				'autoWidth': false
+				'autoWidth': false, 
+				order: [0, 'desc']
 			})
 		})
 	</script>

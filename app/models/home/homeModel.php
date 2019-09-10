@@ -27,7 +27,7 @@ class homeModel extends Model
     public function show_tprincipal(string $estado)
     {
 
-        $query = "select * from v_tincidencias_ap where recibo = 1 and estado like concat('%', '" . $estado . "', '%');";
+        $query = "select * from v_tincidencias_ap where recibo = 1 and estado like concat('%', '" . $estado . "', '%') order by nums desc;";
         $res = $this->db->query($query);
         return $res;
 

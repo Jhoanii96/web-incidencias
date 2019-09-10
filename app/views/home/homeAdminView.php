@@ -67,7 +67,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pendientes</span>
-                <span class="info-box-number">
+                <span id="nlists" class="info-box-number">
 
                   <?php
                   while ($datoNumSolicitud = $data['NumSoli']->fetch_assoc()) {
@@ -189,7 +189,7 @@
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                  <tbody id="tload">
+                  <tbody id="tlist">
                     <?php
                     while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
 
@@ -301,13 +301,15 @@
   </div>
   <!-- ./wrapper -->
 
+  <div id="jscrt"></div>
+
   <!-- jQuery 3 -->
   <script src="src/js/jquery.min.js"></script>
   <!-- Bootstrap 3.3.7 -->
   <script src="src/js/bootstrap.min.js"></script>
   <!-- DataTables -->
-  <script src="src/js/jquery.dataTables.min.js"></script>
-  <script src="src/js/dataTables.bootstrap.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
   <!-- FastClick -->
   <script src="src/js/fastclick.js"></script>
   <!-- AdminLTE App -->
@@ -353,24 +355,37 @@
         var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
         audio.play();
       }
-      if (data.home == 'list') {
+      if (data.home == 'ticket') {
+        
         $.ajax({
-          url: "<?= FOLDER_PATH ?>/home/user/",
+          url: "<?= FOLDER_PATH ?>/home/list/",
           success: function(result) {
-            $("#notifications").html(result);
+            
+            $("#jscrt").html(result);
+            
+          }
+        });
+
+        $.ajax({
+          url: "<?= FOLDER_PATH ?>/home/nlist/",
+          success: function(result) {
+            $("#nlists").html(result); 
           }
         });
         var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
         audio.play();
+
       }
 
-
     });
+
   </script>
 
   <script>
     $(function() {
-      $('#example1').DataTable()
+      $('#example1').DataTable({
+        order: [0, 'desc']
+      })
       $('#example2').DataTable({
         'paging': true,
         'lengthChange': false,
