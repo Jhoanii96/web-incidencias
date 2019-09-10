@@ -52,6 +52,18 @@ class mostrar extends Controller
         $this->dataUsuario = new dataUser();
         if ($token != NULL || $token != '') {
             if ($_POST["token"] == 'DS4SAD5') {
+
+                $options = array(
+                    'cluster' => 'us2',
+                    'useTLS' => true
+                );
+                $pusher = new Pusher\Pusher(
+                    '49adf0ba4a6c31a67467',
+                    '58aa93f56b63feb25da1',
+                    '858139',
+                    $options
+                );
+
                 $nombresoli = $_POST["nomb"];
                 $incidencia = $_POST["inc"];
                 $caso = $_POST["cas"];
@@ -75,6 +87,15 @@ class mostrar extends Controller
                 );
 
                 $this->dataUsuario->actualizarSolicitud($encapsuSolicitud, $codSolicitud);
+
+                
+
+                $data['home'] = 'ticket';
+                $data['rsolic'] = $rsolicitud;
+                $pusher->trigger('my-channel', 'my-event', $data);
+
+                sleep(1);
+
             }
         }
     }

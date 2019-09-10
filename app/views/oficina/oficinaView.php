@@ -92,16 +92,16 @@
 								<div class="box-body">
 									<div class="col-md-6">
 										<div class="form-group">
-											<label>Nombre Facultad</label>
+											<label>Nombre Facultad</label><!-- <span>&MediumSpace;&MediumSpace;<i class='fa fa-refresh fa-spin'></i></span> -->
 											<div style="width:100%;display: inline-flex;">
-												<select id="data-fct" class="form-control select2" style="width: 75%;" name="facultad_n">
+											<select id="data-fct" class="form-control select2" data-show-content="true" style="width: 75%;" name="facultad_n">
 													<option>Seleccionar</option>
 													<?php
-													while ($datosfacultad = $data['facultad']->fetch_assoc()) {
+													/* while ($datosfacultad = $data['facultad']->fetch_assoc()) {
 														echo '
 																<option>' . $datosfacultad['facultad'] . '</option>
 															';
-													}
+													} */
 													?>
 												</select>
 												<button type="button" class="btn btn-default" data-toggle="modal" style="width: 25%;border-radius: 0%;" data-target="#modal-default">

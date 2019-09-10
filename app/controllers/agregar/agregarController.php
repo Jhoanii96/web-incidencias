@@ -84,6 +84,7 @@ class agregar extends Controller
                 $this->dataUsuario->guardarSolicitud($encapsuSolicitud);
 
                 $data['home'] = 'ticket';
+                $data['rsolic'] = $rsolicitud;
                 $pusher->trigger('my-channel', 'my-event', $data);
 
                 sleep(2);

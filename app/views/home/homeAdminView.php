@@ -372,8 +372,12 @@
             $("#nlists").html(result); 
           }
         });
-        var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
-        audio.play();
+
+        if (data.rsolic == "1") {
+          var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
+          audio.play();
+        }
+        
 
       }
 
