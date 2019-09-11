@@ -31,6 +31,29 @@
 
 	<!-- Google Font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+	<style>
+		#example2_wrapper > div:nth-child(2) {
+			overflow-x: auto;
+			border-right: none;
+		}
+
+		@media only screen and (min-width: 128px) and (max-width: 992px) {
+
+			#example2_wrapper > div:nth-child(2) {
+				overflow-x: auto;
+				padding-right: 0px;
+				margin-right: 0px;
+				border-right: 1px solid #f4f4f4;
+				padding-top: 0px;
+				margin-top: 0px;
+			}
+
+		}
+
+	</style>
+
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 
@@ -103,7 +126,7 @@
 													<td>' . $datosTSolicitud['tipo'] . '</td>
 													<td>' . $datosTSolicitud['usuario'] . '</td>
 													<td>' . $datosTSolicitud['oficina'] . '</td>
-													<td><p align=\'center\' style="background-color: ' . $color . ';color: white;">' . $estado . '</p></td>
+													<td><p align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap; padding: 0px 4px;">' . $estado . '</p></td>
 													<td><a href="' . FOLDER_PATH . '/mostrar/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
 													
 												</tr>

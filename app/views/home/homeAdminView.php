@@ -33,6 +33,29 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+  <style>
+		#example1_wrapper>div:nth-child(2) {
+			overflow-x: auto;
+			border-right: none;
+		}
+
+		@media only screen and (min-width: 128px) and (max-width: 992px) {
+
+			#example1_wrapper>div:nth-child(2) {
+				overflow-x: auto;
+				padding-right: 0px;
+				margin-right: 0px;
+				border-right: 1px solid #f4f4f4;
+				padding-top: 0px;
+				margin-top: 0px;
+			}
+
+		}
+
+	</style>
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -353,7 +376,11 @@
           }
         });
         var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
-        audio.play();
+        var promise = audio.play();
+        if (promise) {
+            //Older browsers may not return a promise, according to the MDN website
+            promise.catch(function(error) { console.error(error); });
+        }
       }
       if (data.home == 'ticket') {
         
@@ -375,7 +402,11 @@
 
         if (data.rsolic == "1") {
           var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
-          audio.play();
+          var promise = audio.play();
+          if (promise) {
+              //Older browsers may not return a promise, according to the MDN website
+              promise.catch(function(error) { console.error(error); });
+          }
         }
         
 
