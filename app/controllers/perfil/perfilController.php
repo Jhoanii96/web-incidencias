@@ -69,14 +69,14 @@
                     
             } else {
                 $this->allDatos_usu = $this->dataPerfil->mostrarEditarPerfil($this->session->get('usuarioUsi'));
-                $this->BellUsu = $this->dataPerfil->BellMiembros();
+                $this->BellNtf = $this->dataPerfil->BellNotifications();
                 $this->AdminView('perfil/perfil', [
                     'nombre' => $this->datos_usu['nombre'], 
                     'apellido' => $this->datos_usu['apellido'], 
                     'tipouser' => $this->datos_usu['nombreTipo'], 
                     'online' => 'online', 
                     'foto' => $this->datos_usu['foto'], 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'datos_perfil' => $this->allDatos_usu
                 ]);
             }

@@ -82,7 +82,6 @@
                       <th>Oficina</th>
                       <th>Estado</th>
                       <th>Detalle</th>
-                      <th>Contador</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -117,7 +116,6 @@
 													<td>' . $datosTSolicitud['oficina'] . '</td>
                           <td><p id="#data_color-' . $datosTSolicitud['nums'] . '" align=\'center\' style="background-color: ' . $color . ';color: white;white-space: nowrap; padding: 0px 4px;">' . $estado . '</p></td>
                           <td><a href="' . FOLDER_PATH . '/detalle/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
-                          <td>3 min</td>
                           <td style="display: flex;">
 														<form method="post">
 															<input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
@@ -144,7 +142,6 @@
                       <th>Oficina</th>
                       <th>Estado</th>
                       <th>Detalle</th>
-                      <th>Contador</th>
                       <th>Acciones</th>
                     </tr>
                   </tfoot>
