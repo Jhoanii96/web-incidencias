@@ -81,10 +81,10 @@ class homeModel extends Model
 
     }
 
-    public function show_bell_usuario()
+    public function show_bell_notifications()
     {
 
-        $query = "select * from `v_bell_usuario`;";
+        $query = "select * from `v_bell_notificacion`;";
         $res = $this->db->query($query);
         return $res;
 

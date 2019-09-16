@@ -14,7 +14,7 @@ class oficina extends Controller
         $this->dataUnidad = new dataAdmin();
         $this->datos_facultad = $this->dataUnidad->mostrarFacultad();
         $this->datos_tunidad = $this->dataUnidad->mostrarFacultadOficinaUnidad();
-        $this->BellUsu = $this->dataUnidad->BellMiembros();
+        $this->BellNtf = $this->dataUnidad->BellNotifications();
 
         $dataLink = [
             'add_f' => FOLDER_PATH . '/oficina/save/facultad/',
@@ -32,7 +32,7 @@ class oficina extends Controller
             'foto' => $this->datos_usu['foto'],
             'facultad' => $this->datos_facultad,
             'tunidad' => $this->datos_tunidad,
-            'BellUsu' => $this->BellUsu, 
+            'BellNtf' => $this->BellNtf, 
             'dataLink' => $dataLink
         ]);
     }
@@ -172,7 +172,7 @@ class oficina extends Controller
             include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
             $this->dataUnidad = new dataAdmin();
             $this->datos_unidad_edit = $this->dataUnidad->mostrarEditarUnidad($ident);
-            //$this->datos_articulo = $this->datos_articulo_edit->fetch_array();
+            $this->BellNtf = $this->dataUnidad->BellNotifications();
 
             $this->AdminView('oficina/edit/edit', [
                 'nombre' => $this->datos_usu['nombre'],
@@ -180,6 +180,7 @@ class oficina extends Controller
                 'tipouser' => $this->datos_usu['nombreTipo'],
                 'online' => 'online',
                 'foto' => $this->datos_usu['foto'],
+                'BellNtf' => $this->BellNtf, 
                 'dataunidad' => $this->datos_unidad_edit
             ]);
         }

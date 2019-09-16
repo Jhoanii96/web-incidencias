@@ -45,6 +45,21 @@ class dataUser
         return $this->usuario->show_tprincipal_todas($datoUser);
     }
 
+    /* public function mostrarTablaSolicitudBorrador(string $datoUser)
+    {
+        return $this->usuario->show_tprincipal_todas($datoUser);
+    } */
+
+    public function mostrarTablaSolicitudAtendidas(string $datoUser)
+    {
+        return $this->usuario->show_tprincipal_atendidas($datoUser);
+    }
+
+    public function mostrarTablaSolicitudSolucionadas(string $datoUser)
+    {
+        return $this->usuario->show_tprincipal_solucionadas($datoUser);
+    }
+
     public function mostrarDetalleSolicitud(int $dataCod)
     {
         return $this->usuario->show_detalle_solicitud($dataCod);

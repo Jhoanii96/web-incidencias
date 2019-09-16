@@ -24,7 +24,7 @@ class usuarios extends Controller
         @$parametro = $this->dataUser->data_user($admin);
         $this->datos_usu = $parametro->fetch_array();
 
-        $this->BellUsu = $this->dataUser->BellMiembros();
+        $this->BellNtf = $this->dataUser->BellNotifications();
 
         $dataLink = [
             'add_a' => FOLDER_PATH . '/usuarios/save/adm/',
@@ -50,7 +50,7 @@ class usuarios extends Controller
                 'foto' => $this->datos_usu['foto'],
                 'facultad' => $this->datos_facultad,
                 'tadministrativos' => $this->datos_tadministrativos, 
-                'BellUsu' => $this->BellUsu, 
+                'BellNtf' => $this->BellNtf, 
                 'dataLink' => $dataLink
             ]);
         } elseif ($usu == '2') {
@@ -68,7 +68,7 @@ class usuarios extends Controller
                 'foto' => $this->datos_usu['foto'],
                 'facultad' => $this->datos_facultad,
                 'ttecnicos' => $this->datos_ttecnicos, 
-                'BellUsu' => $this->BellUsu, 
+                'BellNtf' => $this->BellNtf, 
                 'dataLink' => $dataLink
             ]);
         }
@@ -387,7 +387,7 @@ class usuarios extends Controller
                 ];
                 $this->dataAdmin = new dataAdmin();
                 $this->datos_admin_edit = $this->dataAdmin->mostrarEditarAdministrativo($data);
-                $this->BellUsu = $this->dataAdmin->BellMiembros();
+                $this->BellNtf = $this->dataAdmin->BellNotifications(); 
                 
                 $this->AdminView('usuarios/editar_adm/editar_adm', [
                     'nombre' => $this->datos_usu['nombre'],
@@ -396,7 +396,7 @@ class usuarios extends Controller
                     'online' => 'online',
                     'foto' => $this->datos_usu['foto'],
                     'dataAdmin' => $this->datos_admin_edit, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'dataLink' => $dataLink
                 ]);
             } elseif ($ident == "tecn") {
@@ -406,7 +406,7 @@ class usuarios extends Controller
                 ];
                 $this->dataTecn = new dataAdmin();
                 $this->datos_tecn_edit = $this->dataTecn->mostrarEditarTecnico($data);
-                $this->BellUsu = $this->dataAdmin->BellMiembros();
+                $this->BellNtf = $this->dataTecn->BellNotifications();
                 
                 $this->AdminView('usuarios/editar_tec/editar_tec', [
                     'nombre' => $this->datos_usu['nombre'],
@@ -415,7 +415,7 @@ class usuarios extends Controller
                     'online' => 'online',
                     'foto' => $this->datos_usu['foto'],
                     'dataTecn' => $this->datos_tecn_edit, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'dataLink' => $dataLink
                 ]);
             }

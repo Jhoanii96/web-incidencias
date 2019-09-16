@@ -108,7 +108,7 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label>Casos</label>
+                                            <label>Casos</label><span>&MediumSpace;&MediumSpace;<i id="refr-cas" style="display: none;" class='fa fa-refresh fa-spin'></i></span>
                                             <div style="width:100%;display: inline-flex;">
                                                 <select id="data-cas" class="form-control select2" style="width:100%;" name="casos_n" disabled>
                                                     <option selected="selected">Seleccionar</option>
@@ -239,18 +239,31 @@
         $('#data-inc').on('change', function() {
             var nom_value = this.value;
             var tokn = "CDFMF5";
-            $('#data-cas').load("<?php echo FOLDER_PATH ?>/tipo_incidencia/ajax/cas", {
-                token: tokn,
-                incidencia_n: nom_value
-            });
             if (nom_value == "Seleccionar") {
                 $('#data-cas').prop('disabled', true);
                 $("#data-cas").prop("selectedIndex", 0);
                 $('#btn-cas').prop('disabled', true);
             } else {
-                $('#data-cas').prop('disabled', false);
-                $("#data-cas").prop("selectedIndex", 0);
-                $('#btn-cas').prop('disabled', false);
+                $.ajax({
+					beforeSend: function() {
+						$("#data-cas").prop("disabled", true);
+						$('#btn-cas').prop('disabled', true);
+						$("#refr-cas").css("display", "inline-table");
+					},
+					url: "<?php echo FOLDER_PATH ?>/tipo_incidencia/ajax/cas",
+					type: "POST",
+					data: {
+						token: tokn,
+						incidencia_n: nom_value
+					},
+					success: function(data) {
+						$('#data-cas').html(data);
+						$("#data-cas").prop("selectedIndex", 0);
+						$("#data-cas").attr("disabled", false);
+						$('#btn-cas').prop('disabled', false);
+						$("#refr-cas").css("display", "none");
+					}
+				})
             }
         });
     </script>

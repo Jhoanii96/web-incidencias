@@ -15,7 +15,7 @@ class administrador extends Controller
         $this->datos_facultad = $this->dataUnidad->mostrarFacultad();
         $this->datos_tadministrador = $this->dataAdministrador->mostrarTablaAdministrador(); 
 
-        $this->BellUsu = $this->dataAdministrador->BellMiembros();
+        $this->BellNtf = $this->dataAdministrador->BellNotifications();
 
         $dataLink = [
             'add_a' => FOLDER_PATH . '/administrador/save/',
@@ -37,7 +37,7 @@ class administrador extends Controller
                 'foto' => $this->datos_usu['foto'],
                 'facultad' => $this->datos_facultad,
                 'tadministrador' => $this->datos_tadministrador, 
-                'BellUsu' => $this->BellUsu, 
+                'BellNtf' => $this->BellNtf, 
                 'dataLink' => $dataLink
             ]);
         }
@@ -250,8 +250,7 @@ class administrador extends Controller
             ];
             $this->dataAdmin = new dataAdmin();
             $this->datos_admin_edit = $this->dataAdmin->mostrarEditarAdministrador($ident);
-            $this->BellUsu = $this->dataAdmin->BellMiembros(); 
-            //$this->datos_articulo = $this->datos_articulo_edit->fetch_array();
+            $this->BellNtf = $this->dataAdmin->BellNotifications(); 
 
             $this->AdminView('administrador/edit/edit', [
                 'nombre' => $this->datos_usu['nombre'],
@@ -260,7 +259,7 @@ class administrador extends Controller
                 'online' => 'online',
                 'foto' => $this->datos_usu['foto'],
                 'dataAdmin' => $this->datos_admin_edit, 
-                'BellUsu' => $this->BellUsu, 
+                'BellNtf' => $this->BellNtf, 
                 'dataLink' => $dataLink
             ]);
         }

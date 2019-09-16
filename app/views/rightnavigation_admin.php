@@ -21,7 +21,7 @@
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu" data-widget="tree">
 				<li class="header">NAVEGACIÓN PRINCIPAL</li>
-				<li class="active menu-open">
+				<li> <!-- <li class="menu-open"> -->
 					<a href="<?= FOLDER_PATH . '/' ?>">
 						<i class="fa fa-table"></i> <span>Inicio</span>
 					</a>
@@ -30,9 +30,9 @@
 					<a href="#">
 						<i class="fa fa-files-o"></i>
 						<span>Lista de incidencias</span>
-						<!-- <span class="pull-right-container">
-							<span class="label label-primary pull-right">4</span>
-						</span> -->
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
 					</a>
 					<ul class="treeview-menu">
 						<li><a href="<?= FOLDER_PATH . '/' ?>incidencias?iq=1"><i class="fa fa-circle-o"></i> En espera</a></li>

@@ -288,9 +288,9 @@ class dataAdmin
 
     /* ---------------------------- PRINCIPAL NOTIFICACIONES ---------------------------- */
 
-    public function BellMiembros()
+    public function BellNotifications()
     {
-        return $this->home->show_bell_usuario();
+        return $this->home->show_bell_notifications();
     }
 
 }

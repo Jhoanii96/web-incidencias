@@ -120,6 +120,9 @@
                                                 } elseif ($datosTSolicitud['estado'] == '3') {
                                                     $estado = 'Anulado';
                                                     $color = '#9e0707';
+                                                } elseif ($datosTSolicitud['estado'] == '4') {
+                                                    $estado = 'Solucionado';
+                                                    $color = '#00c6d6';
                                                 }
                                             }
 

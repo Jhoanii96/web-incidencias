@@ -23,7 +23,7 @@
             @$parametro = $this->dataUser->data_user($admin);
             $this->datos_usu = $parametro->fetch_array();
 
-            $this->BellUsu = $this->dataUser->BellMiembros();
+            $this->BellNtf = $this->dataUser->BellNotifications(); 
             $this->dataTabla = new dataAdmin();
             
             @$espera = $_GET['iq'];
@@ -42,7 +42,7 @@
                     'tipouser' => $this->datos_usu['nombreTipo'], 
                     'online' => 'online', 
                     'tsolicitud' => $this->datos_tincidencias, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'foto' => $this->datos_usu['foto']
                 ]);
             } elseif($espera == '2') {
@@ -58,7 +58,7 @@
                     'tipouser' => $this->datos_usu['nombreTipo'], 
                     'online' => 'online', 
                     'tsolicitud' => $this->datos_tincidencias, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'foto' => $this->datos_usu['foto']
                 ]);
             } elseif($espera == '3') {
@@ -74,7 +74,7 @@
                     'tipouser' => $this->datos_usu['nombreTipo'], 
                     'online' => 'online', 
                     'tsolicitud' => $this->datos_tincidencias, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'foto' => $this->datos_usu['foto']
                 ]);
             } elseif($espera == '4') {
@@ -90,7 +90,7 @@
                     'tipouser' => $this->datos_usu['nombreTipo'], 
                     'online' => 'online', 
                     'tsolicitud' => $this->datos_tincidencias, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'foto' => $this->datos_usu['foto']
                 ]);
             } elseif($espera == '5') {
@@ -106,7 +106,7 @@
                     'tipouser' => $this->datos_usu['nombreTipo'], 
                     'online' => 'online', 
                     'tsolicitud' => $this->datos_tincidencias, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'foto' => $this->datos_usu['foto']
                 ]);
             } elseif($espera == '6') {
@@ -122,7 +122,7 @@
                     'tipouser' => $this->datos_usu['nombreTipo'], 
                     'online' => 'online', 
                     'tsolicitud' => $this->datos_tincidencias, 
-                    'BellUsu' => $this->BellUsu, 
+                    'BellNtf' => $this->BellNtf, 
                     'foto' => $this->datos_usu['foto']
                 ]);
             }

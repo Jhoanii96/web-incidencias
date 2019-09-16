@@ -363,7 +363,7 @@
     channel.bind('my-event', function(data) {
       if (data.home == 'user') {
         $.ajax({
-          url: "<?= FOLDER_PATH ?>/home/user/",
+          url: "<?= FOLDER_PATH ?>/home/notifications/",
           success: function(result) {
             $("#notifications").html(result);
           }
@@ -383,6 +383,13 @@
         }
       }
       if (data.home == 'ticket') {
+        
+        $.ajax({
+          url: "<?= FOLDER_PATH ?>/home/notifications/",
+          success: function(result) {
+            $("#notifications").html(result);
+          }
+        });
         
         $.ajax({
           url: "<?= FOLDER_PATH ?>/home/list/",

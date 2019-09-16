@@ -29,7 +29,6 @@ class usuarioModel extends Model
             '" . $dataAdministrativo->getContact_point() . "', 
             '" . $dataAdministrativo->getDate() . "');";
         $this->db->query($query);
-        
     }
 
     // insertar tecnico
@@ -48,7 +47,6 @@ class usuarioModel extends Model
             '" . $dataTecnico->getContact_point() . "', 
             '" . $dataTecnico->getDate() . "');";
         $this->db->query($query);
-
     }
 
 
@@ -70,7 +68,6 @@ class usuarioModel extends Model
             '" . $dataAdministrativo->getPassword() . "', 
             '" . $dataAdministrativo->getImagen_bd() . "');";
         $this->db->query($query);
-        
     }
 
 
@@ -81,7 +78,6 @@ class usuarioModel extends Model
         $query = "CALL `mostrar_dadministrativo`(" . $dataNum . ");";
         $res = $this->db->query($query);
         return $res;
-
     }
 
 
@@ -92,7 +88,6 @@ class usuarioModel extends Model
         $query = "CALL `mostrar_dtecnico`(" . $dataNum . ");";
         $res = $this->db->query($query);
         return $res;
-
     }
 
 
@@ -102,7 +97,6 @@ class usuarioModel extends Model
 
         $query = "CALL `eliminar_administrativo`(" . $dataNum . ");";
         $this->db->query($query);
-
     }
 
     // insertar tecnico
@@ -111,7 +105,6 @@ class usuarioModel extends Model
 
         $query = "CALL `eliminar_tecnico`(" . $dataNum . ");";
         $this->db->query($query);
-        
     }
 
 
@@ -158,6 +151,26 @@ class usuarioModel extends Model
         return $res;
     }
 
+    /* ----------------------- CONSULTAS USUARIO PAG. ATENDIDAS ----------------------- */
+
+    // formulario principal
+    public function show_tprincipal_atendidas(string $usuario)
+    {
+        $query = "CALL `mostrar_tincidencias_atendidas`('" . $usuario . "');";
+        $res = $this->db->query($query);
+        return $res;
+    }
+
+    /* ----------------------- CONSULTAS USUARIO PAG. SOLUCIONADAS ----------------------- */
+
+    // formulario principal
+    public function show_tprincipal_solucionadas(string $usuario)
+    {
+        $query = "CALL `mostrar_tincidencias_solucionadas`('" . $usuario . "');";
+        $res = $this->db->query($query);
+        return $res;
+    }
+    
     /* ----------------------- CONSULTAS USUARIO PAG. ANTIGUA ----------------------- */
 
     // formulario principal
@@ -219,9 +232,13 @@ class usuarioModel extends Model
     /* ----------------------- CONSULTAS REGISTRO PAG. ----------------------- */
 
     // insertar tecnico
-    public function registrar_administrativo(string $firstName, string $lastName, 
-        string $correo, string $clave, string $ip)
-    {
+    public function registrar_administrativo(
+        string $firstName,
+        string $lastName,
+        string $correo,
+        string $clave,
+        string $ip
+    ) {
 
         $query = "CALL `registrar_usuario`(
             '" . $firstName . "', 
@@ -230,6 +247,5 @@ class usuarioModel extends Model
             '" . $clave . "', 
             '" . $ip . "');";
         $this->db->query($query);
-
     }
 }

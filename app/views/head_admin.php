@@ -34,15 +34,25 @@
 	                  </a>
 					</li> -->
 					<?php
-						while ($datoBellUsuario = $this->BellUsu->fetch_assoc()) {
+						while ($datoBellNotificacion = $data['BellNtf']->fetch_assoc()) {
 
-							echo '
-								<li>
-									<a href="#">
-										<i class="fa fa-user text-aqua"></i> ' . $datoBellUsuario['nombre_usuario'] . ' ahora es un nuevo miembro hoy
-									</a>
-								</li>
-							';
+							if ($datoBellNotificacion['tipo_n'] == 'Solicitud') {
+								echo '
+									<li>
+										<a href="' . FOLDER_PATH . '/detalle/' . $datoBellNotificacion['idcod_n'] . '" target="_blank">
+											<i class="fa fa-file text-green"></i> ' . $datoBellNotificacion['nombre_n'] . '
+										</a>
+									</li>
+								';
+							  } elseif ($datoBellNotificacion['tipo_n'] == 'Usuario') {
+								echo '
+									<li>
+										<a href="' . FOLDER_PATH . '/usuarios/edit/admin/' . $datoBellNotificacion['idcod_n'] . '" target="_blank">
+											<i class="fa fa-user text-aqua"></i> ' . $datoBellNotificacion['nombre_n'] . '
+										</a>
+									</li>
+								';
+							  }
 									
 						}
 					?>

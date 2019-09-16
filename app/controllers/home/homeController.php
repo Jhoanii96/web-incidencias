@@ -35,7 +35,7 @@ class home extends Controller
       $this->EnLinea = $this->dataAdmin->NumeroLinea();
       $this->NumUsu = $this->dataAdmin->MiembroTotal();
       $this->NueMiem = $this->dataAdmin->NuevosMiembros();
-      $this->BellUsu = $this->dataAdmin->BellMiembros();
+      $this->BellNtf = $this->dataAdmin->BellNotifications();
 
       $this->view('home/homeAdmin', [
         'nombre' => $this->datos_usu['nombre'],
@@ -47,7 +47,7 @@ class home extends Controller
         'EnLinea' => $this->EnLinea,
         'NumUsu' => $this->NumUsu,
         'NueMiem' => $this->NueMiem,
-        'BellUsu' => $this->BellUsu,
+        'BellNtf' => $this->BellNtf, 
         'foto' => $this->datos_usu['foto']
       ]);
 
@@ -77,40 +77,52 @@ class home extends Controller
 
 
 
-  public function user()
+  public function notifications()
   {
 
     $this->dataAdmin = new dataAdmin();
-    $this->BellUsu = $this->dataAdmin->BellMiembros();
+    $this->BellNtf = $this->dataAdmin->BellNotifications();
 
     echo '
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">1</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">Notificaciones</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">';
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bell-o"></i>
+        <span class="label label-warning">N</span>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header">Notificaciones</li>
+        <li>
+          <!-- inner menu: contains the actual data -->
+          <ul class="menu">';
 
-    while ($datoBellUsuario = $this->BellUsu->fetch_assoc()) {
+    while ($datoBellNotificacion = $this->BellNtf->fetch_assoc()) {
 
-      echo '
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-user text-aqua"></i> ' . $datoBellUsuario['nombre_usuario'] . ' ahora es un nuevo miembro hoy
-                            </a>
-                        </li>
-                    ';
+      if ($datoBellNotificacion['tipo_n'] == 'Solicitud') {
+        echo '
+            <li>
+                <a href="' . FOLDER_PATH . '/detalle/' . $datoBellNotificacion['idcod_n'] . '" target="_blank">
+                    <i class="fa fa-file text-green"></i> ' . $datoBellNotificacion['nombre_n'] . '
+                </a>
+            </li>
+        ';
+      } elseif ($datoBellNotificacion['tipo_n'] == 'Usuario') {
+        echo '
+            <li>
+                <a href="' . FOLDER_PATH . '/usuarios/edit/admin/' . $datoBellNotificacion['idcod_n'] . '" target="_blank">
+                    <i class="fa fa-user text-aqua"></i> ' . $datoBellNotificacion['nombre_n'] . '
+                </a>
+            </li>
+        ';
+      }
+
+      
     }
 
     echo '
-                </ul>
-              </li>
-              
-            </ul>
-        ';
+          </ul>
+        </li>
+        
+      </ul>
+    ';
 
     /* <li>
                     <a href="#">

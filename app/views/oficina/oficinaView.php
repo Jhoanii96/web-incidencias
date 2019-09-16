@@ -97,11 +97,11 @@
 											<select id="data-fct" class="form-control select2" data-show-content="true" style="width: 75%;" name="facultad_n">
 													<option>Seleccionar</option>
 													<?php
-													/* while ($datosfacultad = $data['facultad']->fetch_assoc()) {
+													while ($datosfacultad = $data['facultad']->fetch_assoc()) {
 														echo '
 																<option>' . $datosfacultad['facultad'] . '</option>
 															';
-													} */
+													}
 													?>
 												</select>
 												<button type="button" class="btn btn-default" data-toggle="modal" style="width: 25%;border-radius: 0%;" data-target="#modal-default">
@@ -111,7 +111,7 @@
 
 										</div>
 										<div class="form-group">
-											<label>Nombre Oficina</label>
+											<label>Nombre Oficina</label><span>&MediumSpace;&MediumSpace;<i id="refr-oficina" style="display: none;" class='fa fa-refresh fa-spin'></i></span>
 											<div style="width:100%;display: inline-flex;">
 												<select id="data-ofn" class="form-control select2" style="width: 75%;" name="oficina_n" disabled>
 													<option>Seleccionar</option>
@@ -130,7 +130,7 @@
 
 										</div>
 										<div class="form-group">
-											<label>Nombre Unidad</label>
+											<label>Nombre Unidad</label><span>&MediumSpace;&MediumSpace;<i id="refr-unidad" style="display: none;" class='fa fa-refresh fa-spin'></i></span>
 											<div style="width:100%;display: inline-flex;">
 												<select id="data-und" class="form-control select2" style="width: 75%;" name="unidad_n" disabled>
 													<option>Seleccionar</option>
@@ -379,29 +379,55 @@
 				$('#btn-und').prop('disabled', true);
 			} else {
 				var tokn = "GJFHVF8";
-				$('#data-ofn').load("<?php echo FOLDER_PATH ?>/oficina/ajax/ofc", {
-					token: tokn,
-					facultad_n: nom_value
-				});
-				$('#data-ofn').prop('disabled', false);
-				$('#btn-ofn').prop('disabled', false);
+				$.ajax({
+					beforeSend: function() {
+						$("#data-ofn").attr("disabled", true);
+						$("#refr-oficina").css("display", "inline-table");
+					},
+					url: "<?php echo FOLDER_PATH ?>/oficina/ajax/ofc",
+					type: "POST",
+					data: {
+						token: tokn,
+						facultad_n: nom_value
+					},
+					success: function(data) {
+						$('#data-ofn').html(data);
+						$("#data-ofn").attr("disabled", false);
+						$('#btn-ofn').prop('disabled', false);
+						$("#refr-oficina").css("display", "none");
+					}
+				})
 			}
 		});
 		$('#data-ofn').on('change', function() {
 			var nom_value = this.value;
 			var tokn = "DMVJF99";
-			$('#data-und').load("<?php echo FOLDER_PATH ?>/oficina/ajax/und", {
-				token: tokn,
-				oficina_n: nom_value
-			});
 			if (nom_value == "Seleccionar") {
 				$('#data-und').prop('disabled', true);
 				$("#data-und").prop("selectedIndex", 0);
 				$('#btn-und').prop('disabled', true);
 			} else {
-				$('#data-und').prop('disabled', false);
-				$("#data-und").prop("selectedIndex", 0);
-				$('#btn-und').prop('disabled', false);
+				$.ajax({
+					beforeSend: function() {
+						$('#btn-und').prop('disabled', true);
+						$("#data-und").prop("disabled", true);
+						$("#refr-unidad").css("display", "inline-table");
+					},
+					url: "<?php echo FOLDER_PATH ?>/oficina/ajax/und",
+					type: "POST",
+					data: {
+						token: tokn,
+						oficina_n: nom_value
+					},
+					success: function(data) {
+						$('#data-und').html(data);
+						$("#data-und").prop("selectedIndex", 0);
+						$("#data-und").attr("disabled", false);
+						$('#btn-und').prop('disabled', false);
+						$("#refr-unidad").css("display", "none");
+					}
+				})
+				
 			}
 		});
 	</script>

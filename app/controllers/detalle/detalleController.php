@@ -16,10 +16,11 @@ class detalle extends Controller
         $this->dataAdm = new dataAdmin();
         $this->datos_tipo_incidencia = $this->dataAdm->mostrarTipoIncidencia();
         @$parametro = $this->dataAdm->data_user($admin);
+        $this->BellNtf = $this->dataAdm->BellNotifications(); 
         
         $this->dataUser = new dataUser();
         @$parametro2 = $this->dataUser->mostrarDetalleSolicitud($data);
-        
+                
         $this->datos_usu = $parametro->fetch_array();
 
         $this->view('detalle/detalle' , [
@@ -30,6 +31,7 @@ class detalle extends Controller
             'foto' => $this->datos_usu['foto'], 
             'tipo_incidencia' => $this->datos_tipo_incidencia,
             'detalleSolicitud' => $parametro2,
+            'BellNtf' => $this->BellNtf, 
             'cod' => $data
         ]);
 

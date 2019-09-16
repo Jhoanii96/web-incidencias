@@ -17,7 +17,10 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="<?= FOLDER_PATH . '/agregar' ?>">Nueva incidencia</a></li>
                             <li class="divider"></li>
-                            <li><a href="<?= FOLDER_PATH . '/today' ?>">Incidencia actual(hoy)</a></li>
+                            <li><a href="<?= FOLDER_PATH . '/attend' ?>">Incidencias atendidas</a></li>
+                            <li><a href="<?= FOLDER_PATH . '/solved' ?>">Incidencias solucionadas</a></li>
+                            <li class="divider"></li>
+                            <li><a href="<?= FOLDER_PATH . '/today' ?>">Incidencia actual (hoy)</a></li>
                             <li><a href="<?= FOLDER_PATH . '/old' ?>">Incidencia antigua</a></li>
                             <li><a href="<?= FOLDER_PATH . '/all' ?>">Todas las incidencias</a></li>
                         </ul>
@@ -33,17 +36,17 @@
                         <!-- Menu toggle button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <!-- <span class="label label-warning">N</span> --> 
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
+                            <li class="header">You have N notifications</li>
                             <li>
                                 <!-- Inner Menu: contains the notifications -->
                                 <ul class="menu">
                                     <li>
                                         <!-- start notification -->
                                         <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                            <i class="fa fa-users text-aqua"></i> En Prueba
                                         </a>
                                     </li>
                                     <!-- end notification -->

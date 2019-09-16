@@ -119,12 +119,6 @@
                           <td><a href="' . FOLDER_PATH . '/detalle/' . $datosTSolicitud['nums'] . '" style="text-decoration: underline;color: #0020c5;">Ver detalle</a></td>
                           <td>3 min</td>
                           <td style="display: flex;">
-														<form method="post" style="margin-right: 7px;">
-															<input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
-															<button id="btnsln-' . $datosTSolicitud['nums'] . '" type="button" title="Incidencia solucionada" class="btn btn-block btn-success" style="padding: 2px 6px;" onclick="solucionAdm(' . $datosTSolicitud['nums'] . ')">
-																<span class="fa fa-check"></span>
-															</button>
-														</form>
 														<form method="post">
 															<input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '">
 															<button id="btncnl-' . $datosTSolicitud['nums'] . '" type="button" title="Cancelar atención" class="btn btn-block btn-warning" style="padding: 2px 8px;" onclick="CancelSolc(' . $datosTSolicitud['nums'] . ')">
@@ -223,31 +217,6 @@
   </script>
 
   <script>
-    function solucionAdm(idSol) {
-      var solicitud_code = idSol;
-      $.ajax({
-        beforeSend: function() {
-          $("#spinner-load-" + solicitud_code).append("<span id='spinner-load2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
-          $("#btnsln-" + solicitud_code).attr("disabled", true);
-        },
-        url: "<?= FOLDER_PATH ?>/actions/solution/", 
-        type: "POST", 
-        data: { 
-          cdSlctd: solicitud_code 
-        }, 
-        success: function(resp) {
-          $("#spinner-load2-" + solicitud_code).remove();
-          $("#btnsln-" + solicitud_code).attr("disabled", false);
-          $("#data_color-" + solicitud_code).css("background-color", "#00b704");
-          $("#data_color-" + solicitud_code).html('Solucionado');
-          /* $("#data_color-" + solicitud_code).style; */
-          setTimeout(function() {
-            location.href = "<?= FOLDER_PATH ?>/incidencias?iq=1";
-          }, 500);
-        }
-      })
-    }
-
     function CancelSolc(idSol) {
       var solicitud_code = idSol;
       $.ajax({

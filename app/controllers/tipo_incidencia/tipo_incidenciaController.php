@@ -26,7 +26,7 @@ class tipo_incidencia extends Controller
         $this->datos_tipo_incidencia = $this->dataCasos->mostrarTipoIncidencia();
         $this->datos_tcasos = $this->dataCasos->mostrarIncidenciaCasos();
         
-        $this->BellUsu = $this->dataUser->BellMiembros();
+        $this->BellNtf = $this->dataUser->BellNotifications();
 
         $dataLink = [
             'add_i' => FOLDER_PATH . '/tipo_incidencia/save/incidencia/',
@@ -43,7 +43,7 @@ class tipo_incidencia extends Controller
             'foto' => $this->datos_usu['foto'],
             'tipo_incidencia' => $this->datos_tipo_incidencia,
             'tcasos' => $this->datos_tcasos,
-            'BellUsu' => $this->BellUsu, 
+            'BellNtf' => $this->BellNtf, 
             'dataLink' => $dataLink
         ]);
     }
