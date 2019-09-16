@@ -33,7 +33,7 @@
 </head>
 
 <body id="fade" class="hold-transition login-page img-transition">
-  <div class="login-box" style="margin: 4% auto; margin-bottom: 0px; margin-top: 0px; padding-top: 3%;">
+  <div class="login-box" style="margin: 4% auto; margin-bottom: 0px; margin-top: 0px; padding-top: 5%;width: 330px;">
     <div class="login-logo">
       <!-- <a href="../../index2.html" style="color: #fff"><b>Admin</b>USI</a> -->
       <img src="<?= FOLDER_PATH ?>/src/assets/img/usi-image.png" style="width: 125px; margin-bottom: 0px;">
@@ -43,19 +43,20 @@
       <p class="login-box-msg" style="color: rgba(0, 197, 255, 0.8901);">Accede para iniciar sesión.</p>
 
       <form action="<?= FOLDER_PATH . '/login/signin' ?>" method="post">
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="email" placeholder="Email" style="background-color: #0000008a; color: #eee;">
+        <input type="password" style="display: none;" name="password" autocomplete="new-password">
+        <div class="form-group has-feedback" style="margin-bottom: 25px;">
+          <input type="email" class="form-control" name="email" placeholder="Email" style="background-color: #0000008a; color: #eee;" value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="pass" placeholder="Password" style="background-color: #0000008a; color: #eee;">
+        <div class="form-group has-feedback" style="margin-bottom: 25px;">
+          <input type="password" class="form-control" name="pass" placeholder="Password" style="background-color: #0000008a; color: #eee;" value="<?php if(isset($_COOKIE["member_password"])) { echo $_COOKIE["member_password"]; } ?>">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <div class="row">
+        <div class="row" style="margin-bottom: 15px;">
           <div class="col-xs-7">
             <div class="checkbox icheck">
               <label style="color: #a8a8a8;">
-                <input type="checkbox"> Recuérdame
+                <input name="chkb" type="checkbox" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?>> Recuérdame
               </label>
             </div>
           </div>
@@ -67,14 +68,7 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Iniciar sesión usando Facebook</a>
-        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus" style="font-size: 1.3em;"></i> Iniciar sesión usando Google+</a>
-      </div>
-      <!-- /.social-auth-links -->
-
-      <a href="<?= FOLDER_PATH ?>/register" class="text-center">Registrar una nueva cuenta</a>
+      <span style="font-weight: lighter; color: #fff">¿No eres miembro? <a href="<?= FOLDER_PATH ?>/register" class="text-center" style="font-weight: normal;">Regístrate aquí</a></span>
 
     </div>
     <!-- /.login-box-body -->

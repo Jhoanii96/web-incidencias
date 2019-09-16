@@ -50,6 +50,10 @@
       border-color: #ad1457 !important;
       color: #ad1457 !important;
     }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
   </style>
 
 </head>
@@ -66,7 +70,8 @@
     <div class="register-box-body" style="background: #000000ba;">
       <p class="login-box-msg" style="color: #00c5ffe3;">Registrar una nueva cuenta</p>
 
-      <form>
+      <form style="margin-bottom: 10px;">
+        <input type="password" style="display: none;" name="password" autocomplete="new-password">
         <div class="col-sm-5 form-group has-feedback" style="padding-left: 0px; padding-right: 0px;">
           <input id="nm" type="text" class="form-control phone-style-text" placeholder="Nombre">
           <span class="glyphicon glyphicon-user form-control-feedback phone-style-icon"></span>
@@ -106,13 +111,13 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
+      <!-- <div class="social-auth-links text-center">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Registrarse usando Facebook</a>
         <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus" style="font-size: 1.3em;"></i> Registrarse usando Google+</a>
-      </div>
+      </div> -->
 
-      <a href="login" class="text-center">Ya tengo una cuenta</a>
+      <a href="<?= FOLDER_PATH ?>/login" class="text-center">Ya tengo una cuenta</a>
     </div>
     <!-- /.form-box -->
   </div>
