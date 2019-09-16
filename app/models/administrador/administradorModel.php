@@ -136,13 +136,14 @@ class administradorModel extends Model
 
     public function solicitud_atender(int $datoNum, string $user, string $estado)
     {
-
+        
         $query = "CALL `solicitud_atender`( 
             " . $datoNum . ", 
             '" . $user . "', 
             '" . $estado . "');";
         $this->db->query($query);
-
+        
+        
     }
 
     public function solicitud_observacion(int $datoNum, string $user)
@@ -188,7 +189,7 @@ class administradorModel extends Model
     public function solicitud_obtener_id(int $datonum)
     {
         $query = "select * from v_obtener_administratico_solicitud where idsolicitud = " . $datonum . ";";
-        $res = $this->db->query($query);
+        $res = $this->db->multi_query($query);
         return $res;
     }
 

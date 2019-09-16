@@ -38,11 +38,10 @@ class actions extends Controller
         sleep(2);
 
         @$parametro = $this->dataAdministrador->solicitudObtenerID($codSoli);
-        $this->datos_usu = $parametro->fetch_array();
+        $this->datos_adm = $parametro->fetch_array();
 
-        $data['asolic'] = 'attended'; // atender solicitud
+        $data['adm'] = $this->datos_adm['idadministrativo'];
         $pusher->trigger('my-channel', 'my-event', $data);
-
         
     }
 

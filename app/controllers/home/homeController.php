@@ -137,6 +137,57 @@ class home extends Controller
                   </li>  */
   }
 
+  public function notificationsAdministrativo()
+  {
+
+    $cod_admin = $_POST['cdAdm'];
+    $this->dataAdmin = new dataAdmin();
+    $this->BellNtf = $this->dataAdmin->BellNotificationsAdmin($cod_admin);
+
+    echo '
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bell-o"></i>
+        <span class="label label-warning">N</span>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header">Notificaciones</li>
+        <li>
+          <!-- inner menu: contains the actual data -->
+          <ul class="menu">';
+
+    while ($datoBellNotificacion = $this->BellNtf->fetch_assoc()) {
+
+      if ($datoBellNotificacion['tipo_n'] == 'Atencion') {
+        echo '
+            <li>
+                <a href="' . FOLDER_PATH . '/detalle/' . $datoBellNotificacion['idcod_n'] . '" target="_blank">
+                    <i class="fa fa-file text-green"></i> ' . $datoBellNotificacion['nombre_n'] . '
+                </a>
+            </li>
+        ';
+      } 
+      
+    }
+
+    echo '
+          </ul>
+        </li>
+        
+      </ul>
+    ';
+
+    /* <li>
+                    <a href="#">
+                      <i class="fa fa-file text-green"></i> 15 resoluciones hechas
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user text-red"></i> 3 Usuarios han cambiado sus datos
+                    </a>
+                  </li>  */
+  }
+
   public function nuser()
   {
 

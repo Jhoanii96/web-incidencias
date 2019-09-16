@@ -182,6 +182,7 @@
 	<!-- DataTables -->
 	<script src="src/js/jquery.dataTables.min.js"></script>
 	<script src="src/js/dataTables.bootstrap.min.js"></script>
+
 	<script>
 		$(function() {
 			$('#example1').DataTable({
@@ -198,6 +199,7 @@
 		})
 	</script>
 
+	<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 	<script>
 		// Enable pusher logging - don't include this in production
 		Pusher.logToConsole = true;
@@ -209,9 +211,13 @@
 
 		var channel = pusher.subscribe('my-channel');
 		channel.bind('my-event', function(data) {
-			if (data.home == <?= $data['id'] ?>) {
+			if (data.adm == <?= $data['id'] ?>) {
 				$.ajax({
-					url: "<?= FOLDER_PATH ?>/home/notifications/",
+					url: "<?= FOLDER_PATH ?>/home/notificationsAdministrativo/",
+					type: "POST",
+					data: {
+						cdAdm: <?= $data['id'] ?>
+					},
 					success: function(result) {
 						$("#notifications").html(result);
 					}

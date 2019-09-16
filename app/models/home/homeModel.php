@@ -81,10 +81,21 @@ class homeModel extends Model
 
     }
 
+    /* --------------------------- CONSULTAS PAG. NOTIFICACIONES --------------------------- */
+
     public function show_bell_notifications()
     {
 
         $query = "select * from `v_bell_notificacion`;";
+        $res = $this->db->query($query);
+        return $res;
+
+    }
+
+    public function show_bell_notificationsAdmin(int $Num)
+    {
+
+        $query = "select * from `v_bell_notificacion` where `destino` = " . $Num . ";";
         $res = $this->db->query($query);
         return $res;
 

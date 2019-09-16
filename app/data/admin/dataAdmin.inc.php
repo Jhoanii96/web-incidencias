@@ -298,6 +298,11 @@ class dataAdmin
         return $this->home->show_bell_notifications();
     }
 
+    public function BellNotificationsAdmin(int $Num)
+    {
+        return $this->home->show_bell_notificationsAdmin($Num);
+    }
+
 }
 
 

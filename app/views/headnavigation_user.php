@@ -32,7 +32,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- Notifications Menu -->
-                    <li class="dropdown notifications-menu">
+                    <li id="notifications" class="dropdown notifications-menu">
                         <!-- Menu toggle button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
