@@ -57,7 +57,8 @@ class home extends Controller
       $this->dataUsuario = new dataUser();
       $this->parametro2 = $this->dataUsuario->mostrarTablaSolicitud($this->session->get('usuarioUsi'));
 
-      $this->view('home/homeUser', [
+      $this->view('home/homeUser', [ 
+        'id' => $this->datos_usu['id'],
         'nombre' => $this->datos_usu['nombre'],
         'apellido' => $this->datos_usu['apellido'],
         'tipouser' => $this->datos_usu['nombreTipo'],

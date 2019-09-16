@@ -184,4 +184,12 @@ class administradorModel extends Model
 
     }
 
+
+    public function solicitud_obtener_id(int $datonum)
+    {
+        $query = "select * from v_obtener_administratico_solicitud where idsolicitud = " . $datonum . ";";
+        $res = $this->db->query($query);
+        return $res;
+    }
+
 }

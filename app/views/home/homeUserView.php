@@ -50,7 +50,6 @@
 			}
 
 		}
-
 	</style>
 
 
@@ -197,6 +196,37 @@
 				'autoWidth': false
 			})
 		})
+	</script>
+
+	<script>
+		// Enable pusher logging - don't include this in production
+		Pusher.logToConsole = true;
+
+		var pusher = new Pusher('49adf0ba4a6c31a67467', {
+			cluster: 'us2',
+			forceTLS: true
+		});
+
+		var channel = pusher.subscribe('my-channel');
+		channel.bind('my-event', function(data) {
+			if (data.home == <?= $data['id'] ?>) {
+				$.ajax({
+					url: "<?= FOLDER_PATH ?>/home/notifications/",
+					success: function(result) {
+						$("#notifications").html(result);
+					}
+				});
+
+				var audio = new Audio('<?= FOLDER_PATH ?>/src/assets/media/sound/notification.mp3');
+				var promise = audio.play();
+				if (promise) {
+					//Older browsers may not return a promise, according to the MDN website
+					promise.catch(function(error) {
+						console.error(error);
+					});
+				}
+			}
+		});
 	</script>
 </body>
 

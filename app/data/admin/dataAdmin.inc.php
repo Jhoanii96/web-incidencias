@@ -263,6 +263,11 @@ class dataAdmin
         $this->admin->solicitud_cancelar($datoNum);
     }
 
+    public function solicitudObtenerID(int $datoNum)
+    {
+        $this->admin->solicitud_obtener_id($datoNum);
+    }
+
 
     /* ---------------------------- PRINCIPAL COUNT ---------------------------- */
 

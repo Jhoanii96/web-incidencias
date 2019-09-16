@@ -15,6 +15,17 @@ class actions extends Controller
 
     public function attend()
     {
+        
+        $options = array(
+            'cluster' => 'us2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            '49adf0ba4a6c31a67467',
+            '58aa93f56b63feb25da1',
+            '858139',
+            $options
+        );
 
         $this->dataAdministrador = new dataAdmin();
 
@@ -23,9 +34,16 @@ class actions extends Controller
         $estado = '1';
 
         $this->dataAdministrador->solicitudAtender($codSoli, $user, $estado);
+        
+        sleep(2);
 
-        sleep(1);
+        @$parametro = $this->dataAdministrador->solicitudObtenerID($codSoli);
+        $this->datos_usu = $parametro->fetch_array();
 
+        $data['asolic'] = 'attended'; // atender solicitud
+        $pusher->trigger('my-channel', 'my-event', $data);
+
+        
     }
 
 
@@ -35,11 +53,10 @@ class actions extends Controller
         $this->dataAdministrador = new dataAdmin();
 
         $codSoli = $_POST["cdSlctd"];
-        
+
         $this->dataAdministrador->solicitudCancelar($codSoli);
 
         sleep(1);
-
     }
 
     public function solution()
@@ -49,11 +66,10 @@ class actions extends Controller
 
         $codSoli = $_POST["cdSlctd"];
         $user = $this->session->get('usuarioUsi');
-        
+
         $this->dataAdministrador->solicitudSolucionada($codSoli, $user);
 
         sleep(1);
-
     }
 
     public function annular()
@@ -63,11 +79,10 @@ class actions extends Controller
 
         $codSoli = $_POST["cdSlctd"];
         $user = $this->session->get('usuarioUsi');
-        
+
         $this->dataAdministrador->solicitudAnulado($codSoli, $user);
 
         sleep(1);
-
     }
 
     public function observation()
@@ -77,11 +92,9 @@ class actions extends Controller
 
         $codSoli = $_POST["cdSlctd"];
         $user = $this->session->get('usuarioUsi');
-        
+
         $this->dataAdministrador->solicitudObservacion($codSoli, $user);
 
         sleep(1);
-
     }
-    
 }

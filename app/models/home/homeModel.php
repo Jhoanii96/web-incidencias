@@ -15,7 +15,7 @@ class homeModel extends Model
     }
 
     public function load_dataUserHome($idUsu){
-        $query = "select nombre, apellido, nombreTipo, foto from v_usuario usu where usu.email = '" . $idUsu . "';";
+        $query = "select id, nombre, apellido, nombreTipo, foto from v_usuario usu where usu.email = '" . $idUsu . "';";
         $res = $this->db->query($query);
         return $res;
     }
