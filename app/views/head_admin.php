@@ -34,7 +34,7 @@
 	                  </a>
 					</li> -->
 					<?php
-						while ($datoBellNotificacion = $data['BellNtf']->fetch_assoc()) {
+						while ($datoBellNotificacion = $data['BellNtf']->fetch()) {
 
 							if ($datoBellNotificacion['tipo_n'] == 'Solicitud') {
 								echo '

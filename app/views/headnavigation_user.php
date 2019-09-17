@@ -43,12 +43,19 @@
                             <li>
                                 <!-- Inner Menu: contains the notifications -->
                                 <ul class="menu">
-                                    <li>
-                                        <!-- start notification -->
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> En Prueba
-                                        </a>
-                                    </li>
+                                    <?php
+                                        while ($datoBellNotificacion = $this->BellNtf->fetch()) {
+
+                                            echo '
+                                                <li>
+                                                    <a href="' . FOLDER_PATH . '/detalle/' . $datoBellNotificacion['idcod_n'] . '" target="_blank">
+                                                        <i class="fa fa-file text-green"></i> ' . $datoBellNotificacion['nombre_n'] . '
+                                                    </a>
+                                                </li>
+                                            ';
+                                          
+                                        }
+                                    ?>
                                     <!-- end notification -->
                                 </ul>
                             </li>

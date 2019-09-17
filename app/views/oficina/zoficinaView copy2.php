@@ -95,7 +95,7 @@
 											<div style="width:100%;display: inline-flex;">
 												<select id="data-fct" class="form-control select2" style="width: 75%;">
 													<?php
-													while ($datosfacultad = $data['facultad']->fetch_assoc()) {
+													while ($datosfacultad = $data['facultad']->fetch()) {
 														echo '
 																<option>' . $datosfacultad['facultad'] . '</option>
 															';
@@ -114,7 +114,7 @@
 											<div style="width:100%;display: inline-flex;">
 												<select class="form-control select2" style="width: 75%;">
 													<?php
-													while ($datosoficina = $data['oficina']->fetch_assoc()) {
+													while ($datosoficina = $data['oficina']->fetch()) {
 														echo '
 																<option>' . $datosoficina['oficina'] . '</option>
 															';
@@ -132,7 +132,7 @@
 											<div style="width:100%;display: inline-flex;">
 												<select class="form-control select2" style="width: 75%;">
 													<?php
-													while ($datosunidad = $data['unidad']->fetch_assoc()) {
+													while ($datosunidad = $data['unidad']->fetch()) {
 														echo '
 																<option>' . $datosunidad['unidad'] . '</option>
 															';
@@ -253,7 +253,7 @@
 									<tbody>
 
 										<?php
-										while ($datostunidad = $data['tunidad']->fetch_assoc()) {
+										while ($datostunidad = $data['tunidad']->fetch()) {
 
 											echo '
 												<tr>

@@ -1,6 +1,6 @@
 <?php
 
-while ($datosDetalle = $data['detalleSolicitud']->fetch_assoc()) {
+while ($datosDetalle = $data['detalleSolicitud']->fetch()) {
 
     $id = $datosDetalle['idSolicitud'];
     $nom = $datosDetalle['nombre'];
@@ -124,7 +124,7 @@ while ($datosDetalle = $data['detalleSolicitud']->fetch_assoc()) {
                                                     <option>Seleccionar</option>
                                                     <option selected="selected"><?= $inc ?></option>
                                                     <?php
-                                                    /* while ($datoscasos = $data['tipo_incidencia']->fetch_assoc()) {
+                                                    /* while ($datoscasos = $data['tipo_incidencia']->fetch()) {
                                                         if ($inc == $datoscasos['incidencia']) {
                                                             echo '
 																<option selected="selected">' . $datoscasos['incidencia'] . '</option>

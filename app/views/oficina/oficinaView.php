@@ -97,7 +97,7 @@
 											<select id="data-fct" class="form-control select2" data-show-content="true" style="width: 75%;" name="facultad_n">
 													<option>Seleccionar</option>
 													<?php
-													while ($datosfacultad = $data['facultad']->fetch_assoc()) {
+													while ($datosfacultad = $data['facultad']->fetch()) {
 														echo '
 																<option>' . $datosfacultad['facultad'] . '</option>
 															';
@@ -116,7 +116,7 @@
 												<select id="data-ofn" class="form-control select2" style="width: 75%;" name="oficina_n" disabled>
 													<option>Seleccionar</option>
 													<?php
-													/* while ($datosoficina = $data['oficina']->fetch_assoc()) {
+													/* while ($datosoficina = $data['oficina']->fetch()) {
 														echo '
 																<option>' . $datosoficina['oficina'] . '</option>
 															';
@@ -135,7 +135,7 @@
 												<select id="data-und" class="form-control select2" style="width: 75%;" name="unidad_n" disabled>
 													<option>Seleccionar</option>
 													<?php /* 
-													while ($datosunidad = $data['unidad']->fetch_assoc()) {
+													while ($datosunidad = $data['unidad']->fetch()) {
 														echo '
 																<option>' . $datosunidad['unidad'] . '</option>
 															';
@@ -264,7 +264,7 @@
 									<tbody id="data-table-unidad">
 
 										<?php
-										while ($datostunidad = $data['tunidad']->fetch_assoc()) {
+										while ($datostunidad = $data['tunidad']->fetch()) {
 
 											echo '
 												<tr id="data-u_' . $datostunidad['num'] . '">

@@ -101,7 +101,7 @@
 										</thead>
 										<tbody>
 											<?php
-											while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
+											while ($datosTSolicitud = $data['tsolicitud']->fetch()) {
 
 												if ($datosTSolicitud['estado'] == '0') {
 													$estado = 'En espera';

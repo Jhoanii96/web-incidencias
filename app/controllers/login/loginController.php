@@ -38,7 +38,7 @@ class login extends Controller
 		} else {
 			$this->dataLogin = new dataAdmin();
 			@$parametro = $this->dataLogin->cargar_usuario($param[0]);
-			$identi = $parametro->fetch_array();
+			$identi = $parametro->fetch();
 
 			if ($param[0] != $identi['correo']) {
 				header("Location: " . FOLDER_PATH . "/login");

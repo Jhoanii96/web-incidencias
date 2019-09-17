@@ -20,7 +20,7 @@ class tipo_incidencia extends Controller
 
         $this->dataUser = new dataAdmin();
         @$parametro = $this->dataUser->data_user($admin);
-        $this->datos_usu = $parametro->fetch_array();
+        $this->datos_usu = $parametro->fetch();
 
         $this->dataCasos = new dataAdmin();
         $this->datos_tipo_incidencia = $this->dataCasos->mostrarTipoIncidencia();
@@ -88,7 +88,7 @@ class tipo_incidencia extends Controller
                     $this->datos_incidencia = $this->dataCasos->mostrarTipoIncidencia();
 
                     echo '<option>Seleccionar</option>';
-                    while ($datosincidencia = $this->datos_incidencia->fetch_assoc()) {
+                    while ($datosincidencia = $this->datos_incidencia->fetch()) {
                         echo '
                            <option>' . $datosincidencia['incidencia'] . '</option>
                       ';
@@ -103,7 +103,7 @@ class tipo_incidencia extends Controller
                     $this->datos_casos = $this->dataCasos->mostrarCasos($_POST['incidencia_n']);
 
                     echo '<option>Seleccionar</option>';
-                    while ($datoscasos = $this->datos_casos->fetch_assoc()) {
+                    while ($datoscasos = $this->datos_casos->fetch()) {
                         echo '
                            <option>' . $datoscasos['casos'] . '</option>
                       ';
@@ -115,7 +115,7 @@ class tipo_incidencia extends Controller
             $this->dataCasos = new dataAdmin();
             $this->datos_tcasos = $this->dataCasos->mostrarIncidenciaCasos();
 
-            while ($datostcasos = $this->datos_tcasos->fetch_assoc()) {
+            while ($datostcasos = $this->datos_tcasos->fetch()) {
 
                 echo '
                     <tr id="data-c_' . $datostcasos['num'] . '">
@@ -164,7 +164,7 @@ class tipo_incidencia extends Controller
             include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
             $this->dataCasos = new dataAdmin();
             $this->datos_casos_edit = $this->dataCasos->mostrarEditarCasos($ident);
-            //$this->datos_articulo = $this->datos_articulo_edit->fetch_array();
+            //$this->datos_articulo = $this->datos_articulo_edit->fetch();
 
             $this->AdminView('tipo_incidencia/edit/edit', [
                 'nombre' => $this->datos_usu['nombre'],

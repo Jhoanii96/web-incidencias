@@ -81,7 +81,7 @@ class oficina extends Controller
                     $this->datos_facultad = $this->dataUnidad->mostrarFacultad();
 
                     echo '<option>Seleccionar</option>';
-                    while ($datosfacultad = $this->datos_facultad->fetch_assoc()) {
+                    while ($datosfacultad = $this->datos_facultad->fetch()) {
                         echo '
                            <option>' . $datosfacultad['facultad'] . '</option>
                       ';
@@ -96,7 +96,7 @@ class oficina extends Controller
                     $this->datos_oficina = $this->dataUnidad->mostrarOficina($_POST['facultad_n']);
 
                     echo '<option>Seleccionar</option>';
-                    while ($datosoficina = $this->datos_oficina->fetch_assoc()) {
+                    while ($datosoficina = $this->datos_oficina->fetch()) {
                         echo '
                            <option>' . $datosoficina['oficina'] . '</option>
                       ';
@@ -111,7 +111,7 @@ class oficina extends Controller
                     $this->datos_unidad = $this->dataUnidad->mostrarUnidad($_POST['oficina_n']);
 
                     echo '<option>Seleccionar</option>';
-                    while ($datosunidad = $this->datos_unidad->fetch_assoc()) {
+                    while ($datosunidad = $this->datos_unidad->fetch()) {
                         echo '
                            <option>' . $datosunidad['unidad'] . '</option>
                       ';
@@ -123,7 +123,7 @@ class oficina extends Controller
             $this->dataUnidad = new dataAdmin();
             $this->datos_tunidad = $this->dataUnidad->mostrarFacultadOficinaUnidad();
 
-            while ($datostunidad = $this->datos_tunidad->fetch_assoc()) {
+            while ($datostunidad = $this->datos_tunidad->fetch()) {
 
                 echo '
                     <tr id="data-u_' . $datostunidad['num'] . '">

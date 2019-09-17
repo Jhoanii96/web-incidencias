@@ -20,7 +20,7 @@ class mostrar extends Controller
         $this->dataUser = new dataUser();
         @$parametro2 = $this->dataUser->mostrarDetalleSolicitud($data);
         
-        $this->datos_usu = $parametro->fetch_array();
+        $this->datos_usu = $parametro->fetch();
         $dataLink = [
             'modify_s' => FOLDER_PATH . '/mostrar/actualizar/',
             'delete_s' => FOLDER_PATH . '/mostrar/delete/',
@@ -121,7 +121,7 @@ class mostrar extends Controller
                     $this->datos_facultad = $this->dataUnidad->mostrarFacultad();
 
                     echo '<option>Seleccionar</option>';
-                    while ($datosfacultad = $this->datos_facultad->fetch_assoc()) {
+                    while ($datosfacultad = $this->datos_facultad->fetch()) {
                         echo '
                            <option>' . $datosfacultad['facultad'] . '</option>
                       ';
@@ -136,7 +136,7 @@ class mostrar extends Controller
                     $this->datos_oficina = $this->dataUnidad->mostrarOficina($_POST['facultad_n']);
 
                     echo '<option>Seleccionar</option>';
-                    while ($datosoficina = $this->datos_oficina->fetch_assoc()) {
+                    while ($datosoficina = $this->datos_oficina->fetch()) {
                         echo '
                            <option>' . $datosoficina['oficina'] . '</option>
                       ';
@@ -151,7 +151,7 @@ class mostrar extends Controller
                     $this->datos_unidad = $this->dataUnidad->mostrarUnidad($_POST['oficina_n']);
 
                     echo '<option>Seleccionar</option>';
-                    while ($datosunidad = $this->datos_unidad->fetch_assoc()) {
+                    while ($datosunidad = $this->datos_unidad->fetch()) {
                         echo '
                            <option>' . $datosunidad['unidad'] . '</option>
                       ';
@@ -243,7 +243,7 @@ class mostrar extends Controller
             ];
             $this->dataAdmin = new dataAdmin();
             $this->datos_admin_edit = $this->dataAdmin->mostrarEditarAdministrador($ident);
-            //$this->datos_articulo = $this->datos_articulo_edit->fetch_array();
+            //$this->datos_articulo = $this->datos_articulo_edit->fetch();
 
             $this->AdminView('administrador/edit/edit', [
                 'nombre' => $this->datos_usu['nombre'],

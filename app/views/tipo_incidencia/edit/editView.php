@@ -1,6 +1,6 @@
 <?php
 
-	while($datosCasos=$data['datacasos']->fetch_assoc()){
+	while($datosCasos=$data['datacasos']->fetch()){
 
 		$numero = $datosCasos['num'];
 		$incidencia = $datosCasos['incidencia'];

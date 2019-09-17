@@ -1,6 +1,6 @@
 <?php
 
-while ($datosDetalle = $data['detalleSolicitud']->fetch_assoc()) {
+while ($datosDetalle = $data['detalleSolicitud']->fetch()) {
 
     $id = $datosDetalle['idSolicitud'];
     $nom = $datosDetalle['nombre'];

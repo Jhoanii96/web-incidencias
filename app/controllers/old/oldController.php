@@ -21,7 +21,7 @@ class old extends Controller
 
         $this->dataUser = new dataAdmin();
         @$parametro = $this->dataUser->data_user($admin);
-        $this->datos_usu = $parametro->fetch_array();
+        $this->datos_usu = $parametro->fetch();
         /* PARA EL ADMINISTRADOR Y EL TÉCNICO */
 
         $this->dataUsuario = new dataUser();

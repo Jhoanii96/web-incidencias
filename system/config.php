@@ -22,10 +22,9 @@
 	define('HELPER_PATH', 'system/helper/');
 
 	//Para la BD
-	define('HOST', 'localhost');
+	define('SGBD', 'mysql:host=localhost;dbname=bdservicios;charset=utf8');
 	define('USER', 'root');
 	define('PASS', '123456');
-	define('DB', 'bdservicios');
 
 	define('ERROR_REPORTING_LEVEL', -1);
 

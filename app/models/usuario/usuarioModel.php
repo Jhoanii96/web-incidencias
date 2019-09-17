@@ -3,14 +3,6 @@
 class usuarioModel extends Model
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-
-
-
     /* ----------------------- CONSULTAS INSERTAR TECNICO PAG. ADMIN ----------------------- */
 
     // insertar administrativo
@@ -28,7 +20,7 @@ class usuarioModel extends Model
             '" . $dataAdministrativo->getImagen_bd() . "', 
             '" . $dataAdministrativo->getContact_point() . "', 
             '" . $dataAdministrativo->getDate() . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // insertar tecnico
@@ -46,7 +38,7 @@ class usuarioModel extends Model
             '" . $dataTecnico->getImagen_bd() . "', 
             '" . $dataTecnico->getContact_point() . "', 
             '" . $dataTecnico->getDate() . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
 
@@ -67,7 +59,7 @@ class usuarioModel extends Model
             '', 
             '" . $dataAdministrativo->getPassword() . "', 
             '" . $dataAdministrativo->getImagen_bd() . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
 
@@ -76,7 +68,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `mostrar_dadministrativo`(" . $dataNum . ");";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -86,7 +78,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `mostrar_dtecnico`(" . $dataNum . ");";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -96,7 +88,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `eliminar_administrativo`(" . $dataNum . ");";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // insertar tecnico
@@ -104,7 +96,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `eliminar_tecnico`(" . $dataNum . ");";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
 
@@ -126,7 +118,7 @@ class usuarioModel extends Model
                 '" . $dataSolicitud->getAcpsolicitud() . "', 
                 '" . $dataSolicitud->getUsuario() . "'
             );";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     /* ----------------------- CONSULTAS USUARIO PAG. PRINCIPAL ----------------------- */
@@ -136,7 +128,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `mostrar_tincidencias_up`('" . $usuario . "');";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -147,7 +139,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `mostrar_tincidencias_actual`('" . $usuario . "');";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -157,7 +149,7 @@ class usuarioModel extends Model
     public function show_tprincipal_atendidas(string $usuario)
     {
         $query = "CALL `mostrar_tincidencias_atendidas`('" . $usuario . "');";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -167,7 +159,7 @@ class usuarioModel extends Model
     public function show_tprincipal_solucionadas(string $usuario)
     {
         $query = "CALL `mostrar_tincidencias_solucionadas`('" . $usuario . "');";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
     
@@ -178,7 +170,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `mostrar_tincidencias_antigua`('" . $usuario . "');";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -189,7 +181,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `mostrar_tincidencias_todos`('" . $usuario . "');";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -200,7 +192,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `mostrar_detalle_solicitud`(" . $dataCod . ");";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -217,7 +209,7 @@ class usuarioModel extends Model
                 '" . $dataSolicitud->getUsuario() . "', 
                 " . $codigo . " 
             );";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // eliminar solicitud
@@ -225,7 +217,7 @@ class usuarioModel extends Model
     {
 
         $query = "CALL `eliminar_solicitud`(" . $codigo . ");";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
 
@@ -246,6 +238,6 @@ class usuarioModel extends Model
             '" . $correo . "', 
             '" . $clave . "', 
             '" . $ip . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 }

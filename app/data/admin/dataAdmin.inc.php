@@ -258,14 +258,14 @@ class dataAdmin
         $this->admin->solicitud_solucionado($datoNum, $user);
     }
     
-    public function solicitudCancelar(int $datoNum)
+    public function solicitudCancelar(int $datoNum, string $user)
     {
-        $this->admin->solicitud_cancelar($datoNum);
+        $this->admin->solicitud_cancelar($datoNum, $user);
     }
 
     public function solicitudObtenerID(int $datoNum)
     {
-        $this->admin->solicitud_obtener_id($datoNum);
+        return $this->admin->solicitud_obtener_id($datoNum);
     }
 
 

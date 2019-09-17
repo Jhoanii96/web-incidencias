@@ -21,7 +21,7 @@ class detalle extends Controller
         $this->dataUser = new dataUser();
         @$parametro2 = $this->dataUser->mostrarDetalleSolicitud($data);
                 
-        $this->datos_usu = $parametro->fetch_array();
+        $this->datos_usu = $parametro->fetch();
 
         $this->view('detalle/detalle' , [
             'nombre' => $this->datos_usu['nombre'], 

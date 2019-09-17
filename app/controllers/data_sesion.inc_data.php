@@ -13,7 +13,7 @@
 
     $this->dataUser = new dataAdmin();
     @$parametro = $this->dataUser->data_user($admin);
-    $this->datos_usu = $parametro->fetch_array();
+    $this->datos_usu = $parametro->fetch();
 
     if ($actual_link == FOLDER_PATH . "/" || $actual_link == FOLDER_PATH . "") {
         $this->view('home/homeAdmin', [

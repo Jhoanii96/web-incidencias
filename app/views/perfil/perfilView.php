@@ -1,6 +1,6 @@
 <?php
 
-while ($datosperfil = $data['datos_perfil']->fetch_assoc()) {
+while ($datosperfil = $data['datos_perfil']->fetch()) {
 
   $id = $datosperfil['id']; /* no en uso */
   $nom = $datosperfil['nombre'];

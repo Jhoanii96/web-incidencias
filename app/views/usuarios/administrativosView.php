@@ -133,7 +133,7 @@
 											<select id="data-fct" class="form-control select2" name="facultad_n">
 												<option>Seleccionar</option>
 												<?php
-												while ($datosfacultad = $data['facultad']->fetch_assoc()) {
+												while ($datosfacultad = $data['facultad']->fetch()) {
 													echo '
 															<option>' . $datosfacultad['facultad'] . '</option>
 														';
@@ -213,7 +213,7 @@
 													<?php
 
 
-													while ($rowAdmin = $data['tadministrativos']->fetch_assoc()) {
+													while ($rowAdmin = $data['tadministrativos']->fetch()) {
 														if ($rowAdmin['ip'] != NULL || $rowAdmin['ip'] != "") {
 															$ip = $rowAdmin['ip'];
 														} else {

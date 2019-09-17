@@ -37,8 +37,8 @@ class actions extends Controller
         
         sleep(2);
 
-        @$parametro = $this->dataAdministrador->solicitudObtenerID($codSoli);
-        $this->datos_adm = $parametro->fetch_array();
+        $parametro = $this->dataAdministrador->solicitudObtenerID($codSoli);
+        $this->datos_adm = $parametro->fetch();
 
         $data['adm'] = $this->datos_adm['idadministrativo'];
         $pusher->trigger('my-channel', 'my-event', $data);
@@ -49,17 +49,46 @@ class actions extends Controller
     public function cancel()
     {
 
+        $options = array(
+            'cluster' => 'us2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            '49adf0ba4a6c31a67467',
+            '58aa93f56b63feb25da1',
+            '858139',
+            $options
+        );
+
         $this->dataAdministrador = new dataAdmin();
 
         $codSoli = $_POST["cdSlctd"];
+        $user = $this->session->get('usuarioUsi');
 
-        $this->dataAdministrador->solicitudCancelar($codSoli);
+        $this->dataAdministrador->solicitudCancelar($codSoli, $user);
 
         sleep(1);
+
+        $parametro = $this->dataAdministrador->solicitudObtenerID($codSoli);
+        $this->datos_adm = $parametro->fetch();
+
+        $data['adm'] = $this->datos_adm['idadministrativo'];
+        $pusher->trigger('my-channel', 'my-event', $data);
     }
 
     public function solution()
     {
+
+        $options = array(
+            'cluster' => 'us2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            '49adf0ba4a6c31a67467',
+            '58aa93f56b63feb25da1',
+            '858139',
+            $options
+        );
 
         $this->dataAdministrador = new dataAdmin();
 
@@ -68,11 +97,26 @@ class actions extends Controller
 
         $this->dataAdministrador->solicitudSolucionada($codSoli, $user);
 
+        $data['home'] = 'user';
+        $pusher->trigger('my-channel', 'my-event', $data);
+
         sleep(1);
+
     }
 
     public function annular()
     {
+
+        $options = array(
+            'cluster' => 'us2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            '49adf0ba4a6c31a67467',
+            '58aa93f56b63feb25da1',
+            '858139',
+            $options
+        );
 
         $this->dataAdministrador = new dataAdmin();
 
@@ -82,10 +126,28 @@ class actions extends Controller
         $this->dataAdministrador->solicitudAnulado($codSoli, $user);
 
         sleep(1);
+
+        $parametro = $this->dataAdministrador->solicitudObtenerID($codSoli);
+        $this->datos_adm = $parametro->fetch();
+
+        $data['adm'] = $this->datos_adm['idadministrativo'];
+        $pusher->trigger('my-channel', 'my-event', $data);
+
     }
 
     public function observation()
     {
+
+        $options = array(
+            'cluster' => 'us2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            '49adf0ba4a6c31a67467',
+            '58aa93f56b63feb25da1',
+            '858139',
+            $options
+        );
 
         $this->dataAdministrador = new dataAdmin();
 
@@ -95,5 +157,11 @@ class actions extends Controller
         $this->dataAdministrador->solicitudObservacion($codSoli, $user);
 
         sleep(1);
+
+        $parametro = $this->dataAdministrador->solicitudObtenerID($codSoli);
+        $this->datos_adm = $parametro->fetch();
+
+        $data['adm'] = $this->datos_adm['idadministrativo'];
+        $pusher->trigger('my-channel', 'my-event', $data);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-while ($rowTecn = $data['dataTecn']->fetch_assoc()) {
+while ($rowTecn = $data['dataTecn']->fetch()) {
 
 	$iden = $rowTecn['id'];
 	$nombre = $rowTecn['nombre'];

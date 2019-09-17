@@ -21,7 +21,7 @@ class home extends Controller
 
     $this->dataUser = new dataAdmin();
     @$parametro = $this->dataUser->data_user($admin);
-    $this->datos_usu = $parametro->fetch_array();
+    $this->datos_usu = $parametro->fetch();
     /* PARA EL ADMINISTRADOR Y EL TÉCNICO */
     if (
       $this->datos_usu['nombreTipo'] == 'Super Administrador' ||
@@ -55,7 +55,9 @@ class home extends Controller
     } elseif ($this->datos_usu['nombreTipo'] == 'Personal Administrativo') {
 
       $this->dataUsuario = new dataUser();
+      $this->dataAdmin = new dataAdmin();
       $this->parametro2 = $this->dataUsuario->mostrarTablaSolicitud($this->session->get('usuarioUsi'));
+      $this->BellNtf = $this->dataAdmin->BellNotifications();
 
       $this->view('home/homeUser', [ 
         'id' => $this->datos_usu['id'],
@@ -64,6 +66,7 @@ class home extends Controller
         'tipouser' => $this->datos_usu['nombreTipo'],
         'online' => 'online',
         'tsolicitud' => $this->parametro2,
+        'BellNtf' => $this->BellNtf, 
         'foto' => $this->datos_usu['foto']
       ]);
     }
@@ -95,7 +98,7 @@ class home extends Controller
           <!-- inner menu: contains the actual data -->
           <ul class="menu">';
 
-    while ($datoBellNotificacion = $this->BellNtf->fetch_assoc()) {
+    while ($datoBellNotificacion = $this->BellNtf->fetch()) {
 
       if ($datoBellNotificacion['tipo_n'] == 'Solicitud') {
         echo '
@@ -155,9 +158,8 @@ class home extends Controller
           <!-- inner menu: contains the actual data -->
           <ul class="menu">';
 
-    while ($datoBellNotificacion = $this->BellNtf->fetch_assoc()) {
+    while ($datoBellNotificacion = $this->BellNtf->fetch()) {
 
-      if ($datoBellNotificacion['tipo_n'] == 'Atencion') {
         echo '
             <li>
                 <a href="' . FOLDER_PATH . '/detalle/' . $datoBellNotificacion['idcod_n'] . '" target="_blank">
@@ -165,7 +167,6 @@ class home extends Controller
                 </a>
             </li>
         ';
-      } 
       
     }
 
@@ -194,7 +195,7 @@ class home extends Controller
     $this->dataAdmin = new dataAdmin();
     $this->NumUsu = $this->dataAdmin->MiembroTotal();
 
-    while ($datoNumUsuario = $this->NumUsu->fetch_assoc()) {
+    while ($datoNumUsuario = $this->NumUsu->fetch()) {
 
       echo $datoNumUsuario['num_usuario'];
 
@@ -210,7 +211,7 @@ class home extends Controller
 
     $this->dataUser = new dataAdmin();
     @$parametro = $this->dataUser->data_user($this->session->get('usuarioUsi'));
-    $this->datos_usu = $parametro->fetch_array();
+    $this->datos_usu = $parametro->fetch();
 
     $this->dataAdmin = new dataAdmin();
     $this->parametro1 = $this->dataAdmin->mostrarTablaSolicitud('0');
@@ -222,7 +223,7 @@ class home extends Controller
         'dataTable.fnClearTable();';
 
 
-    while ($datosTSolicitud = $this->parametro1->fetch_assoc()) {
+    while ($datosTSolicitud = $this->parametro1->fetch()) {
     
       if ($datosTSolicitud['estado'] == '0') {
         $estado = 'En espera';
@@ -293,7 +294,7 @@ class home extends Controller
 
     
 
-    /* while ($datosTSolicitud = $this->parametro1->fetch_assoc()) {
+    /* while ($datosTSolicitud = $this->parametro1->fetch()) {
 
       if ($datosTSolicitud['estado'] == '0') {
         $estado = 'En espera';
@@ -373,7 +374,7 @@ class home extends Controller
     $this->dataAdmin = new dataAdmin();
     $this->NumSoli = $this->dataAdmin->NumeroSolicitud();
 
-    while ($datoNumSolicitud = $this->NumSoli->fetch_assoc()) {
+    while ($datoNumSolicitud = $this->NumSoli->fetch()) {
 
       echo $datoNumSolicitud['num_solicitud'];
 

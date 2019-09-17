@@ -3,11 +3,6 @@
 class unidadModel extends Model
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /* ----------------------------- CONSULTAS DE UNIDAD ----------------------------- */
 
     // table forulario unidad
@@ -15,7 +10,7 @@ class unidadModel extends Model
     {
 
         $query = "select * from v_facultad;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -24,7 +19,7 @@ class unidadModel extends Model
     {
 
         $query = "select o.oficina from v_oficina o where o.facultad = '" . $facultad . "';";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -33,7 +28,7 @@ class unidadModel extends Model
     {
 
         $query = "select u.unidad from v_unidad u where u.oficina = '" . $oficina . "';";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -42,7 +37,7 @@ class unidadModel extends Model
     {
 
         $query = "select * from v_tunidad;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -51,7 +46,7 @@ class unidadModel extends Model
     {
 
         $query = "CALL `insertar_facultad`('" . $facultad . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // insertar facultad
@@ -59,7 +54,7 @@ class unidadModel extends Model
     {
 
         $query = "CALL `insertar_oficina`('" . $facultad . "', '" . $oficina . "', '" . $abreviatura . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // insertar unidad
@@ -67,13 +62,13 @@ class unidadModel extends Model
     {
 
         $query = "CALL `insertar_unidad`('" . $oficina . "', '" . $unidad . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     public function mostrar_dataunidad(int $numUnidad)
     {
         $query = "CALL mostrar_dunidad(" . $numUnidad . ");";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -83,7 +78,7 @@ class unidadModel extends Model
     {
 
         $query = "CALL actualizar_unidad(" . $numUnidad . ", '" . $unidad . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
 
     }
 
@@ -93,7 +88,7 @@ class unidadModel extends Model
     {
 
         $query = "CALL eliminar_unidad(" . $numUnidad . ");";
-        $this->db->query($query);
+        Model::query_execute($query);
 
     }
 }

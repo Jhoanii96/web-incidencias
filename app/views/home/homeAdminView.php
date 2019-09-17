@@ -93,7 +93,7 @@
                 <span id="nlists" class="info-box-number">
 
                   <?php
-                  while ($datoNumSolicitud = $data['NumSoli']->fetch_assoc()) {
+                  while ($datoNumSolicitud = $data['NumSoli']->fetch()) {
 
                     echo $datoNumSolicitud['num_solicitud'];
                   }
@@ -116,7 +116,7 @@
                 <span class="info-box-number">
 
                   <?php
-                  while ($datoNumLinea = $data['EnLinea']->fetch_assoc()) {
+                  while ($datoNumLinea = $data['EnLinea']->fetch()) {
 
                     echo $datoNumLinea['num_oline'];
                   }
@@ -144,7 +144,7 @@
                 <span id="nusers" class="info-box-number">
 
                   <?php
-                  while ($datoNumUsuario = $data['NumUsu']->fetch_assoc()) {
+                  while ($datoNumUsuario = $data['NumUsu']->fetch()) {
 
                     echo $datoNumUsuario['num_usuario'];
                   }
@@ -169,7 +169,7 @@
 
                   <?php
 
-                    while ($datoNuevoUsuario = $data['NueMiem']->fetch_assoc()) {
+                    while ($datoNuevoUsuario = $data['NueMiem']->fetch()) {
 
                       echo $datoNuevoUsuario['num_nuevo_usu'];
 
@@ -214,7 +214,7 @@
                   </thead>
                   <tbody id="tlist">
                     <?php
-                    while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
+                    while ($datosTSolicitud = $data['tsolicitud']->fetch()) {
 
                       if ($datosTSolicitud['estado'] == '0') {
                         $estado = 'En espera';
@@ -256,7 +256,7 @@
                       } elseif ($data['tipouser'] == 'Técnico') {
                         echo '
                                 <td style="display: flex;">
-                                  <a href="#" title="Atender incidencia" style="margin-right: 7px;">
+                                  <a href="javascript:void(0);" title="Atender incidencia" style="margin-right: 7px;">
                                     <button id="btnatnd-' . $datosTSolicitud['nums'] . '" type="button" data-value="' . $datosTSolicitud['nums'] . '" class="btn btn-block btn-success" style="padding: 2px 6px;" onclick="AtendSolc(' . $datosTSolicitud['nums'] . ')">
                                       <span class="fa fa-check"></span>
                                     </button>
@@ -445,7 +445,7 @@
       var solicitud_code = idSol;
       $.ajax({
         beforeSend: function() {
-          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 6px 5px;font-size: larger;'></span>");
           $("#btnatnd-" + solicitud_code).attr("disabled", true);
         },
         url: "<?= FOLDER_PATH ?>/actions/attend/",
@@ -470,7 +470,7 @@
       var solicitud_code = idSol;
       $.ajax({
         beforeSend: function() {
-          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 6px 5px;font-size: larger;'></span>");
           $("#btnobs-" + solicitud_code).attr("disabled", true);
         },
         url: "<?= FOLDER_PATH ?>/actions/observation/",
@@ -495,7 +495,7 @@
       var solicitud_code = idSol;
       $.ajax({
         beforeSend: function() {
-          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 10px 5px;'></span>");
+          $("#spinner-aoa-" + solicitud_code).append("<span id='spinner-dlt2-'" + solicitud_code + " class='fa fa-spinner fa-spin' style='width: 14px; height: 14px; margin: 6px 5px;font-size: larger;'></span>");
           $("#btnanl-" + solicitud_code).attr("disabled", true);
         },
         url: "<?= FOLDER_PATH ?>/actions/annular/",

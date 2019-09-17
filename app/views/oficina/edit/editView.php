@@ -1,6 +1,6 @@
 <?php
 
-	while($datosUnidad=$data['dataunidad']->fetch_assoc()){
+	while($datosUnidad=$data['dataunidad']->fetch()){
 
 		$numero = $datosUnidad['num'];
 		$facultad = $datosUnidad['facultad'];

@@ -95,7 +95,7 @@
 												<select id="data-inc" class="form-control select2" style="width: 75%;" name="incidencia_n">
 													<option selected="selected">Seleccionar</option>
 													<?php
-													while ($datoscasos = $data['tipo_incidencia']->fetch_assoc()) {
+													while ($datoscasos = $data['tipo_incidencia']->fetch()) {
 														echo '
 																<option>' . $datoscasos['incidencia'] . '</option>
 															';
@@ -203,7 +203,7 @@
 									<tbody id="data-table-casos">
 
 										<?php
-										while ($datostcasos = $data['tcasos']->fetch_assoc()) {
+										while ($datostcasos = $data['tcasos']->fetch()) {
 
 											echo '
 												<tr id="data-c_' . $datostcasos['num'] . '">

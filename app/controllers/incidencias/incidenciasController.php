@@ -21,7 +21,7 @@
 
             $this->dataUser = new dataAdmin();
             @$parametro = $this->dataUser->data_user($admin);
-            $this->datos_usu = $parametro->fetch_array();
+            $this->datos_usu = $parametro->fetch();
 
             $this->BellNtf = $this->dataUser->BellNotifications(); 
             $this->dataTabla = new dataAdmin();

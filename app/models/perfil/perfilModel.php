@@ -3,13 +3,7 @@
     class perfilModel extends Model
     {
 		
-		public function __construct()
-		{
-            parent::__construct();
-        
-        }
-
-        /* ----------------------------- CONSULTAS DE PERFIL ----------------------------- */
+		/* ----------------------------- CONSULTAS DE PERFIL ----------------------------- */
 
         // Actualizar perfil con imagen
         public function update_perfil(perfill $dataPerfil, $emPerfil){
@@ -23,7 +17,7 @@
                         '" . $dataPerfil->getFoto() . "', 
                         '" . $dataPerfil->getContrasena() . "',
                         '" . $emPerfil . "');";
-            $this->db->query($query);
+            Model::query_execute($query);
             
         }
 
@@ -38,13 +32,13 @@
                         '" . $dataPerfil->getNacimiento() . "', 
                         '" . $dataPerfil->getContrasena() . "',
                         '" . $emPerfil . "');";
-            $this->db->query($query);
+            Model::query_execute($query);
             
         }
 
         public function mostrar_perfil($codPerfil){
             $query = "CALL mostrar_perfil('".$codPerfil."');";
-            $res = $this->db->query($query);
+            $res = Model::query_execute($query);
             return $res;
         }
 

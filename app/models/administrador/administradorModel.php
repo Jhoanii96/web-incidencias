@@ -3,11 +3,6 @@
 class administradorModel extends Model
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /* ----------------------------- CONSULTAS DE TIPO DE INCIDENCIA ----------------------------- */
 
     // datos combobox incidencias
@@ -15,7 +10,7 @@ class administradorModel extends Model
     {
 
         $query = "select * from v_tipo_incidencia;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -24,7 +19,7 @@ class administradorModel extends Model
     {
 
         $query = "select casos from v_tcasos where incidencia =  '" . $incidencia . "';";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -33,7 +28,7 @@ class administradorModel extends Model
     {
 
         $query = "select * from v_tadministrador;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -42,7 +37,7 @@ class administradorModel extends Model
     {
 
         $query = "select * from v_tadministrativo;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
     
@@ -51,7 +46,7 @@ class administradorModel extends Model
     {
 
         $query = "select * from v_ttecnico;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -60,7 +55,7 @@ class administradorModel extends Model
     {
 
         $query = "CALL `insertar_tipo_incidencia`('" . $incidencia . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // insertar administrador
@@ -79,7 +74,7 @@ class administradorModel extends Model
             '" . $encapsuAdmin->getImagen_bd() . "', 
             '" . $encapsuAdmin->getContact_point() . "', 
             '" . $encapsuAdmin->getDate() . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // editar administrador
@@ -100,13 +95,13 @@ class administradorModel extends Model
             '" . $encapsuAdmin->getRol() . "', 
             '" . $encapsuAdmin->getPassword() . "', 
             '" . $encapsuAdmin->getImagen_bd() . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     public function mostrar_dataadmin(int $numAdmin)
     {
         $query = "CALL mostrar_dadministrador(" . $numAdmin . ");";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -117,7 +112,7 @@ class administradorModel extends Model
     {
 
         $query = "CALL actualizar_casos(" . $numCasos . ", '" . $casos . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
 
@@ -126,7 +121,7 @@ class administradorModel extends Model
     {
 
         $query = "CALL eliminar_administrador(" . $numCasos . ");";
-        $this->db->query($query);
+        Model::query_execute($query);
 
     }
 
@@ -141,7 +136,7 @@ class administradorModel extends Model
             " . $datoNum . ", 
             '" . $user . "', 
             '" . $estado . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
         
         
     }
@@ -152,7 +147,7 @@ class administradorModel extends Model
         $query = "CALL `solicitud_observacion`(
             " . $datoNum . ", 
             '" . $user . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
         
     }
 
@@ -162,7 +157,7 @@ class administradorModel extends Model
         $query = "CALL `solicitud_anulado`(
             " . $datoNum . ", 
             '" . $user . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
         
     }
 
@@ -172,24 +167,27 @@ class administradorModel extends Model
         $query = "CALL `solicitud_solucionado`(
             " . $datoNum . ", 
             '" . $user . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
 
     }
 
 
-    public function solicitud_cancelar(int $datoNum)
+    public function solicitud_cancelar(int $datoNum, string $user)
     {
 
-        $query = "CALL `solicitud_cancelar`(" . $datoNum . ");";
-        $this->db->query($query);
+        $query = "CALL `solicitud_cancelar`(
+            " . $datoNum . ", 
+            '" . $user . "');";
+        Model::query_execute($query);
 
     }
 
 
     public function solicitud_obtener_id(int $datonum)
     {
+        /* Model::getNewConnection(); */
         $query = "select * from v_obtener_administratico_solicitud where idsolicitud = " . $datonum . ";";
-        $res = $this->db->multi_query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 

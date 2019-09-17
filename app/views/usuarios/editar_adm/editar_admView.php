@@ -1,6 +1,6 @@
 <?php
 
-while ($rowAdmin = $data['dataAdmin']->fetch_assoc()) {
+while ($rowAdmin = $data['dataAdmin']->fetch()) {
 
 	$iden = $rowAdmin['id'];
 	$nombre = $rowAdmin['nombre'];

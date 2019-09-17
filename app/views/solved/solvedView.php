@@ -102,7 +102,7 @@
 										</thead>
 										<tbody>
 										<?php
-										while ($datosTSolicitud = $data['tsolicitud']->fetch_assoc()) {
+										while ($datosTSolicitud = $data['tsolicitud']->fetch()) {
 											
 											if ($datosTSolicitud['recibo'] == '0') {
                                                 $estado = 'En borrador';

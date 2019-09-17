@@ -3,11 +3,6 @@
 class casosModel extends Model
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /* ----------------------------- CONSULTAS DE TIPO DE INCIDENCIA ----------------------------- */
 
     // datos combobox incidencias
@@ -15,7 +10,7 @@ class casosModel extends Model
     {
 
         $query = "select * from v_tipo_incidencia;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -24,7 +19,7 @@ class casosModel extends Model
     {
 
         $query = "select casos from v_tcasos where incidencia =  '" . $incidencia . "';";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -33,7 +28,7 @@ class casosModel extends Model
     {
 
         $query = "select * from v_tcasos;";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -42,7 +37,7 @@ class casosModel extends Model
     {
 
         $query = "CALL `insertar_tipo_incidencia`('" . $incidencia . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     // insertar incidencia
@@ -50,13 +45,13 @@ class casosModel extends Model
     {
 
         $query = "CALL `insertar_casos`('" . $incidencia . "', '" . $casos . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
     }
 
     public function mostrar_datacasos(int $numCaso)
     {
         $query = "CALL mostrar_dcasos(" . $numCaso . ");";
-        $res = $this->db->query($query);
+        $res = Model::query_execute($query);
         return $res;
     }
 
@@ -66,7 +61,7 @@ class casosModel extends Model
     {
 
         $query = "CALL actualizar_casos(" . $numCasos . ", '" . $casos . "');";
-        $this->db->query($query);
+        Model::query_execute($query);
 
     }
 
@@ -76,7 +71,7 @@ class casosModel extends Model
     {
 
         $query = "CALL eliminar_casos(" . $numCasos . ");";
-        $this->db->query($query);
+        Model::query_execute($query);
 
     }
 }
