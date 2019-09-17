@@ -79,9 +79,9 @@
                 ]);
             } elseif($espera == '4') {
                 $this->datos_tincidencias = $this->dataTabla->mostrarTablaIncidencias("3");
-                $this->titulo = 'Incidencias cancelados';
-                $this->tipo = 'cancelado';
-                $this->view('incidencias/incidenciasCancelados',
+                $this->titulo = 'Incidencias anulados';
+                $this->tipo = 'anulado';
+                $this->view('incidencias/incidenciasAnulados',
                 [
                     'titulo' => $this->titulo, 
                     'tipo' => $this->tipo,
@@ -95,8 +95,8 @@
                 ]);
             } elseif($espera == '5') {
                 $this->datos_tincidencias = $this->dataTabla->mostrarTablaIncidencias("4");
-                $this->titulo = 'Incidencias solucionadas';
-                $this->tipo = 'todo';
+                $this->titulo = 'Incidencias solucionados';
+                $this->tipo = 'solucionados';
                 $this->view('incidencias/incidenciasSolucionados',
                 [
                     'titulo' => $this->titulo, 

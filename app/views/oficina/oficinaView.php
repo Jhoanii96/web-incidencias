@@ -62,10 +62,8 @@
 					<small>Administración</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-newspaper-o"></i><a href="<?= FOLDER_PATH . '/' ?>">
-								Inicio</a></a>
-					</li>
-					<li class="active">Unidad</a></li>
+					<li><a href="<?= FOLDER_PATH ?>/"><i class="fa fa-table"></i>Inicio</a></li>
+					<li class="active">Oficina</li>
 				</ol>
 			</section>
 
@@ -379,9 +377,16 @@
 				$('#btn-und').prop('disabled', true);
 			} else {
 				var tokn = "GJFHVF8";
+				
 				$.ajax({
 					beforeSend: function() {
 						$("#data-ofn").attr("disabled", true);
+						$("#data-und").prop("disabled", true);
+						$("#btn-und").prop("disabled", true);
+						$("#data-und").prepend('<option value="" selected>Seleccionar</option>');
+    					$("#data-und")[0].selectedIndex = 0;
+						$("#data-ofn").prepend('<option value="" selected>Seleccionar</option>');
+    					$("#data-ofn")[0].selectedIndex = 0;
 						$("#refr-oficina").css("display", "inline-table");
 					},
 					url: "<?php echo FOLDER_PATH ?>/oficina/ajax/ofc",

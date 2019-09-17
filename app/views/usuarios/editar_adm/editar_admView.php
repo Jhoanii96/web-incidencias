@@ -84,11 +84,10 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 					Administrativo: <?= $nombre ?>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-newspaper-o"></i><a href="<?= FOLDER_PATH . '/' ?>">
-								Inicio</a></a>
-					</li>
-					<li class="active">administrativo</a></li>
-					<li class="active">editar</a></li>
+					<li><a href="<?= FOLDER_PATH ?>/"><i class="fa fa-table"></i>Inicio</a></li>
+					<li style="color: #444;">Usuarios</li>
+					<li><a href="<?= FOLDER_PATH ?>/usuarios?uq=1">Administrativos</a></li>
+					<li class="active">Editar</li>
 				</ol>
 			</section>
 			<br>
@@ -158,13 +157,13 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Oficina</label>
+									<label class="col-sm-2 control-label"><span><i id="refr-ofi" style="display: none;" class='fa fa-refresh fa-spin'></i></span>&MediumSpace;&MediumSpace;Oficina</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" name="oficina_n" value="<?= $oficina ?>" id="data-ofn" readonly>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-2 control-label">Unidad</label>
+									<label class="col-sm-2 control-label"><span><i id="refr-und" style="display: none;" class='fa fa-refresh fa-spin'></i></span>&MediumSpace;&MediumSpace;Unidad</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" name="unidad_n" value="<?= $unidad ?>" id="data-und" readonly>
 									</div>
@@ -246,6 +245,8 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 	<!-- AdminLTE for demo purposes -->
 	<script src="<?= FOLDER_PATH . '/' ?>src/js/demo.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
+
 	<script>
 		$(function() {
 			$('#example1').DataTable()
@@ -259,6 +260,10 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			})
 			//Initialize Select2 Elements
 			$('.select2').select2()
+			$('#datepicker').datepicker({
+				autoclose: true,
+				format: 'yyyy-mm-dd'
+			})
 		})
 	</script>
 	<script>
@@ -279,6 +284,89 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			readURL(this);
 		});
 	</script>
+	<!-- EVENTO DE CARGA DEL SELECT -->
+	<script>
+		$('#data-fct').on('change', function() {
+			var nom_value = this.value;
+
+			if (nom_value == "Seleccionar") {
+				var tokn = "GJFHVF8";
+				$('#data-ofn').load("<?php echo FOLDER_PATH ?>/oficina/ajax/ofc", {
+					token: tokn,
+					facultad_n: nom_value
+				});
+				$('#data-ofn').prop('disabled', true);
+				$('#btn-ofn').prop('disabled', true);
+
+				var tokn2 = "DMVJF99";
+				$('#data-und').load("<?php echo FOLDER_PATH ?>/oficina/ajax/und", {
+					token: tokn2,
+					oficina_n: nom_value
+				});
+				$('#data-und').prop('disabled', true);
+				$('#btn-und').prop('disabled', true);
+			} else {
+				var tokn = "GJFHVF8";
+				
+				$.ajax({
+					beforeSend: function() {
+						$("#data-ofn").attr("disabled", true);
+						$("#data-und").prop("disabled", true);
+						$("#btn-und").prop("disabled", true);
+						$("#data-und").prepend('<option value="" selected>Seleccionar</option>');
+    					$("#data-und")[0].selectedIndex = 0;
+						$("#data-ofn").prepend('<option value="" selected>Seleccionar</option>');
+    					$("#data-ofn")[0].selectedIndex = 0;
+						$("#refr-ofi").css("display", "inline-table");
+					},
+					url: "<?php echo FOLDER_PATH ?>/oficina/ajax/ofc",
+					type: "POST",
+					data: {
+						token: tokn,
+						facultad_n: nom_value
+					},
+					success: function(data) {
+						$('#data-ofn').html(data);
+						$("#data-ofn").attr("disabled", false);
+						$('#btn-ofn').prop('disabled', false);
+						$("#refr-ofi").css("display", "none");
+					}
+				})
+			}
+		});
+		$('#data-ofn').on('change', function() {
+			var nom_value = this.value;
+			var tokn = "DMVJF99";
+			if (nom_value == "Seleccionar") {
+				$('#data-und').prop('disabled', true);
+				$("#data-und").prop("selectedIndex", 0);
+				$('#btn-und').prop('disabled', true);
+			} else {
+				$.ajax({
+					beforeSend: function() {
+						$('#btn-und').prop('disabled', true);
+						$("#data-und").prop("disabled", true);
+						$("#refr-und").css("display", "inline-table");
+					},
+					url: "<?php echo FOLDER_PATH ?>/oficina/ajax/und",
+					type: "POST",
+					data: {
+						token: tokn,
+						oficina_n: nom_value
+					},
+					success: function(data) {
+						$('#data-und').html(data);
+						$("#data-und").prop("selectedIndex", 0);
+						$("#data-und").attr("disabled", false);
+						$('#btn-und').prop('disabled', false);
+						$("#refr-und").css("display", "none");
+					}
+				})
+				
+			}
+		});
+	</script>
+	<!-- EVENTO DE ACCIONES -->
 	<script>
 		$('#admedt').on('click', function() {
 			var array_options = <?php echo json_encode($data['dataLink']); ?>;
@@ -291,10 +379,52 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			var contact_point = $('#contact_point').val();
 			var date = $('#datepicker').val();
 			var textImage = $('#uploadFile').val();
+			var data_fct = $("#data-fct").children("option:selected").val();
 			var data_ofn = $("#data-ofn").children("option:selected").val();
 			var data_und = $("#data-und").children("option:selected").val();
 			var update = $('#admedt').val();
 			var password = $('#password').val();
+
+			if (firstName == "") {
+				swal("Atención!", "Debe ingresar su nombre", "warning");
+				return;
+			}
+			if (lastName == "") {
+				swal("Atención!", "Debe ingresar su apellido", "warning");
+				return;
+			}
+			if (correo == "") {
+				swal("Atención!", "Debe ingresar su correo", "warning");
+				return;
+			}
+			if (dni == "") {
+				swal("Atención!", "Debe ingresar su DNI", "warning");
+				return;
+			}
+			if (contact_point == "") {
+				swal("Atención!", "Debe ingresar su celular", "warning");
+				return;
+			}
+			if (date == "") {
+				swal("Atención!", "Debe ingresar su fecha de nacimiento", "warning");
+				return;
+			}
+			if (data_fct == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una facultad", "warning");
+				return;
+			}
+			if (data_ofn == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una oficina", "warning");
+				return;
+			}
+			if (data_und == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una unidad", "warning");
+				return;
+			}
+			if (password == "") {
+				swal("Atención!", "Debe ingresar una contraseña", "warning");
+				return;
+			}
 
 			var data = new FormData();
 

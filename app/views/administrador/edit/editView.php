@@ -85,11 +85,9 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 					Administrador: <?= $nombre ?>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-newspaper-o"></i><a href="<?= FOLDER_PATH . '/' ?>">
-								Inicio</a></a>
-					</li>
-					<li class="active">administrador</a></li>
-					<li class="active">editar</a></li>
+					<li><a href="<?= FOLDER_PATH ?>/"><i class="fa fa-table"></i>Inicio</a></li>
+					<li><a href="<?= FOLDER_PATH ?>/administrador">Administrador</a></li>
+					<li class="active">Editar</a></li>
 				</ol>
 			</section>
 			<br>
@@ -109,14 +107,14 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 
 									<div class="col-sm-10">
 										<input type="text" style="display: none" class="form-control" id="id" name="id" value="<?= $iden ?>">
-										<input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" style="text-transform:uppercase" value="<?= $nombre ?>" name="firstName" id="firstName">
+										<input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" value="<?= $nombre ?>" name="firstName" id="firstName">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Apellidos</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" style="text-transform:uppercase" value="<?= $apellido ?>" name="lastName" id="lastName">
+										<input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" value="<?= $apellido ?>" name="lastName" id="lastName">
 									</div>
 								</div>
 								<div class="form-group">
@@ -263,6 +261,8 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 	<!-- AdminLTE for demo purposes -->
 	<script src="<?= FOLDER_PATH . '/' ?>src/js/demo.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
+
 	<script>
 		$(function() {
 			$('#example1').DataTable()
@@ -276,6 +276,10 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			})
 			//Initialize Select2 Elements
 			$('.select2').select2()
+			$('#datepicker').datepicker({
+				autoclose: true,
+				format: 'yyyy-mm-dd'
+			})
 		})
 	</script>
 	<script>
@@ -313,6 +317,47 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			var data_rol = $("#data-rol").children("option:selected").val();
 			var update = $('#admedt').val();
 			var password = $('#password').val();
+
+			if (firstName == "") {
+				swal("Atención!", "Debe ingresar su nombre", "warning");
+				return;
+			}
+			if (lastName == "") {
+				swal("Atención!", "Debe ingresar su apellido", "warning");
+				return;
+			}
+			if (correo == "") {
+				swal("Atención!", "Debe ingresar su correo", "warning");
+				return;
+			}
+			if (dni == "") {
+				swal("Atención!", "Debe ingresar su DNI", "warning");
+				return;
+			}
+			if (contact_point == "") {
+				swal("Atención!", "Debe ingresar su celular", "warning");
+				return;
+			}
+			if (date == "") {
+				swal("Atención!", "Debe ingresar su fecha de nacimiento", "warning");
+				return;
+			}
+			if (data_fct == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una facultad", "warning");
+				return;
+			}
+			if (data_ofn == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una oficina", "warning");
+				return;
+			}
+			if (data_und == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una unidad", "warning");
+				return;
+			}
+			if (password == "") {
+				swal("Atención!", "Debe ingresar una contraseña", "warning");
+				return;
+			}
 
 			var data = new FormData();
 

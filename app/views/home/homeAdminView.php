@@ -75,7 +75,7 @@
           Informe de incidencias
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-table"></i> OSIS</a></li>
+          <li><a href="<?= FOLDER_PATH ?>/"><i class="fa fa-table"></i> USI</a></li>
           <li class="active">Inicio</li>
         </ol>
       </section>

@@ -20,14 +20,23 @@
   <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/blue.css">
   <!-- transition -->
   <link rel="stylesheet" href="<?= FOLDER_PATH ?>/src/css/transition.css">
-
+  <?php $dsrldr = 'Desarrollador';$nm = 'Jhon';$pldp = 'Alvarado';$pldm = 'Acahata'; ?>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <style>
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+  </style>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -72,9 +81,12 @@
 
     </div>
     <!-- /.login-box-body -->
+    <div class="footer">
+      <p id="author" style="font-size: 15px;"></p>
+    </div>
   </div>
   <!-- /.login-box -->
-
+  
   <!-- jQuery 3 -->
   <script src="<?= FOLDER_PATH ?>/src/js/jquery.min.js"></script>
   <!-- Bootstrap 3.3.7 -->
@@ -89,6 +101,9 @@
         increaseArea: '20%' /* optional */
       });
     });
+    $(function(){
+      $('#author').html('<?= $dsrldr ?>: <?= $nm ?> <?= $pldp ?> <?= $pldm ?>');
+    })
   </script>
   <script type="text/javascript">
     var bgImageArray = [];

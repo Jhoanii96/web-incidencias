@@ -61,10 +61,8 @@
 					Administrar incidencias
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-newspaper-o"></i><a href="<?= FOLDER_PATH . '/' ?>">
-								Inicio</a></a>
-					</li>
-					<li class="active">incidencia</a></li>
+					<li><a href="<?= FOLDER_PATH ?>/"><i class="fa fa-table"></i>Inicio</a></li>
+					<li class="active">Incidencias</li>
 				</ol>
 			</section>
 

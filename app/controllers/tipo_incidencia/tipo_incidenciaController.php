@@ -164,15 +164,16 @@ class tipo_incidencia extends Controller
             include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
             $this->dataCasos = new dataAdmin();
             $this->datos_casos_edit = $this->dataCasos->mostrarEditarCasos($ident);
-            //$this->datos_articulo = $this->datos_articulo_edit->fetch();
+            $this->BellNtf = $this->dataCasos->BellNotifications();
 
             $this->AdminView('tipo_incidencia/edit/edit', [
-                'nombre' => $this->datos_usu['nombre'],
-                'apellido' => $this->datos_usu['apellido'],
-                'tipouser' => $this->datos_usu['nombreTipo'],
-                'online' => 'online',
-                'foto' => $this->datos_usu['foto'],
-                'datacasos' => $this->datos_casos_edit
+                'nombre' => $this->datos_usu['nombre'], 
+                'apellido' => $this->datos_usu['apellido'], 
+                'tipouser' => $this->datos_usu['nombreTipo'], 
+                'online' => 'online', 
+                'foto' => $this->datos_usu['foto'], 
+                'BellNtf' => $this->BellNtf, 
+                'datacasos' => $this->datos_casos_edit 
             ]);
         }
     }

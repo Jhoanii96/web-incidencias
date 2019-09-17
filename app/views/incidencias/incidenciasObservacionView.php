@@ -55,8 +55,9 @@
           Control de incidencias
         </h5>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-table"></i> USI</a></li>
-          <li class="active">Incidencias</li>
+          <li><a href="<?= FOLDER_PATH ?>/"><i class="fa fa-table"></i> Inicio</a></li>
+          <li style="color: #444;">Incidencias</li>
+          <li class="active">Observación</li>
         </ol>
       </section>
 

@@ -32,7 +32,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+  <?php $dsrldr = 'Desarrollador';$nm = 'Jhon';$pldp = 'Alvarado';$pldm = 'Acahata'; ?>
   <style>
     #fade>div.swal2-container.swal2-center.swal2-fade.swal2-shown>div {
       border-radius: 0%;
@@ -55,7 +55,16 @@
       margin-bottom: 20px;
     }
   </style>
-
+  <style>
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body id="fade" class="hold-transition register-page img-transition">
@@ -120,6 +129,9 @@
       <a href="<?= FOLDER_PATH ?>/login" class="text-center">Ya tengo una cuenta</a>
     </div>
     <!-- /.form-box -->
+    <div class="footer">
+      <p id="author" style="font-size: 15px;"></p>
+    </div>
   </div>
   <!-- /.register-box -->
 
@@ -140,6 +152,9 @@
         increaseArea: '20%' /* optional */
       });
     });
+    $(function(){
+      $('#author').html('<?= $dsrldr ?>: <?= $nm ?> <?= $pldp ?> <?= $pldm ?>');
+    })
   </script>
   <script type="text/javascript">
     var bgImageArray = [];
