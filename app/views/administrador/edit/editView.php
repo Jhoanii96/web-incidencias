@@ -312,9 +312,6 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			var contact_point = $('#contact_point').val();
 			var date = $('#datepicker').val();
 			var textImage = $('#uploadFile').val();
-			var data_ofn = $("#data-ofn").children("option:selected").val();
-			var data_und = $("#data-und").children("option:selected").val();
-			var data_rol = $("#data-rol").children("option:selected").val();
 			var update = $('#admedt').val();
 			var password = $('#password').val();
 
@@ -342,18 +339,6 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 				swal("Atención!", "Debe ingresar su fecha de nacimiento", "warning");
 				return;
 			}
-			if (data_fct == "Seleccionar") {
-				swal("Atención!", "Debe seleccionar una facultad", "warning");
-				return;
-			}
-			if (data_ofn == "Seleccionar") {
-				swal("Atención!", "Debe seleccionar una oficina", "warning");
-				return;
-			}
-			if (data_und == "Seleccionar") {
-				swal("Atención!", "Debe seleccionar una unidad", "warning");
-				return;
-			}
 			if (password == "") {
 				swal("Atención!", "Debe ingresar una contraseña", "warning");
 				return;
@@ -368,8 +353,6 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			data.append("dni", dni);
 			data.append("contact_point", contact_point);
 			data.append("date", date);
-			data.append("oficina_n", data_ofn);
-			data.append("unidad_n", data_und);
 			data.append("rol", data_rol);
 			data.append("textImage", textImage);
 			data.append("image", $('input[type=file]')[0].files[0]);
