@@ -43,6 +43,23 @@
 			background: transparent !important;
 		}
 	</style>
+	<style>
+		#example1_wrapper>div:nth-child(2) {
+			overflow-x: auto;
+			border-right: none;
+		}
+
+		@media only screen and (min-width: 128px) and (max-width: 992px) {
+			#example1_wrapper>div:nth-child(2) {
+				overflow-x: auto;
+				padding-right: 0px;
+				margin-right: 0px;
+				border-right: 1px solid #f4f4f4;
+				padding-top: 0px;
+				margin-top: 0px;
+			}
+		}
+	</style>
 
 </head>
 
@@ -92,7 +109,7 @@
 										<div class="form-group">
 											<label>Nombre Facultad</label><!-- <span>&MediumSpace;&MediumSpace;<i class='fa fa-refresh fa-spin'></i></span> -->
 											<div style="width:100%;display: inline-flex;">
-											<select id="data-fct" class="form-control select2" data-show-content="true" style="width: 75%;" name="facultad_n">
+												<select id="data-fct" class="form-control select2" data-show-content="true" style="width: 75%;" name="facultad_n">
 													<option>Seleccionar</option>
 													<?php
 													while ($datosfacultad = $data['facultad']->fetch()) {
@@ -352,7 +369,7 @@
 			$('.select2').select2()
 		})
 	</script>
-	
+
 	<script src="<?= FOLDER_PATH . '/' ?>src/js/undk651223.js"></script>
 	<!-- EVENTO DE CARGA DEL SELECT -->
 	<script>
@@ -377,16 +394,16 @@
 				$('#btn-und').prop('disabled', true);
 			} else {
 				var tokn = "GJFHVF8";
-				
+
 				$.ajax({
 					beforeSend: function() {
 						$("#data-ofn").attr("disabled", true);
 						$("#data-und").prop("disabled", true);
 						$("#btn-und").prop("disabled", true);
 						$("#data-und").prepend('<option value="" selected>Seleccionar</option>');
-    					$("#data-und")[0].selectedIndex = 0;
+						$("#data-und")[0].selectedIndex = 0;
 						$("#data-ofn").prepend('<option value="" selected>Seleccionar</option>');
-    					$("#data-ofn")[0].selectedIndex = 0;
+						$("#data-ofn")[0].selectedIndex = 0;
 						$("#refr-oficina").css("display", "inline-table");
 					},
 					url: "<?php echo FOLDER_PATH ?>/oficina/ajax/ofc",
@@ -432,7 +449,7 @@
 						$("#refr-unidad").css("display", "none");
 					}
 				})
-				
+
 			}
 		});
 	</script>

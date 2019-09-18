@@ -312,6 +312,7 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 			var contact_point = $('#contact_point').val();
 			var date = $('#datepicker').val();
 			var textImage = $('#uploadFile').val();
+			var data_rol = $("#data-rol").children("option:selected").val();
 			var update = $('#admedt').val();
 			var password = $('#password').val();
 

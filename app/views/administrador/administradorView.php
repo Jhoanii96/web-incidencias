@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="<?= FOLDER_PATH . '/' ?>src/css/AdminLTE.min.css">
 	<!-- DataTables -->
 	<link rel="stylesheet" href="<?= FOLDER_PATH . '/' ?>src/css/dataTables.bootstrap.min.css">
-	
+
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
 		folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="<?= FOLDER_PATH . '/' ?>src/css/_all-skins.min.css">
@@ -36,6 +36,23 @@
 		.notifications-menu>a>i,
 		.nav.navbar-nav>li>a>i {
 			line-height: inherit !important;
+		}
+	</style>
+	<style>
+		#example1_wrapper>div:nth-child(2) {
+			overflow-x: auto;
+			border-right: none;
+		}
+
+		@media only screen and (min-width: 128px) and (max-width: 992px) {
+			#example1_wrapper>div:nth-child(2) {
+				overflow-x: auto;
+				padding-right: 0px;
+				margin-right: 0px;
+				border-right: 1px solid #f4f4f4;
+				padding-top: 0px;
+				margin-top: 0px;
+			}
 		}
 	</style>
 </head>
@@ -309,7 +326,7 @@
 	<script src="<?= FOLDER_PATH . '/' ?>src/js/adminlte.min.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="<?= FOLDER_PATH . '/' ?>src/js/demo.js"></script>
-	
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
 
 	<script>
@@ -355,16 +372,16 @@
 				$('#btn-und').prop('disabled', true);
 			} else {
 				var tokn = "GJFHVF8";
-				
+
 				$.ajax({
 					beforeSend: function() {
 						$("#data-ofn").attr("disabled", true);
 						$("#data-und").prop("disabled", true);
 						$("#btn-und").prop("disabled", true);
 						$("#data-und").prepend('<option value="" selected>Seleccionar</option>');
-    					$("#data-und")[0].selectedIndex = 0;
+						$("#data-und")[0].selectedIndex = 0;
 						$("#data-ofn").prepend('<option value="" selected>Seleccionar</option>');
-    					$("#data-ofn")[0].selectedIndex = 0;
+						$("#data-ofn")[0].selectedIndex = 0;
 						$("#refr-ofi").css("display", "inline-table");
 					},
 					url: "<?php echo FOLDER_PATH ?>/oficina/ajax/ofc",
@@ -410,7 +427,7 @@
 						$("#refr-und").css("display", "none");
 					}
 				})
-				
+
 			}
 		});
 	</script>

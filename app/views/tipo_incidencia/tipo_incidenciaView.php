@@ -43,6 +43,23 @@
 			background: transparent !important;
 		}
 	</style>
+	<style>
+		#example1_wrapper>div:nth-child(2) {
+			overflow-x: auto;
+			border-right: none;
+		}
+
+		@media only screen and (min-width: 128px) and (max-width: 992px) {
+			#example1_wrapper>div:nth-child(2) {
+				overflow-x: auto;
+				padding-right: 0px;
+				margin-right: 0px;
+				border-right: 1px solid #f4f4f4;
+				padding-top: 0px;
+				margin-top: 0px;
+			}
+		}
+	</style>
 
 </head>
 
@@ -394,8 +411,8 @@
 					$("#cas").val('');
 					// load casos
 					$('#data-cas').load("<?php echo FOLDER_PATH ?>/tipo_incidencia/ajax/cas", {
-						token: tokn, 
-						incidencia_n: selectedinc 
+						token: tokn,
+						incidencia_n: selectedinc
 					});
 					// load datatable
 					$('#data-table-casos').load("<?php echo FOLDER_PATH ?>/tipo_incidencia/ajax/dtable", {});
