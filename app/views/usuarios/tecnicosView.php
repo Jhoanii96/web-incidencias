@@ -414,10 +414,55 @@
 			var dni = $('#dni').val();
 			var contact_point = $('#contact_point').val();
 			var date = $('#datepicker').val();
+			var data_fct = $("#data-fct").children("option:selected").val();
 			var data_ofn = $("#data-ofn").children("option:selected").val();
 			var data_und = $("#data-und").children("option:selected").val();
 			
 			var password = $('#password').val();
+
+
+			if (firstName == "") {
+				swal("Atención!", "Debe ingresar su nombre", "warning");
+				return;
+			}
+			if (lastName == "") {
+				swal("Atención!", "Debe ingresar su apellido", "warning");
+				return;
+			}
+			if (correo == "") {
+				swal("Atención!", "Debe ingresar su correo", "warning");
+				return;
+			}
+			if (dni == "") {
+				swal("Atención!", "Debe ingresar su DNI", "warning");
+				return;
+			}
+			if (contact_point == "") {
+				swal("Atención!", "Debe ingresar su celular", "warning");
+				return;
+			}
+			if (date == "") {
+				swal("Atención!", "Debe ingresar su fecha de nacimiento", "warning");
+				return;
+			}
+			if (data_fct == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una facultad", "warning");
+				return;
+			}
+			if (data_ofn == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una oficina", "warning");
+				return;
+			}
+			if (data_und == "Seleccionar") {
+				swal("Atención!", "Debe seleccionar una unidad", "warning");
+				return;
+			}
+			if (password == "") {
+				swal("Atención!", "Debe ingresar una contraseña", "warning");
+				return;
+			}
+
+
 			var toks = "DS4SAD5";
 			var tokn = "DMVJF99";
 			// file

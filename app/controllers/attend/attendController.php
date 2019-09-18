@@ -22,8 +22,8 @@ class attend extends Controller
         $this->dataUser = new dataAdmin();
         @$parametro = $this->dataUser->data_user($admin);
         $this->datos_usu = $parametro->fetch();
-        /* PARA EL ADMINISTRADOR Y EL TÉCNICO */
-
+        $this->BellNtf = $this->dataUser->BellNotifications();
+        
         $this->dataUsuario = new dataUser();
         $this->parametro2 = $this->dataUsuario->mostrarTablaSolicitudAtendidas($this->session->get('usuarioUsi'));
 
@@ -33,6 +33,7 @@ class attend extends Controller
             'tipouser' => $this->datos_usu['nombreTipo'],
             'online' => 'online',
             'tsolicitud' => $this->parametro2,
+            'BellNtf' => $this->BellNtf, 
             'foto' => $this->datos_usu['foto']
         ]);
         

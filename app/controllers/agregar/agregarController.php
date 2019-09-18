@@ -16,6 +16,8 @@ class agregar extends Controller
         
         $this->dataUser = new dataAdmin();
         @$parametro = $this->dataUser->data_user($admin);
+
+        $this->BellNtf = $this->dataUser->BellNotifications();
         
         $this->datos_usu = $parametro->fetch();
         $dataLink = [
@@ -30,6 +32,7 @@ class agregar extends Controller
             'tipouser' => $this->datos_usu['nombreTipo'], 
             'online' => 'online', 
             'foto' => $this->datos_usu['foto'], 
+            'BellNtf' => $this->BellNtf, 
             'tipo_incidencia' => $this->datos_tipo_incidencia,
             'dataLink' => $dataLink
         ]);

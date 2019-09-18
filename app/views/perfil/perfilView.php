@@ -31,7 +31,8 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
   <title>Perfil de usuario</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
+  <link rel="shortcut icon" href="<?= FOLDER_PATH . '/' ?>src/assets/media/image/usi-image_icon.png">
+	<!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?= FOLDER_PATH . '/' ?>src/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= FOLDER_PATH . '/' ?>src/css/font-awesome.min.css">
@@ -93,11 +94,11 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          User Profile
+          Perfil usuario
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Principal</a></li>
-          <li class="active">User profile</li>
+          <li><a href="<?= FOLDER_PATH ?>/"><i class="fa fa-table"></i> Inicio</a></li>
+          <li class="active">Perfil usuario</li>
         </ol>
       </section>
 
@@ -111,10 +112,10 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
             <div class="box box-primary">
               <div class="box-body box-profile">
                 <?php
-                if ($imagen != "/src/assets/media/image/perfil/") {
+                if ($imagen != "/src/assets/media/image/perfil/avatar.png") {
                   echo "<img class=\"profile-user-img img-responsive img-circle\" src=" . FOLDER_PATH . $imagen . " alt=\"User profile picture\">";
                 } else {
-                  echo '<img class="profile-user-img img-responsive img-circle" src="' . FOLDER_PATH . '/src/assets/media/image/perfil/avatar-male3.png" alt="User profile picture">';
+                  echo '<img class="profile-user-img img-responsive img-circle" src="' . FOLDER_PATH . '/src/assets/media/image/perfil/avatar.png" alt="User profile picture">';
                 }
                 ?>
 
@@ -250,7 +251,7 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
                       </div>
                     </div>
                     <?php
-                    if ($imagen != ROOT . FOLDER_PATH . "/src/assets/media/image/perfil/") {
+                    if ($imagen != "/src/assets/media/image/perfil/avatar.png") {
                       echo "<div class=\"form-group\">
                           <div class=\"col-sm-2\"></div>
                           <div class=\"col-sm-10\" style=\"text-align: center; width: 300px;\">
@@ -261,7 +262,7 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
                       echo "<div class=\"form-group\">
                           <div class=\"col-sm-2\"></div>
                           <div class=\"col-sm-10\" style=\"text-align: center; width: 300px;\">
-                            <img id=\"imgg\" height=\"200px\" src=\"\"/>
+                            <img id=\"imgg\" height=\"200px\" src=\"src/assets/media/image/perfil/avatar.png\"/>
                           </div>
                         </div>";
                     }
@@ -276,7 +277,7 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
                     </div>
                     <div class="form-group">
                       <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger" name="update" value="true">Actualizar</button>
+                        <button type="submit" class="btn btn-primary" name="update" value="true">Actualizar</button>
                       </div>
                     </div>
                   </form>

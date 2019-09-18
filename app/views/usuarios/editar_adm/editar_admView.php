@@ -178,7 +178,7 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 									</div>
 								</div>
 								<?php
-								if ($foto != ROOT . FOLDER_PATH . "/src/assets/media/image/perfil/") {
+								if ($foto != "/src/assets/media/image/perfil/avatar.png") {
 									echo "<div class=\"form-group\">
 									<div class=\"col-sm-2\"></div>
 										<div class=\"col-sm-10\" style=\"text-align: center; width: 300px;\">
@@ -189,7 +189,7 @@ while ($rowAdmin = $data['dataAdmin']->fetch()) {
 									echo "<div class=\"form-group\">
 									<div class=\"col-sm-2\"></div>
 										<div class=\"col-sm-10\" style=\"text-align: center; width: 300px;\">
-											<img id=\"imgg\" height=\"200px\" src=\"\"/>
+											<img id=\"imgg\" height=\"200px\" src=\"" . FOLDER_PATH . "/src/assets/media/image/perfil/avatar.png\"/>
 										</div>
 									</div>";
 								}

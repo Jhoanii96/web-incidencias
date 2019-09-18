@@ -196,6 +196,9 @@
     <script src="<?= FOLDER_PATH ?>/src/js/ckeditor.js"></script>
     <!-- Bootstrap WYSIHTML5 -->
     <script src="<?= FOLDER_PATH ?>/src/js/bootstrap3-wysihtml5.all.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
+
     <script>
         $(function() {
             CKEDITOR.replace('editor1');
@@ -277,14 +280,29 @@
             var radioValue = $("input[name='chk']:checked"). val();
 
             var editor = CKEDITOR.instances['editor1'].getData();
+
+            if (nombSolicitud == "") {
+				swal("Atención!", "Debe ingresar su nombre", "warning");
+				return;
+			}
+			if (data_inc == "Seleccionar") {
+				swal("Atención!", "Debe ingresar su apellido", "warning");
+				return;
+			}
+			if (data_cas == "Seleccionar") {
+				swal("Atención!", "Debe ingresar su correo", "warning");
+				return;
+			}
+            if (editor == "") {
+				swal("Atención!", "Debe ingresar una descripción", "warning");
+				return;
+			}
+
             var toks = "DS4SAD5";
             var tokn = "DMVJF99";
             // file
             var data = new FormData();
-            /* jQuery.each(jQuery('#photoInputFile')[0].files, function(i, file) {
-            	data.append('file-'+i, file);
-            }); */
-
+            
             data.append("nomb", nombSolicitud);
             data.append("inc", data_inc);
             data.append("cas", data_cas);
@@ -292,11 +310,6 @@
             data.append("chk", radioValue);
             data.append("token", toks);
             data.append("tokn", tokn);
-
-
-            /* const xhr = new XMLHttpRequest();
-            xhr.open("POST", array_options['add_a'], true);
-            xhr.send(data); */
 
             $.ajax({
                 beforeSend: function() {
