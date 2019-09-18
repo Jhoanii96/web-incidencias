@@ -50,7 +50,7 @@ class home extends Controller
         'BellNtf' => $this->BellNtf, 
         'foto' => $this->datos_usu['foto']
       ]);
-
+      
       /* PARA LOS ADMINISTRATIVOS */
     } elseif ($this->datos_usu['nombreTipo'] == 'Personal Administrativo') {
 
