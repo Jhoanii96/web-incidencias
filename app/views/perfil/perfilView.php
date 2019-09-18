@@ -171,14 +171,14 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
                       <label for="inputName" class="col-sm-2 control-label">Nombres</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" style="text-transform:uppercase" name="firstName" id="firstName" value="<?= $nom ?>">
+                        <input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" name="firstName" id="firstName" value="<?= $nom ?>">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Apellidos</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" style="text-transform:uppercase" name="lastName" id="lastName" value="<?= $ape ?>">
+                        <input type="text" class="form-control" pattern="[A-Za-zÁÉÍÓÚñÑ ]+" name="lastName" id="lastName" value="<?= $ape ?>">
                       </div>
                     </div>
                     <div class="form-group">
@@ -218,28 +218,28 @@ while ($datosperfil = $data['datos_perfil']->fetch()) {
                       <label class="col-sm-2 control-label">Facultad</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="rol" id="rol" value="<?= $facultad ?>" readonly />
+                        <input type="text" class="form-control" name="fct" value="<?= $facultad ?>" readonly />
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Oficina</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="rol" id="rol" value="<?= $oficina . ' (' . $abrOficina . ')' ?>" readonly />
+                        <input type="text" class="form-control" name="ofn" value="<?= $oficina . ' (' . $abrOficina . ')' ?>" readonly />
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Unidad</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="rol" id="rol" value="<?= $unidad ?>" readonly />
+                        <input type="text" class="form-control" name="und" value="<?= $unidad ?>" readonly />
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Rol usuario</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="rol" id="rol" value="<?= $nombreTipo ?>" readonly />
+                        <input type="text" class="form-control" name="rol" value="<?= $nombreTipo ?>" readonly />
                       </div>
                     </div>
                     <div class="form-group">

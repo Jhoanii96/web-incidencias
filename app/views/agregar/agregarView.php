@@ -88,7 +88,7 @@
                                 <div class="box-body">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Nombre solicitud</label>
+                                            <label>Resumen del problema</label>
                                             <input type="text" class="form-control" id="nombSolicitud" placeholder="Ingrese nombre solicitud" maxlength="25" name="nomSolicitud" autofocus>
                                         </div>
                                         <div class="form-group">
@@ -146,7 +146,7 @@
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-primary" type="button" data-name-text="Agregando..." style="margin-left: 15px; padding-left: 30px; padding-right: 30px;" id="slctadd">Agregar nueva solicitud</button>
+                                    <button type="button" class="btn btn-primary" data-name-text="Agregando..." style="margin-left: 15px; padding-left: 30px; padding-right: 30px;" id="slctadd">Agregar nueva solicitud</button>
                                 </div>
                                 <!-- /.box-footer -->
                             </form>
@@ -216,11 +216,10 @@
 
     <script>
         $(function() {
-            //Date picker
             $('#datepicker').datepicker({
                 autoclose: true
             })
-            //Initialize Select2 Elements
+            
             $('.select2').select2()
         })
     </script>
@@ -300,7 +299,7 @@
 
             var toks = "DS4SAD5";
             var tokn = "DMVJF99";
-            // file
+            
             var data = new FormData();
             
             data.append("nomb", nombSolicitud);
@@ -322,8 +321,8 @@
                 url: array_options['add_s'],
                 type: "POST",
                 data: data,
-                contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-                processData: false, // NEEDED, DON'T OMIT THIS
+                contentType: false,
+                processData: false,
                 success: function(resp) {
                     $("#spinner-ad").remove();
                     $("#slctadd").html('Solicitud agregada');

@@ -22,8 +22,8 @@
             # editamos organizador segun el dato que pase como parámetro
             
             if($update == "true"){
-                $firstName = strtoupper($_POST['firstName']);
-                $lastName = strtoupper($_POST['lastName']);
+                $firstName = $_POST['firstName'];
+                $lastName = $_POST['lastName'];
                 $dni = $_POST['dni'];
                 $contact_point = $_POST['contact_point'];
                 $correo = $_POST['correo'];
@@ -42,7 +42,7 @@
                     
                 if ($textimage == NULL || $textimage == '') {
                     
-                    $encapsuPerfil = new perfilll($firstName, $lastName, $dni, 
+                    $encapsuPerfil = new perfill($firstName, $lastName, $dni, 
                         $contact_point, $nacimiento, "", $password);
                 
                     $this->dataPerfil->actualizarPerfilWi($encapsuPerfil, $code);
