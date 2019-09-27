@@ -162,10 +162,11 @@
                                                 <td style="display: flex;padding: 8px 34%;"> 
                                                     <form method="post"> 
                                                         <input style="display: none" name="admi" value="' . $datosTSolicitud['nums'] . '"> 
-                                                        <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="deleteAdm(' . $datosTSolicitud['nums'] . ')"> 
+                                                        <button id="btndlt-' . $datosTSolicitud['nums'] . '" type="button" title="Anular incidencia" class="btn btn-block btn-danger" style="padding: 2px 8px;" onclick="AnulSolc(' . $datosTSolicitud['nums'] . ')"> 
                                                             <span class="fa fa-times"></span> 
                                                         </button> 
                                                     </form> 
+                                                    <div id="spinner-aoa-' . $datosTSolicitud['nums'] . '"></div>
                                                 </td>
                                             </tr>';
                                             } elseif ($data['tipouser'] == 'Técnico') {
