@@ -11,9 +11,9 @@ class login extends Controller
 	{
 		$this->session = new Session;
 
-		if (!empty($this->session->get('usuarioUsi')) || $this->session->get('usuarioUsi') != "" || $this->session->get('usuarioUsi') != NULL) {
-			header("Location: " . FOLDER_PATH . "/");
-		}
+		//if (!empty($this->session->get('usuarioUsi')) || $this->session->get('usuarioUsi') != "" || $this->session->get('usuarioUsi') != NULL) {
+		//	header("Location: " . FOLDER_PATH . "/");
+		//}
 	}
 
 	public function index()
