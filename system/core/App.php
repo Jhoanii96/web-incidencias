@@ -1,4 +1,5 @@
-<?php class App
+<?php 
+class App
 {
     protected $controller = 'error404.html';
     protected $method = 'index';
@@ -9,11 +10,11 @@
         if ($url == '/' || $url == '' || $url == NULL) {
             $this->controller = 'home';
             unset($url[0]);
-        } elseif (file_exists(PATH_CONTROLLERS . $url[0] . '/' . $url[0] . 'Controller.php')) {
+        } elseif (file_exists(PATH_CONTROLLERS . '/' . $url[0] . '/' . $url[0] . 'Controller.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
-        require_once(PATH_CONTROLLERS . $this->controller . '/' . $this->controller . 'Controller.php');
+        require_once(PATH_CONTROLLERS . '/' . $this->controller . '/' . $this->controller . 'Controller.php');
         $this->controller = preg_replace('[.html]', '', $this->controller);
         $this->controller = new $this->controller;
         if (isset($url[1])) {
