@@ -1,4 +1,5 @@
-<?php require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+<?php 
+require ROOT . FOLDER_PATH . "/system/libs/Session.php";
 require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
 class actions extends Controller
 {

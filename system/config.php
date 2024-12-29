@@ -11,16 +11,16 @@
     define('PATH_CONTROLLERS', 'app/controllers/');
 
     /* define('PATH_VIEWS','app/views'); */
-    define('PATH_VIEWS', 'incidencias/app/views/');
+    define('PATH_VIEWS', 'web-incidencias/app/views/');
     define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 
     /* Para el nombre del folder principal */
-    define('FOLDER_PATH', '/incidencias');
+    define('FOLDER_PATH', '/web-incidencias');
     define('REQUEST_METHOD', $_SERVER['REQUEST_METHOD']);
     define('HELPER_PATH', 'system/helper/');
 
     /* Para la BD */
-    define('SGBD', 'mysql:host=localhost;dbname=bdservicios;charset=utf8');
+    define('SGBD', 'mysql:host=localhost;dbname=incidencias_dev;charset=utf8');
     define('USER', 'root');
     define('PASS', '123456');
     define('ERROR_REPORTING_LEVEL', -1);
