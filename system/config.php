@@ -12,7 +12,7 @@
     define('PATH_CONTROLLERS', dirname(__DIR__).'/app/controllers/');
 
     /* define('PATH_VIEWS','app/views'); */
-    define('PATH_VIEWS', 'web-incidencias/app/views/');
+    define('PATH_VIEWS', dirname(__DIR__).'/app/views/');
     define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 
     /* Para el nombre del folder principal */
