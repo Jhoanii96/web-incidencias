@@ -23,7 +23,7 @@
     /* Para la BD */
     define('SGBD', 'mysql:host=localhost;dbname=incidencias_dev;charset=utf8');
     define('USER', 'root');
-    define('PASS', '123456');
+    define('PASS', '1234567s');
     define('ERROR_REPORTING_LEVEL', -1);
 
     /* DATA INC */

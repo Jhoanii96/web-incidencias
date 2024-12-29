@@ -86,10 +86,4 @@ class login extends Controller
 	{
 		$this->view('login/login', ['error_message' => $message]);
 	}
-	/*
-        public function index()
-        {
-            $this->view('login/login');
-        }
-        */
 }
