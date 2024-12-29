@@ -8,7 +8,7 @@
     define('DEFAULT_CONTROLLER', 'home');
 
     /* Para la ruta de los controladores */
-    define('PATH_CONTROLLERS', 'app/controllers/');
+    define('PATH_CONTROLLERS', dirname(__DIR__).'/app/controllers/');
 
     /* define('PATH_VIEWS','app/views'); */
     define('PATH_VIEWS', 'web-incidencias/app/views/');
