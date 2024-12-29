@@ -1,7 +1,7 @@
 <?php
 
-require MAIN_PROJECT . "/system/libs/Session.php";
-require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+//require MAIN_PROJECT . "/system/libs/Session.php";
+//require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
 
 class login extends Controller
 {
