@@ -4,7 +4,7 @@
     define('URI', $_SERVER['REQUEST_URI']);
 
     /* Para el Autoload */
-    define('CORE', 'system/core/');
+    define('CORE', dirname(__DIR__). '/system/core/');
     define('DEFAULT_CONTROLLER', 'home');
 
     /* Para la ruta de los controladores */
