@@ -1,8 +1,8 @@
 <?php
 
-require ROOT . FOLDER_PATH . "/app/models/usuario/usuarioModel.php";
-require ROOT . FOLDER_PATH . "/" . DATA . "user/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+require MAIN_PROJECT . "/app/models/usuario/usuarioModel.php";
+require MAIN_PROJECT . "/" . DATA . "user/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
 
 class register extends Controller
 {

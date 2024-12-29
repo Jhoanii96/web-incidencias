@@ -1,7 +1,7 @@
 <?php
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/" . DATA . "user/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/" . DATA . "user/autoload" . DATAI . "php";
 
 class all extends Controller
 {

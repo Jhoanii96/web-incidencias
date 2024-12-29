@@ -1,6 +1,6 @@
 <?php
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
 
 class usuarios extends Controller
 {
@@ -113,7 +113,7 @@ class usuarios extends Controller
                         $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
                     }
 
-                    $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
+                    $imagen_destino = MAIN_PROJECT . '/src/assets/media/image/perfil/';
                     move_uploaded_file($file_tmp, $imagen_destino . $file_name);
 
                     $imagen_bd = '/src/assets/media/image/perfil/' . $file_name;
@@ -159,7 +159,7 @@ class usuarios extends Controller
                         $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
                     }
 
-                    $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
+                    $imagen_destino = MAIN_PROJECT . '/src/assets/media/image/perfil/';
                     move_uploaded_file($file_tmp, $imagen_destino . $file_name);
 
                     $imagen_bd = '/src/assets/media/image/perfil/' . $file_name;
@@ -296,7 +296,7 @@ class usuarios extends Controller
                     $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
 
                     $file_tmp = $_FILES['image']['tmp_name'];
-                    $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
+                    $imagen_destino = MAIN_PROJECT . '/src/assets/media/image/perfil/';
                     move_uploaded_file($file_tmp, $imagen_destino . $file_name);
 
                     $imagen_bd = '/src/assets/media/image/perfil/' . $file_name;
@@ -355,7 +355,7 @@ class usuarios extends Controller
                     $file_name = date("m"."d"."y") . date("h"."i"."s".microtime(TRUE)) . "." . basename($_FILES['image']['type']);
 
                     $file_tmp = $_FILES['image']['tmp_name'];
-                    $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
+                    $imagen_destino = MAIN_PROJECT . '/src/assets/media/image/perfil/';
                     move_uploaded_file($file_tmp, $imagen_destino . $file_name);
 
                     $imagen_bd = '/src/assets/media/image/perfil/' . $file_name;
@@ -381,7 +381,7 @@ class usuarios extends Controller
             }
         } else {
             if ($ident == 'admin') {
-                include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+                include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
                 $dataLink = [
                     'modify_a' => FOLDER_PATH . '/usuarios/edit/admin/'
                 ];
@@ -400,7 +400,7 @@ class usuarios extends Controller
                     'dataLink' => $dataLink
                 ]);
             } elseif ($ident == "tecn") {
-                include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+                include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
                 $dataLink = [
                     'modify_t' => FOLDER_PATH . '/usuarios/edit/tecn/'
                 ];

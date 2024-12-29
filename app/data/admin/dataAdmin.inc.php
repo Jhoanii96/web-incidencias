@@ -1,10 +1,10 @@
-<?php require ROOT . FOLDER_PATH . "/app/models/login/loginModel.php";
-require ROOT . FOLDER_PATH . "/app/models/home/homeModel.php";
-require ROOT . FOLDER_PATH . "/app/models/perfil/perfilModel.php";
-require ROOT . FOLDER_PATH . "/app/models/unidad/unidadModel.php";
-require ROOT . FOLDER_PATH . "/app/models/tipo_incidencia/tipo_incidenciaModel.php";
-require ROOT . FOLDER_PATH . "/app/models/administrador/administradorModel.php";
-require ROOT . FOLDER_PATH . "/app/models/usuario/usuarioModel.php";
+<?php require MAIN_PROJECT . "/app/models/login/loginModel.php";
+require MAIN_PROJECT . "/app/models/home/homeModel.php";
+require MAIN_PROJECT . "/app/models/perfil/perfilModel.php";
+require MAIN_PROJECT . "/app/models/unidad/unidadModel.php";
+require MAIN_PROJECT . "/app/models/tipo_incidencia/tipo_incidenciaModel.php";
+require MAIN_PROJECT . "/app/models/administrador/administradorModel.php";
+require MAIN_PROJECT . "/app/models/usuario/usuarioModel.php";
 class dataAdmin
 {
     public function __construct()

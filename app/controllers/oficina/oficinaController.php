@@ -1,6 +1,6 @@
 <?php
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
 
 class oficina extends Controller
 {
@@ -9,7 +9,7 @@ class oficina extends Controller
     public function index()
     {
 
-        include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+        include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
 
         $this->dataUnidad = new dataAdmin();
         $this->datos_facultad = $this->dataUnidad->mostrarFacultad();
@@ -169,7 +169,7 @@ class oficina extends Controller
             sleep(1);
             echo ("<script>location.href = '" . FOLDER_PATH . "/oficina';</script>");
         } else {
-            include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+            include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
             $this->dataUnidad = new dataAdmin();
             $this->datos_unidad_edit = $this->dataUnidad->mostrarEditarUnidad($ident);
             $this->BellNtf = $this->dataUnidad->BellNotifications();

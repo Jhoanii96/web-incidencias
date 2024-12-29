@@ -1,7 +1,7 @@
 <?php
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/" . DATA . "user/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/" . DATA . "user/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
 
 class agregar extends Controller
 {
@@ -9,7 +9,7 @@ class agregar extends Controller
     public function index()
     {
 
-        include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+        include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
         
         $this->dataCasos = new dataAdmin();
         $this->datos_tipo_incidencia = $this->dataCasos->mostrarTipoIncidencia();
@@ -46,7 +46,7 @@ class agregar extends Controller
             $token = $_POST["token"];
         }
         
-        include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+        include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
         
         $this->dataUsuario = new dataUser();
         if ($token != NULL || $token != '') {
@@ -202,7 +202,7 @@ class agregar extends Controller
                 $file_name = date("m-d-y") . date("h-i-sa") . "." . basename($_FILES['image']['type']);
 
                 $file_tmp = $_FILES['image']['tmp_name'];
-                $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
+                $imagen_destino = MAIN_PROJECT . '/src/assets/media/image/perfil/';
                 move_uploaded_file($file_tmp, $imagen_destino . $file_name);
 
                 $imagen_bd = '/src/assets/media/image/perfil/' . $file_name;
@@ -229,7 +229,7 @@ class agregar extends Controller
             sleep(1);
             echo ("<script>location.href = '" . FOLDER_PATH . "/administrador';</script>");
         } else {
-            include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+            include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
             $dataLink = [
                 'modify' => FOLDER_PATH . '/administrador/edit/'
             ];

@@ -1,6 +1,6 @@
 <?php
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
 
 class tipo_incidencia extends Controller
 {
@@ -161,7 +161,7 @@ class tipo_incidencia extends Controller
             sleep(1);
             echo ("<script>location.href = '" . FOLDER_PATH . "/tipo_incidencia';</script>");
         } else {
-            include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+            include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
             $this->dataCasos = new dataAdmin();
             $this->datos_casos_edit = $this->dataCasos->mostrarEditarCasos($ident);
             $this->BellNtf = $this->dataCasos->BellNotifications();

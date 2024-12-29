@@ -1,9 +1,9 @@
 
 
 <?php
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/" . DATA . "user/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/" . DATA . "user/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
 
 class mostrar extends Controller
 {
@@ -11,7 +11,7 @@ class mostrar extends Controller
     public function index($data = '')
     {
 
-        include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+        include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
         
         $this->dataAdm = new dataAdmin();
         $this->datos_tipo_incidencia = $this->dataAdm->mostrarTipoIncidencia();
@@ -47,7 +47,7 @@ class mostrar extends Controller
             $token = $_POST["token"];
         }
         
-        include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+        include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
         
         $this->dataUsuario = new dataUser();
         if ($token != NULL || $token != '') {
@@ -102,7 +102,7 @@ class mostrar extends Controller
 
     public function delete()
     {
-        require ROOT . FOLDER_PATH . "/app/models/usuario/usuarioModel.php";
+        require MAIN_PROJECT . "/app/models/usuario/usuarioModel.php";
         
         $this->datauser = new dataUser();
 
@@ -210,7 +210,7 @@ class mostrar extends Controller
                 $file_name = date("m-d-y") . date("h-i-sa") . "." . basename($_FILES['image']['type']);
 
                 $file_tmp = $_FILES['image']['tmp_name'];
-                $imagen_destino = ROOT . FOLDER_PATH . '/src/assets/media/image/perfil/';
+                $imagen_destino = MAIN_PROJECT . '/src/assets/media/image/perfil/';
                 move_uploaded_file($file_tmp, $imagen_destino . $file_name);
 
                 $imagen_bd = '/src/assets/media/image/perfil/' . $file_name;
@@ -237,7 +237,7 @@ class mostrar extends Controller
             sleep(1);
             echo ("<script>location.href = '" . FOLDER_PATH . "/administrador';</script>");
         } else {
-            include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+            include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
             $dataLink = [
                 'modify' => FOLDER_PATH . '/administrador/edit/'
             ];

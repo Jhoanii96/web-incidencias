@@ -1,11 +1,11 @@
 <?php 
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
 class actions extends Controller
 {
     public function __construct()
     {
-        include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+        include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
     }
     public function index()
     { }

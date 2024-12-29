@@ -4,6 +4,7 @@
     define('URI', $_SERVER['REQUEST_URI']);
 
     /* Para el Autoload */
+    define('MAIN_PROJECT', dirname(__DIR__));
     define('CORE', dirname(__DIR__). '/system/core/');
     define('DEFAULT_CONTROLLER', 'home');
 

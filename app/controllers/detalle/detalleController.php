@@ -1,9 +1,9 @@
 
 
 <?php
-require ROOT . FOLDER_PATH . "/" . DATA . "admin/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/" . DATA . "user/autoload" . DATAI . "php";
-require ROOT . FOLDER_PATH . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/" . DATA . "user/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
 
 class detalle extends Controller
 {
@@ -11,7 +11,7 @@ class detalle extends Controller
     public function index($data = '')
     {
 
-        include(ROOT . FOLDER_PATH . "/app/controllers/data_sesion" . DATAI . "php");
+        include(MAIN_PROJECT . "/app/controllers/data_sesion" . DATAI . "php");
         
         $this->dataAdm = new dataAdmin();
         $this->datos_tipo_incidencia = $this->dataAdm->mostrarTipoIncidencia();

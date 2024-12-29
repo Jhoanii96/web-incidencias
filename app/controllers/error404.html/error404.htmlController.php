@@ -1,5 +1,5 @@
 <?php
-    //require ROOT . FOLDER_PATH . "/app/models/registro/registroModel.php";
+    //require MAIN_PROJECT . "/app/models/registro/registroModel.php";
 
     class error404 extends Controller 
     {
