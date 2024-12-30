@@ -16,7 +16,7 @@
     define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 
     /* Para el nombre del folder principal */
-    define('FOLDER_PATH', '/web-incidencias');
+    define('FOLDER_PATH', '/');
     define('REQUEST_METHOD', $_SERVER['REQUEST_METHOD']);
     define('HELPER_PATH', 'system/helper/');
 
