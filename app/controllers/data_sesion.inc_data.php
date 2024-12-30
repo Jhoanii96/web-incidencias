@@ -4,7 +4,7 @@
         $this->session->getAll();
             
         if(empty($this->session->get('usuarioUsi')) || $this->session->get('usuarioUsi') == "" || $this->session->get('usuarioUsi') == NULL){
-            header("Location: " . FOLDER_PATH . "/login");
+            header("Location: /login");
         }
 	}
     @$admin = $this->session->get('usuarioUsi');

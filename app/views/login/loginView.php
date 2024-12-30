@@ -36,8 +36,10 @@
         <div class="login-logo"> <img src="<?= FOLDER_PATH ?>/src/assets/img/usi-image.png" style="width: 125px; margin-bottom: 0px;"> </div>
         <div class="login-box-body" style="background: rgba(0, 0, 0, 0.7294);">
             <p class="login-box-msg" style="color: rgba(0, 197, 255, 0.8901);">Accede para iniciar sesión.</p>
-            <form action="<?= FOLDER_PATH . '/login/signin' ?>" method="post"> <input type="password" style="display: none;" name="password" autocomplete="new-password">
-                <div class="form-group has-feedback" style="margin-bottom: 25px;"> <input type="email" class="form-control" name="email" placeholder="Email" style="background-color: #0000008a; color: #eee;" value="<?php if (isset($_COOKIE["member_login"])) {
+            <form action="<?= FOLDER_PATH . '/login/signin' ?>" method="post">
+                <input type="password" style="display: none;" name="password" autocomplete="new-password">
+                <div class="form-group has-feedback" style="margin-bottom: 25px;"> 
+                    <input type="email" class="form-control" name="email" placeholder="Email" style="background-color: #0000008a; color: #eee;" value="<?php if (isset($_COOKIE["member_login"])) {
                                                                                                                                                                                                                             echo $_COOKIE["member_login"];
                                                                                                                                                                                                                         } ?>"> <span class="glyphicon glyphicon-envelope form-control-feedback"></span> </div>
                 <div class="form-group has-feedback" style="margin-bottom: 25px;"> <input type="password" class="form-control" name="pass" placeholder="Password" style="background-color: #0000008a; color: #eee;" value="<?php if (isset($_COOKIE["member_password"])) {
