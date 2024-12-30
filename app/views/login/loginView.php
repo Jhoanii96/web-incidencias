@@ -40,18 +40,31 @@
                 <input type="password" style="display: none;" name="password" autocomplete="new-password">
                 <div class="form-group has-feedback" style="margin-bottom: 25px;"> 
                     <input type="email" class="form-control" name="email" placeholder="Email" style="background-color: #0000008a; color: #eee;" value="<?php if (isset($_COOKIE["member_login"])) {
-                                                                                                                                                                                                                            echo $_COOKIE["member_login"];
-                                                                                                                                                                                                                        } ?>"> <span class="glyphicon glyphicon-envelope form-control-feedback"></span> </div>
-                <div class="form-group has-feedback" style="margin-bottom: 25px;"> <input type="password" class="form-control" name="pass" placeholder="Password" style="background-color: #0000008a; color: #eee;" value="<?php if (isset($_COOKIE["member_password"])) {
-                                                                                                                                                                                                                                echo $_COOKIE["member_password"];
-                                                                                                                                                                                                                            } ?>"> <span class="glyphicon glyphicon-lock form-control-feedback"></span> </div>
+                            echo $_COOKIE["member_login"];
+                        } ?>"> 
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span> 
+                </div>
+                <div class="form-group has-feedback" style="margin-bottom: 25px;"> 
+                    <input type="password" class="form-control" name="pass" placeholder="Password" style="background-color: #0000008a; color: #eee;" value="<?php if (isset($_COOKIE["member_password"])) {
+                            echo $_COOKIE["member_password"];
+                        } ?>"> 
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span> 
+                    </div>
                 <div class="row" style="margin-bottom: 15px;">
                     <div class="col-xs-7">
-                        <div class="checkbox icheck"> <label style="color: #a8a8a8;"> <input name="chkb" type="checkbox" <?php if (isset($_COOKIE["member_login"])) { ?> checked <?php } ?>> Recuérdame </label> </div>
+                        <div class="checkbox icheck"> 
+                            <label style="color: #a8a8a8;"> 
+                                <input name="chkb" type="checkbox" <?php if (isset($_COOKIE["member_login"])) { ?> checked <?php } ?>
+                            > Recuérdame </label> 
+                        </div>
                     </div>
-                    <div class="col-xs-5"> <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar sesión</button> </div>
+                    <div class="col-xs-5"> 
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar sesión</button> 
+                    </div>
                 </div>
-            </form> <span style="font-weight: lighter; color: #fff">¿No eres miembro? <a href="<?= FOLDER_PATH ?>/register" class="text-center" style="font-weight: normal;">Regístrate aquí</a></span>
+            </form> 
+            <span style="font-weight: lighter; color: #fff">¿No eres miembro? <a href="<?= FOLDER_PATH ?>/register" class="text-center" style="font-weight: normal;">Regístrate aquí</a>
+        </span>
         </div>
         <div class="footer">
             <p id="author" style="font-size: 15px;"></p>
