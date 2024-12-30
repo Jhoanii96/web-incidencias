@@ -6,7 +6,15 @@
             "use": "vercel-php@0.3.6"
         },
         {
-            "src": "src/**",
+            "src": "*.css",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "*.js",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "*.jpg",
             "use": "@vercel/static"
         }
     ],
