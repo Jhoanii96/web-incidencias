@@ -53,7 +53,10 @@
 </head>
 
 <body id="fade" class="hold-transition register-page img-transition">
-    <div class="register-logo logo-reg"> <img src="src/assets/img/usi-image2.png" class="image-f"> <img src="src/assets/img/usi-image.png" class="image-m"> </div>
+    <div class="register-logo logo-reg" style="display: block;"> 
+        <img src="src/assets/img/usi-image2.png" class="image-f"> 
+        <img src="src/assets/img/usi-image.png" class="image-m"> 
+    </div>
     <div class="register-box" style="margin: 0% 5%;">
         <div class="register-box-body" style="background: #000000ba;">
             <p class="login-box-msg" style="color: #00c5ffe3;">Registrar una nueva cuenta</p>

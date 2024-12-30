@@ -1,28 +1,28 @@
 <?php
 
-//require MAIN_PROJECT . "/system/libs/Session.php";
-//require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
+require MAIN_PROJECT . "/system/libs/Session.php";
+require MAIN_PROJECT . "/" . DATA . "admin/autoload" . DATAI . "php";
 
 class login extends Controller
 {
-	/*
+	
 	private $session;
 
 	public function __construct()
 	{
 		$this->session = new Session;
 
-		//if (!empty($this->session->get('usuarioUsi')) || $this->session->get('usuarioUsi') != "" || $this->session->get('usuarioUsi') != NULL) {
-		//	header("Location: " . FOLDER_PATH . "/");
-		//}
+		if (!empty($this->session->get('usuarioUsi')) || $this->session->get('usuarioUsi') != "" || $this->session->get('usuarioUsi') != NULL) {
+			header("Location: " . FOLDER_PATH . "/");
+		}
 	}
-	*/
+	
 
 	public function index()
 	{
 		$this->view('login/login');
 	}
-	/*
+	
 	public function signin()
 	{
 		$email = $_POST['email'];
@@ -88,5 +88,5 @@ class login extends Controller
 	{
 		$this->view('login/login', ['error_message' => $message]);
 	}
-	*/
+	
 }

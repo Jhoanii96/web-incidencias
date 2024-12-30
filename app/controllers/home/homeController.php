@@ -14,7 +14,7 @@ class home extends Controller
     $this->session->getAll();
 
     if (empty($this->session->get('usuarioUsi')) || $this->session->get('usuarioUsi') == "" || $this->session->get('usuarioUsi') == NULL) {
-      header("Location: /login");
+      header("Location: " . FOLDER_PATH . "/login");
     }
 
     @$admin = $this->session->get('usuarioUsi');
